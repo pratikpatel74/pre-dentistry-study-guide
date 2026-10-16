@@ -1,6 +1,6 @@
 # Pre-Dentistry Study Hub: handover notes
 
-Read this first if the conversation was compacted or a new session is picking up the work. Last updated: 16 Oct 2026.
+Read this first if the conversation was compacted or a new session is picking up the work. Last updated: 16 Oct 2026 (afternoon).
 
 ## Golden rules
 
@@ -20,14 +20,18 @@ Read this first if the conversation was compacted or a new session is picking up
 | Companion Claude Doc ("Pre-Dentistry Study Guide (UK)") | https://claude.ai/code/artifact/558bb0c7-887f-417f-92c7-a90b80fefbec (same content in doc form, 3 diagrams, 15 self-test questions) |
 | Sister sites | AQA hubs: Biology https://aqa-alevel-biology.netlify.app/, Chemistry https://aqa-alevel-chemistry.netlify.app/, Maths https://aqa-alevel-maths.netlify.app/, landing page https://alevel-study-hubs.netlify.app/ (their own handover: `~/Documents/Projects/alevel-hub/HANDOVER.md`). Finance hub: `~/Documents/Projects/finance-hub` (context doc `FINANCE_HUB_CONTEXT.md`) |
 
-Audience: a student taking AQA A-level Maths, Chemistry and Biology who plans to study dentistry (BDS) in England.
+Audience: a **Year 12** student (AQA A-level Maths, Chemistry, Biology) applying for dentistry (BDS) in **2028 entry**: UCAT summer 2027, UCAS deadline mid-October 2027, interviews Dec 2027 – Mar 2028.
 
 ## Site contents
 
-9 topics, 22 questions each (198 total), 10 drawn per quiz session, 12 diagrams.
+17 topics, 22 questions each (374 total), 10 drawn per quiz session, 20 diagrams. The homepage has two sections: **Getting in** (topics 14–17, labelled Step 1–4, `section="apply"`) shown first, then **Dental science** (topics 1–13).
 
 | # | Topic | Diagrams (key in `DIAGRAMS`) |
 |---|---|---|
+| 14 (Step 1) | Your Route to 2028 Entry | `route` |
+| 15 (Step 2) | The UCAT | `ucat` |
+| 16 (Step 3) | Interviews & MMIs | `mmi` |
+| 17 (Step 4) | Work Experience & Personal Statement | `gibbs` |
 | 1 | The UK Dental Landscape | `pathway` |
 | 2 | Tooth Anatomy & Tissues | `tooth`, `surfaces` |
 | 3 | Tooth Types, Notation & Eruption | `fdi` |
@@ -37,6 +41,10 @@ Audience: a student taking AQA A-level Maths, Chemistry and Biology who plans to
 | 7 | Infection Control & Occupational Health | `decon`, `sharps` |
 | 8 | Professionalism & Ethics | `capacity` |
 | 9 | Bridging from A-level | `phscale`; plus 32 rows linking AQA hub topics to dentistry |
+| 10 | Dental Materials | `bonding` |
+| 11 | Local Anaesthesia & Pharmacology | `laph` |
+| 12 | Oral Pathology & Oral Cancer | `referral` |
+| 13 | Dental Radiography | `radio` |
 
 ## Source layout (`src/`)
 
@@ -45,9 +53,13 @@ src/
   build.py          # validates content, writes index.html, notes/, quizzes/, README.md to the repo root
   content_a.py      # topics 1–5: dict per topic (title, colours, blurb, icon, qs, notes HTML)
   content_b.py      # topics 6–9
+  content_c.py      # topics 10–13 (year-1 science)
+  content_d.py      # topics 14–17 ("Getting in": label + section="apply")
+  rebalance.py      # FIX[(topic, q index)] = replacement options; applied by build.py (see Content rules)
   bridge.py         # Topic 9 notes: ROWS of (hub id, A-level title, comes-back-as, [pre-dentistry topics])
   diagrams.py       # tooth, fdi, stephan
   diagrams2.py      # pathway, surfaces, stages, perio, trigeminal, decon, sharps, capacity, phscale
+  diagrams3.py      # bonding, laph, referral, radio, route, ucat, mmi, gibbs (+ _ring, _strip helpers)
   templates/
     quiz-template.html   # finance hub quizzes/topic9.html: the quiz engine
     index-template.html  # finance hub index.html: homepage CSS source
@@ -67,6 +79,16 @@ No dependencies beyond Python 3.
 - Each topic has exactly 22 questions: `(question, [correct, wrong, wrong, wrong], explanation)`.
 - **The correct answer is always written first.** The quiz page shuffles the options each session (the finance hub didn't; this was added here).
 - Options must be unique within a question.
+- **Don't make the right answer the longest.** An Oct 2026 review found the correct option was clearly longest in 89/198 questions, which students can game. `rebalance.py` overrides those options. After the fix, the correct answer is longest in 32% of all 374 questions (chance = 25%) and >10% longer than every distractor in none. When adding questions, write distractors as long and specific as the answer, and re-run the check (snippet below).
+
+```python
+# from src/: correct-is-longest check
+import sys; sys.path.insert(0,'.')
+from content_a import *; from content_b import *; from content_c import *; from content_d import *; from rebalance import FIX
+T={t['num']:t for t in [T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17]}
+for (n,i),o in FIX.items(): q,_,e=T[n]['qs'][i]; T[n]['qs'][i]=(q,o,e)
+print([(n,i) for n,t in T.items() for i,(q,o,e) in enumerate(t['qs']) if len(o[0])>1.1*max(map(len,o[1:]))])
+```
 - Notes are HTML strings. Put a diagram anywhere with `{{D:key}}` (or `{{DIAGRAM}}` for the topic's `diagram` key). Every placeholder must resolve.
 - The homepage counts diagrams per topic automatically.
 
@@ -86,6 +108,12 @@ localStorage keys per topic: `topicN_last` (last score, drives the homepage badg
 - **NHS charges in England from 1 April 2026:** Band 1 £27.90, Band 2 £76.60, Band 3 £332.10, urgent £27.90 (source: NHSBSA KA-02003).
 - **GDC:** the 9-principle Standards for the Dental Team are current. In 2026 the GDC consulted on replacing them with a 4-principle Framework for Professionalism. Revised Standards for Education apply from 2026/27. Update Topic 8 when the outcome is published.
 - **Occupational health:** hepatitis B course (0, 1, 6 months) plus immunity test; BBV screening (hep B, hep C, HIV) for exposure-prone procedures; enhanced DBS. Schools differ on timing.
+- **UCAT** (ucat.ac.uk): VR 44 q / 22 min, DM 35 / 37, QR 36 / 26, SJT 69 / 26; 117½ min total; VR/DM/QR 300–900 each (900–2700), SJT Band 1–4; Abstract Reasoning removed from 2025. 2026 window 13 Jul – 24 Sep. **2027 dates not yet published (expected spring 2027): update Topic 15 and the `route` diagram then.**
+- **UCAS:** dentistry deadline 15 Oct in 2025 and 2026; expect mid-Oct 2027 for 2028 entry. Up to 4 dentistry choices. New personal statement (2026 entry onwards): 3 questions, 4,000 characters total, minimum 350 each.
+- **Schools:** typical AAA incl. Chem + Bio (KCL, QMUL typically A*AA); about 8 MMI and 4 panel (leadingtuition summary, Oct 2026). Birmingham: usually at least 3 days' NHS or mixed practice shadowing; dentistry + medicine applications not considered.
+- **NHS contract (April 2026):** practices must provide urgent care (24 h urgent, 1 week non-urgent); UDAs remain; new high-needs pathways (dentistry.co.uk, Jul 2026).
+- **Amalgam:** GB restricted since 2018 (under-15s, pregnant/breastfeeding) but not banned; EU ban from 2025; NI derogation to 2034; Minamata COP-6 (Nov 2025) agreed to end manufacture, import and export by 2034.
+- **Oral cancer referral:** NICE NG12 (ulcer > 3 weeks, lump, red / red-white patch → suspected cancer pathway, 2 weeks).
 - **Dose maths** uses a "given" 4.4 mg/kg figure as an exercise only; notes tell the student to learn official maximum doses from their course.
 
 ## How Claude commits to the Mac repo (important)
@@ -109,9 +137,13 @@ The device needs folder access to `~/Documents/Projects`: request it with device
 | 1fd5934 | Site: 9 topics, 198 questions, 3 diagrams |
 | d6d773d | 9 more diagrams; Topic 9 expanded to 32 rows linked to the AQA hubs |
 | 3151145 | Fixed homepage light mode (light colour block had been sliced from the wrong place) |
-| (after 3151145) | Added `src/`, this handover doc, quiz theme-icon fix |
+| ee3c465 | Added `src/`, this handover doc, quiz theme-icon fix |
+| (after ee3c465) | Rebalanced answer lengths; 8 new topics (10–13 science, 14–17 Getting in); 20 diagrams; homepage sections |
 
 ## Open items / ideas
+
+- **Each spring/summer:** refresh UCAT dates, the UCAS deadline and the NHS contract notes (Topics 14–16).
+- Review item 4 from the Oct 2026 review with Pratik: add the hub to the landing page; mixed "test me on everything" quiz; refresh or retire the Claude Doc.
 
 - Add the Pre-Dentistry hub to the landing page (https://alevel-study-hubs.netlify.app/, repo `alevel-hub`). Not done yet; ask first.
 - Finance hub review findings, not yet fixed (offered to Pratik): the live site lags the repo (6 vs 9 topics; check that Netlify is linked to `main`); `Topic6_Summary.docx` has two known errors listed in `FINANCE_HUB_CONTEXT.md`.

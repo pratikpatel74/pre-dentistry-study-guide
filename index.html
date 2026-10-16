@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pre-Dentistry Study Hub</title>
-<meta name="description" content="Revision hub for students starting a UK dentistry (BDS) degree: notes, diagrams and quizzes.">
+<meta name="description" content="For UK students aiming for dentistry: UCAT, application and interview prep, plus the dental science to know before year 1.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -30,6 +30,14 @@
   --t7: #2dd4bf; --t7-bg: rgba(45,212,191,0.1); --t7-glow: rgba(45,212,191,0.2);
   --t8: #f472b6; --t8-bg: rgba(244,114,182,0.1); --t8-glow: rgba(244,114,182,0.2);
   --t9: #22d3ee; --t9-bg: rgba(34,211,238,0.1); --t9-glow: rgba(34,211,238,0.2);
+  --t10: #fb923c; --t10-bg: rgba(251,146,60,0.1); --t10-glow: rgba(251,146,60,0.2);
+  --t11: #c084fc; --t11-bg: rgba(192,132,252,0.1); --t11-glow: rgba(192,132,252,0.2);
+  --t12: #f87171; --t12-bg: rgba(248,113,113,0.1); --t12-glow: rgba(248,113,113,0.2);
+  --t13: #94a3b8; --t13-bg: rgba(148,163,184,0.1); --t13-glow: rgba(148,163,184,0.2);
+  --t14: #e8b84b; --t14-bg: rgba(232,184,75,0.1); --t14-glow: rgba(232,184,75,0.2);
+  --t15: #38bdf8; --t15-bg: rgba(56,189,248,0.1); --t15-glow: rgba(56,189,248,0.2);
+  --t16: #f472b6; --t16-bg: rgba(244,114,182,0.1); --t16-glow: rgba(244,114,182,0.2);
+  --t17: #34d399; --t17-bg: rgba(52,211,153,0.1); --t17-glow: rgba(52,211,153,0.2);
 }
 :root[data-theme="light"] {
   --bg:       #f5f4f0;
@@ -53,6 +61,14 @@
   --t7: #0d9488; --t7-bg: rgba(13,148,136,0.08); --t7-glow: rgba(13,148,136,0.15);
   --t8: #db2777; --t8-bg: rgba(219,39,119,0.08); --t8-glow: rgba(219,39,119,0.15);
   --t9: #0891b2; --t9-bg: rgba(8,145,178,0.08); --t9-glow: rgba(8,145,178,0.15);
+  --t10: #ea580c; --t10-bg: rgba(234,88,12,0.08); --t10-glow: rgba(234,88,12,0.15);
+  --t11: #9333ea; --t11-bg: rgba(147,51,234,0.08); --t11-glow: rgba(147,51,234,0.15);
+  --t12: #b91c1c; --t12-bg: rgba(185,28,28,0.08); --t12-glow: rgba(185,28,28,0.15);
+  --t13: #475569; --t13-bg: rgba(71,85,105,0.08); --t13-glow: rgba(71,85,105,0.15);
+  --t14: #b8861a; --t14-bg: rgba(184,134,26,0.08); --t14-glow: rgba(184,134,26,0.15);
+  --t15: #0284c7; --t15-bg: rgba(2,132,199,0.08); --t15-glow: rgba(2,132,199,0.15);
+  --t16: #be185d; --t16-bg: rgba(190,24,93,0.08); --t16-glow: rgba(190,24,93,0.15);
+  --t17: #047857; --t17-bg: rgba(4,120,87,0.08); --t17-glow: rgba(4,120,87,0.15);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -297,14 +313,47 @@ body {
 .t9 .card-accent { background: var(--t9); }
 .t9 .topic-icon { background: var(--t9-bg); color: var(--t9); }
 .t9 .btn-quiz { background: var(--t9); }
-.t5 .btn-quiz, .t9 .btn-quiz { color: #000; }
-:root[data-theme="light"] .t5 .btn-quiz, :root[data-theme="light"] .t9 .btn-quiz { color: #fff; }
+.t10:hover { box-shadow: 0 8px 32px var(--t10-glow); }
+.t10 .card-accent { background: var(--t10); }
+.t10 .topic-icon { background: var(--t10-bg); color: var(--t10); }
+.t10 .btn-quiz { background: var(--t10); }
+.t11:hover { box-shadow: 0 8px 32px var(--t11-glow); }
+.t11 .card-accent { background: var(--t11); }
+.t11 .topic-icon { background: var(--t11-bg); color: var(--t11); }
+.t11 .btn-quiz { background: var(--t11); }
+.t12:hover { box-shadow: 0 8px 32px var(--t12-glow); }
+.t12 .card-accent { background: var(--t12); }
+.t12 .topic-icon { background: var(--t12-bg); color: var(--t12); }
+.t12 .btn-quiz { background: var(--t12); }
+.t13:hover { box-shadow: 0 8px 32px var(--t13-glow); }
+.t13 .card-accent { background: var(--t13); }
+.t13 .topic-icon { background: var(--t13-bg); color: var(--t13); }
+.t13 .btn-quiz { background: var(--t13); }
+.t14:hover { box-shadow: 0 8px 32px var(--t14-glow); }
+.t14 .card-accent { background: var(--t14); }
+.t14 .topic-icon { background: var(--t14-bg); color: var(--t14); }
+.t14 .btn-quiz { background: var(--t14); }
+.t15:hover { box-shadow: 0 8px 32px var(--t15-glow); }
+.t15 .card-accent { background: var(--t15); }
+.t15 .topic-icon { background: var(--t15-bg); color: var(--t15); }
+.t15 .btn-quiz { background: var(--t15); }
+.t16:hover { box-shadow: 0 8px 32px var(--t16-glow); }
+.t16 .card-accent { background: var(--t16); }
+.t16 .topic-icon { background: var(--t16-bg); color: var(--t16); }
+.t16 .btn-quiz { background: var(--t16); }
+.t17:hover { box-shadow: 0 8px 32px var(--t17-glow); }
+.t17 .card-accent { background: var(--t17); }
+.t17 .topic-icon { background: var(--t17-bg); color: var(--t17); }
+.t17 .btn-quiz { background: var(--t17); }
+.t1 .btn-quiz, .t2 .btn-quiz, .t3 .btn-quiz, .t4 .btn-quiz, .t5 .btn-quiz, .t6 .btn-quiz, .t7 .btn-quiz, .t8 .btn-quiz, .t9 .btn-quiz, .t10 .btn-quiz, .t11 .btn-quiz, .t12 .btn-quiz, .t13 .btn-quiz, .t14 .btn-quiz, .t15 .btn-quiz, .t16 .btn-quiz, .t17 .btn-quiz { color: #000; }
+:root[data-theme="light"] .t1 .btn-quiz, :root[data-theme="light"] .t2 .btn-quiz, :root[data-theme="light"] .t3 .btn-quiz, :root[data-theme="light"] .t4 .btn-quiz, :root[data-theme="light"] .t5 .btn-quiz, :root[data-theme="light"] .t6 .btn-quiz, :root[data-theme="light"] .t7 .btn-quiz, :root[data-theme="light"] .t8 .btn-quiz, :root[data-theme="light"] .t9 .btn-quiz, :root[data-theme="light"] .t10 .btn-quiz, :root[data-theme="light"] .t11 .btn-quiz, :root[data-theme="light"] .t12 .btn-quiz, :root[data-theme="light"] .t13 .btn-quiz, :root[data-theme="light"] .t14 .btn-quiz, :root[data-theme="light"] .t15 .btn-quiz, :root[data-theme="light"] .t16 .btn-quiz, :root[data-theme="light"] .t17 .btn-quiz { color: #fff; }
+.section-intro { color: var(--muted); font-size: 0.9rem; margin: -16px 0 24px; }
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <div class="topbar-brand"><span>BDS · Year 0</span>Pre-Dentistry Study Hub</div>
+  <div class="topbar-brand"><span>Year 12 → BDS</span>Pre-Dentistry Study Hub</div>
   <div class="topbar-right">
     <a class="home-link" href="https://alevel-study-hubs.netlify.app/">← All subjects</a>
     <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
@@ -312,18 +361,102 @@ body {
 </div>
 
 <div class="hero">
-  <div class="hero-eyebrow">Before you start Dentistry · UK</div>
+  <div class="hero-eyebrow">Year 12 to dental school · UK</div>
   <h1>Pre-Dentistry<br><em>Study Hub</em></h1>
-  <p class="hero-sub">9 topics · 10 questions drawn from a pool of 22 · Notes and diagrams for every topic.</p>
+  <p class="hero-sub">4 steps to getting in and 13 science topics · 10 questions per quiz from a pool of 22 · notes and diagrams throughout.</p>
   <div class="stats-strip">
-    <div class="stat-cell"><div class="stat-num">9</div><div class="stat-label">Topics</div></div>
-    <div class="stat-cell"><div class="stat-num">198</div><div class="stat-label">Questions</div></div>
-    <div class="stat-cell"><div class="stat-num">12</div><div class="stat-label">Diagrams</div></div>
+    <div class="stat-cell"><div class="stat-num">17</div><div class="stat-label">Topics</div></div>
+    <div class="stat-cell"><div class="stat-num">374</div><div class="stat-label">Questions</div></div>
+    <div class="stat-cell"><div class="stat-num">20</div><div class="stat-label">Diagrams</div></div>
   </div>
 </div>
 
 <div class="main">
-  <div class="section-head"><div class="section-head-label">Suggested order</div><div class="section-head-line"></div></div>
+  <div class="section-head"><div class="section-head-label">Getting in · Year 12 to 2028 entry</div><div class="section-head-line"></div></div>
+  <p class="section-intro">Grades, UCAT, application and interviews: the next two years, step by step.</p>
+  <div class="grid">
+    <div class="topic-card t14">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M15 6l6 6-6 6"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Step 1 · 1 diagram</div>
+            <div class="card-title">Your Route to 2028 Entry</div>
+          </div>
+          <span class="score-badge" id="score-t14"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">The 2-year timeline from Year 12 to starting BDS in September 2028: grades, UCAT, UCAS choices, deadlines, interviews and offers.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic14.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic14.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t15">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Step 2 · 1 diagram</div>
+            <div class="card-title">The UCAT</div>
+          </div>
+          <span class="score-badge" id="score-t15"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">The four subtests, timings and scoring, time per question, how dental schools use your result and how to prepare.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic15.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic15.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t16">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Step 3 · 1 diagram</div>
+            <div class="card-title">Interviews &amp; MMIs</div>
+          </div>
+          <span class="score-badge" id="score-t16"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">MMI and panel formats, station types, ethics and role-play frameworks, and the NHS dentistry topics interviewers ask about.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic16.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic16.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t17">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Step 4 · 1 diagram</div>
+            <div class="card-title">Work Experience &amp; Personal Statement</div>
+          </div>
+          <span class="score-badge" id="score-t17"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Finding and reflecting on work experience, NHS values, and the new three-question UCAS personal statement.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic17.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic17.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-head" style="margin-top:56px"><div class="section-head-label">Dental science · ready for year 1</div><div class="section-head-line"></div></div>
+  <p class="section-intro">What a first-year dental student needs to know, built on A-level Biology and Chemistry.</p>
   <div class="grid">
     <div class="topic-card t1">
       <div class="card-accent"></div>
@@ -504,11 +637,91 @@ body {
         </div>
       </div>
     </div>
+
+    <div class="topic-card t10">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V9l6-5 6 5v11"/><path d="M10 20v-5h4v5"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 10 · 1 diagram</div>
+            <div class="card-title">Dental Materials</div>
+          </div>
+          <span class="score-badge" id="score-t10"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Amalgam, composite and glass ionomer; how white fillings bond; impression materials; crowns; the amalgam phase-down.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic10.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic10.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t11">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2l4 4M17 7l3-3M5 19l-3 3M14 4l6 6-9 9-6-6z"/><path d="M8 13l3 3"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 11 · 1 diagram</div>
+            <div class="card-title">Local Anaesthesia &amp; Pharmacology</div>
+          </div>
+          <span class="score-badge" id="score-t11"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">How local anaesthetics work and why they fail in infection; common agents; antibiotics, painkillers and medicines that change dental care.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic11.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic11.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t12">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16v.5"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 12 · 1 diagram</div>
+            <div class="card-title">Oral Pathology &amp; Oral Cancer</div>
+          </div>
+          <span class="score-badge" id="score-t12"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Ulcers, infections and white and red patches; oral cancer risk factors and warning signs; when a dentist must refer urgently.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic12.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic12.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t13">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15l3-4 3 3 2-2 3 3"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 13 · 1 diagram</div>
+            <div class="card-title">Dental Radiography</div>
+          </div>
+          <span class="score-badge" id="score-t13"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Bitewings, periapicals, OPGs and CBCT; reading radiolucent vs radiopaque; IR(ME)R roles, justification and keeping doses low.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic13.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic13.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="footer">
-  <strong>Pre-Dentistry Study Hub</strong> &nbsp;·&nbsp; For students starting a UK BDS &nbsp;·&nbsp; Facts checked October 2026; always follow your dental school's guidance
+  <strong>Pre-Dentistry Study Hub</strong> &nbsp;·&nbsp; From Year 12 to a UK BDS &nbsp;·&nbsp; Facts checked October 2026; always follow your dental school's guidance
 </div>
 
 <script>
@@ -521,7 +734,7 @@ function toggleTheme() {
 }
 try { if (document.documentElement.getAttribute('data-theme') === 'light') document.querySelector('.theme-btn').textContent = '🌙'; } catch (e) {}
 function loadScores(){
-  ['1','2','3','4','5','6','7','8','9'].forEach(function(t){
+  ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17'].forEach(function(t){
     try{
       var d=JSON.parse(localStorage.getItem('topic'+t+'_last')||'null');
       var el=document.getElementById('score-t'+t);

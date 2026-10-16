@@ -57,7 +57,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .btn-missed{background:rgba(248,113,113,0.12);color:#f87171;border:1px solid #f87171;border-radius:10px;padding:11px 24px;font-size:0.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
 .btn-hub{background:var(--surface);color:var(--muted);border:1px solid var(--border);border-radius:10px;padding:11px 24px;font-size:0.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .btn-hub:hover{border-color:var(--border-hi);color:var(--text)}
-</style>
+.btn-next,.btn-quiz{color:#000}[data-theme="light"] .btn-next{color:#fff}</style>
 </head>
 <body>
 <div class="topbar">
@@ -84,27 +84,27 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 <script>
 const TOPIC_ID='topic7';const DRAW=10;
 const POOL=[
-{"q": "Why must dental students be screened for blood-borne viruses?", "opts": ["They carry out exposure-prone procedures (EPPs)", "To check fitness for sport", "It is required for student finance", "Only to protect the student"], "ans": 0, "exp": "In EPPs a patient could be exposed to the operator's blood."},
+{"q": "Why must dental students be screened for blood-borne viruses?", "opts": ["They carry out exposure-prone procedures", "It is a condition of student finance", "To check their fitness to work long hours", "To protect the student, not the patient"], "ans": 0, "exp": "In EPPs a patient could be exposed to the operator's blood."},
 {"q": "Which vaccination course do dental students need before treating patients?", "opts": ["Hepatitis B", "Yellow fever", "Rabies", "Typhoid"], "ans": 0, "exp": "A full course, then a blood test to confirm immunity."},
 {"q": "What is the standard hepatitis B vaccine schedule?", "opts": ["0, 1 and 6 months", "One single dose", "0 and 12 months", "Every week for a month"], "ans": 0, "exp": "Accelerated schedules exist but may need a booster."},
-{"q": "Which blood-borne viruses are dental students screened for?", "opts": ["Hepatitis B, hepatitis C and HIV", "Measles, mumps and rubella", "Influenza and COVID-19", "Chickenpox only"], "ans": 0, "exp": "These are the viruses that can pass in exposure-prone procedures."},
-{"q": "What does 'standard precautions' mean?", "opts": ["Treating every patient as potentially infectious", "Only gloving for patients with known infections", "Wearing a uniform", "Asking patients to wash their hands"], "ans": 0, "exp": "Same precautions for everyone, every time."},
+{"q": "Which blood-borne viruses are dental students screened for?", "opts": ["Hepatitis B, hepatitis C and HIV", "Measles, mumps and rubella", "Influenza, COVID-19 and RSV", "HPV, herpes simplex and hepatitis A"], "ans": 0, "exp": "These are the viruses that can pass in exposure-prone procedures."},
+{"q": "What does 'standard precautions' mean?", "opts": ["Treating every patient as possibly infectious", "Gloving only for patients with known infections", "Wearing a clean uniform for every session", "Asking every patient to wash their hands first"], "ans": 0, "exp": "Same precautions for everyone, every time."},
 {"q": "What is the single most effective infection control measure?", "opts": ["Hand hygiene", "Wearing a hat", "Opening windows", "Using mouthwash"], "ans": 0, "exp": "Learn the WHO hand-washing steps."},
 {"q": "What is the correct order of the decontamination cycle?", "opts": ["Clean, inspect, sterilise, store", "Sterilise, clean, store, inspect", "Store, sterilise, clean, inspect", "Inspect, store, clean, sterilise"], "ans": 0, "exp": "Instruments must be clean before they can be sterilised."},
 {"q": "Which machine sterilises dental instruments with pressurised steam?", "opts": ["Autoclave", "Ultrasonic bath", "Dishwasher", "UV light box"], "ans": 0, "exp": "An ultrasonic bath or washer-disinfector cleans; the autoclave sterilises."},
 {"q": "Which guidance covers decontamination in dental practices in England?", "opts": ["HTM 01-05", "IR(ME)R", "GDPR", "HTM 07-01 only"], "ans": 0, "exp": "HTM 01-05 is the decontamination guidance for primary care dental practices."},
-{"q": "What should you do straight after a sharps injury?", "opts": ["Encourage bleeding, wash, cover, then report", "Suck the wound", "Carry on and report at the end of the day", "Scrub hard with a brush"], "ans": 0, "exp": "'Bleed it, wash it, cover it, report it', then follow the post-exposure protocol."},
+{"q": "What should you do straight after a sharps injury?", "opts": ["Encourage bleeding, wash, cover, then report", "Suck the wound, then apply a dressing", "Carry on and report it at the end of the day", "Scrub it hard with a brush and antiseptic"], "ans": 0, "exp": "'Bleed it, wash it, cover it, report it', then follow the post-exposure protocol."},
 {"q": "Should you suck a needlestick wound?", "opts": ["No, never", "Yes, to remove the virus", "Only if it is small", "Only if bleeding stops"], "ans": 0, "exp": "Sucking risks exposing your mouth to blood."},
-{"q": "Which regulations cover the medical use of dental X-rays?", "opts": ["IR(ME)R", "COSHH", "RIDDOR", "PUWER"], "ans": 0, "exp": "Ionising Radiation (Medical Exposure) Regulations."},
+{"q": "Which regulations cover the medical use of dental X-rays?", "opts": ["IR(ME)R", "COSHH", "RIDDOR", "HTM 01-05"], "ans": 0, "exp": "Ionising Radiation (Medical Exposure) Regulations."},
 {"q": "What does ALARP stand for in radiation protection?", "opts": ["As low as reasonably practicable", "Always limit all radiation procedures", "Annual limit at regular periods", "As little as radiography permits"], "ans": 0, "exp": "Keep doses as low as reasonably practicable."},
-{"q": "What is the most common medical emergency in dental practice?", "opts": ["Fainting (vasovagal syncope)", "Cardiac arrest", "Stroke", "Anaphylaxis"], "ans": 0, "exp": "Lie the patient flat and raise the legs."},
-{"q": "Which emergency skill do dental professionals retrain in every year?", "opts": ["Basic life support (BLS)", "Suturing", "Plastering a fracture", "Taking blood"], "ans": 0, "exp": "Annual medical emergency and BLS training is expected."},
+{"q": "What is the most common medical emergency in dental practice?", "opts": ["Fainting (vasovagal syncope)", "Cardiac arrest", "Stroke", "Anaphylaxis (severe allergy)"], "ans": 0, "exp": "Lie the patient flat and raise the legs."},
+{"q": "Which emergency skill do dental professionals retrain in every year?", "opts": ["Basic life support (BLS)", "Suturing of soft tissue", "Splinting of fractures", "Taking blood samples"], "ans": 0, "exp": "Annual medical emergency and BLS training is expected."},
 {"q": "Which check is needed because you'll work with children and vulnerable adults?", "opts": ["Enhanced DBS check", "Credit check", "Driving licence check", "Passport check only"], "ans": 0, "exp": "Disclosure and Barring Service."},
 {"q": "Where should used needles go?", "opts": ["A rigid sharps container", "A yellow clinical waste bag", "The general bin", "Back in their cap, then the drawer"], "ans": 0, "exp": "Never re-sheath by hand without a safe device."},
-{"q": "Which PPE protects your eyes from splashes and aerosols?", "opts": ["Safety glasses or a visor", "An apron", "Gloves", "Shoe covers"], "ans": 0, "exp": "Patients should wear eye protection too."},
-{"q": "Why do you have a blood test after the hepatitis B vaccine course?", "opts": ["To check you've made enough protective antibodies", "To check your blood group", "To test for diabetes", "To measure vitamin levels"], "ans": 0, "exp": "Some people are non-responders and need further doses."},
-{"q": "Which drug is first-line for anaphylaxis?", "opts": ["Intramuscular adrenaline", "Oral paracetamol", "Inhaled oxygen only", "Glucose gel"], "ans": 0, "exp": "Adrenaline is in every emergency drug kit."},
-{"q": "A conscious diabetic patient becomes shaky and confused. What do you give?", "opts": ["Oral glucose", "Insulin", "Adrenaline", "Aspirin"], "ans": 0, "exp": "This is hypoglycaemia; give fast-acting sugar."},
+{"q": "Which PPE protects your eyes from splashes and aerosols?", "opts": ["Safety glasses or a visor", "A disposable plastic apron", "Two pairs of gloves", "A surgical face mask with ties"], "ans": 0, "exp": "Patients should wear eye protection too."},
+{"q": "Why do you have a blood test after the hepatitis B vaccine course?", "opts": ["To check you made enough antibodies", "To check your blood group for records", "To test for diabetes before clinic", "To measure your vitamin D levels"], "ans": 0, "exp": "Some people are non-responders and need further doses."},
+{"q": "Which drug is first-line for anaphylaxis?", "opts": ["Intramuscular adrenaline", "Oral antihistamine tablets", "Inhaled salbutamol only", "Oral glucose gel"], "ans": 0, "exp": "Adrenaline is in every emergency drug kit."},
+{"q": "A conscious diabetic patient becomes shaky and confused. What do you give?", "opts": ["Oral glucose", "Insulin", "Adrenaline", "Aspirin and water"], "ans": 0, "exp": "This is hypoglycaemia; give fast-acting sugar."},
 {"q": "What should happen to a single-use item after use?", "opts": ["Dispose of it; never reprocess it", "Sterilise it and reuse it", "Rinse and reuse on the same day", "Reuse on the same patient next visit"], "ans": 0, "exp": "Single-use items are marked with a crossed-out '2' symbol."}
 ];
 POOL.forEach((q,i)=>q._id=i);

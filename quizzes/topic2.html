@@ -57,7 +57,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .btn-missed{background:rgba(248,113,113,0.12);color:#f87171;border:1px solid #f87171;border-radius:10px;padding:11px 24px;font-size:0.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
 .btn-hub{background:var(--surface);color:var(--muted);border:1px solid var(--border);border-radius:10px;padding:11px 24px;font-size:0.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .btn-hub:hover{border-color:var(--border-hi);color:var(--text)}
-</style>
+.btn-next,.btn-quiz{color:#000}[data-theme="light"] .btn-next{color:#fff}</style>
 </head>
 <body>
 <div class="topbar">
@@ -88,24 +88,24 @@ const POOL=[
 {"q": "Which mineral makes up most of enamel?", "opts": ["Hydroxyapatite", "Calcium carbonate", "Fluorite", "Calcium sulfate"], "ans": 0, "exp": "Hydroxyapatite: Ca₁₀(PO₄)₆(OH)₂."},
 {"q": "Roughly what percentage of enamel (by weight) is mineral?", "opts": ["About 96%", "About 70%", "About 45%", "About 20%"], "ans": 0, "exp": "Enamel ~96%, dentine ~70%, cementum ~45–50%."},
 {"q": "Which part of the tooth contains nerves and blood vessels?", "opts": ["Pulp", "Enamel", "Dentine", "Cementum"], "ans": 0, "exp": "The pulp keeps the tooth alive; decay reaching it causes toothache."},
-{"q": "Why does exposed dentine feel sensitive?", "opts": ["It contains tubules that carry stimuli towards the pulp", "It is covered in nerve endings", "It has no mineral content", "It is thicker than enamel"], "ans": 0, "exp": "Fluid movement in dentinal tubules triggers pulp nerves (hydrodynamic theory)."},
+{"q": "Why does exposed dentine feel sensitive?", "opts": ["It has tubules that carry stimuli to the pulp", "Its outer surface is covered in nerve endings", "It contains no mineral, so it is soft", "It is thicker and more porous than enamel"], "ans": 0, "exp": "Fluid movement in dentinal tubules triggers pulp nerves (hydrodynamic theory)."},
 {"q": "Which cells form dentine?", "opts": ["Odontoblasts", "Ameloblasts", "Osteoclasts", "Cementoblasts"], "ans": 0, "exp": "Odontoblasts line the pulp and keep making dentine throughout life."},
-{"q": "Can enamel regrow once it has been lost?", "opts": ["No, it has no living cells after the tooth erupts", "Yes, ameloblasts keep making it", "Yes, but only in children", "Only with fluoride toothpaste"], "ans": 0, "exp": "Ameloblasts are lost when the tooth erupts, so lost enamel cannot regenerate (minerals can be partly redeposited by remineralisation)."},
-{"q": "Which tissue covers the root of the tooth?", "opts": ["Cementum", "Enamel", "Gingiva", "Pulp"], "ans": 0, "exp": "Cementum covers the root and anchors periodontal ligament fibres."},
-{"q": "What attaches the tooth to its socket?", "opts": ["Periodontal ligament", "Gingiva", "Pulp", "Enamel"], "ans": 0, "exp": "Collagen fibres of the PDL run from cementum to alveolar bone."},
+{"q": "Can enamel regrow once it has been lost?", "opts": ["No, it has no living cells after eruption", "Yes, ameloblasts keep making it for life", "Yes, but only in children's teeth", "Only if fluoride toothpaste is used daily"], "ans": 0, "exp": "Ameloblasts are lost when the tooth erupts, so lost enamel cannot regenerate (minerals can be partly redeposited by remineralisation)."},
+{"q": "Which tissue covers the root of the tooth?", "opts": ["Cementum", "Enamel", "Gingiva", "Alveolar bone"], "ans": 0, "exp": "Cementum covers the root and anchors periodontal ligament fibres."},
+{"q": "What attaches the tooth to its socket?", "opts": ["Periodontal ligament", "Gingival margin", "Alveolar mucosa", "Cemento-enamel junction"], "ans": 0, "exp": "Collagen fibres of the PDL run from cementum to alveolar bone."},
 {"q": "What is the bone that forms the tooth socket called?", "opts": ["Alveolar bone", "Hyoid bone", "Mandibular condyle", "Zygomatic bone"], "ans": 0, "exp": "Alveolar bone surrounds the roots; it shrinks after a tooth is lost."},
-{"q": "What is the cemento-enamel junction (CEJ)?", "opts": ["The line where enamel meets cementum at the neck of the tooth", "Where enamel meets dentine", "The tip of the root", "The biting surface"], "ans": 0, "exp": "The CEJ marks the boundary between crown and root."},
-{"q": "Where do nerves and blood vessels enter the tooth?", "opts": ["The apical foramen at the root tip", "The CEJ", "The occlusal fissures", "The furcation"], "ans": 0, "exp": "They pass through the apical foramen into the root canal."},
+{"q": "What is the cemento-enamel junction (CEJ)?", "opts": ["Where enamel meets cementum at the tooth's neck", "Where enamel meets dentine inside the crown", "The narrow opening at the tip of the root", "The point where the roots of a molar divide"], "ans": 0, "exp": "The CEJ marks the boundary between crown and root."},
+{"q": "Where do nerves and blood vessels enter the tooth?", "opts": ["The apical foramen at the root tip", "The cemento-enamel junction", "The occlusal fissures on the crown", "The furcation between the roots"], "ans": 0, "exp": "They pass through the apical foramen into the root canal."},
 {"q": "Which tooth surface faces towards the midline of the dental arch?", "opts": ["Mesial", "Distal", "Buccal", "Lingual"], "ans": 0, "exp": "Mesial = towards the midline; distal = away from it."},
 {"q": "Which surface of a lower tooth faces the tongue?", "opts": ["Lingual", "Palatal", "Buccal", "Labial"], "ans": 0, "exp": "Lingual for lower teeth; the equivalent on upper teeth is palatal."},
 {"q": "What is the biting surface of a molar called?", "opts": ["Occlusal", "Incisal", "Mesial", "Cervical"], "ans": 0, "exp": "Back teeth have occlusal surfaces; front teeth have incisal edges."},
 {"q": "Which surface of an upper tooth faces the roof of the mouth?", "opts": ["Palatal", "Lingual", "Buccal", "Distal"], "ans": 0, "exp": "Upper teeth: palatal. Lower teeth: lingual."},
 {"q": "Which surface of an incisor faces the lips?", "opts": ["Labial", "Buccal", "Lingual", "Distal"], "ans": 0, "exp": "Labial for front teeth; buccal for back teeth (towards the cheek)."},
 {"q": "Roughly what percentage of dentine (by weight) is mineral?", "opts": ["About 70%", "About 96%", "About 45%", "About 10%"], "ans": 0, "exp": "Dentine is ~70% mineral, plus collagen and water."},
-{"q": "What is tertiary (reparative) dentine?", "opts": ["Dentine laid down in response to irritation such as decay", "The first enamel to form", "Another name for cementum", "Dentine in baby teeth only"], "ans": 0, "exp": "Odontoblasts lay down tertiary dentine to protect the pulp."},
+{"q": "What is tertiary (reparative) dentine?", "opts": ["Dentine laid down in response to decay or wear", "The first layer of enamel to form in the crown", "Another name for the cementum on the root", "The dentine found only in baby teeth"], "ans": 0, "exp": "Odontoblasts lay down tertiary dentine to protect the pulp."},
 {"q": "What is inflammation of the pulp called?", "opts": ["Pulpitis", "Gingivitis", "Periodontitis", "Stomatitis"], "ans": 0, "exp": "Pulpitis causes toothache and may need root canal treatment."},
-{"q": "What is the furcation of a tooth?", "opts": ["Where the roots of a multi-rooted tooth divide", "The root tip", "The neck of the tooth", "A cusp on the crown"], "ans": 0, "exp": "Furcations matter in gum disease because bone loss there is hard to treat."},
-{"q": "What seals around the neck of the tooth?", "opts": ["Gingiva (gum)", "Cementum", "Dentine", "Pulp"], "ans": 0, "exp": "The gingiva forms a cuff around the tooth just above the bone."}
+{"q": "What is the furcation of a tooth?", "opts": ["Where the roots of a multi-rooted tooth divide", "The narrow opening at the tip of the root canal", "The neck of the tooth where enamel ends", "The highest point of a cusp on the crown"], "ans": 0, "exp": "Furcations matter in gum disease because bone loss there is hard to treat."},
+{"q": "What seals around the neck of the tooth?", "opts": ["Gingiva (gum)", "Cementum", "Alveolar bone", "Periodontal ligament"], "ans": 0, "exp": "The gingiva forms a cuff around the tooth just above the bone."}
 ];
 POOL.forEach((q,i)=>q._id=i);
 let sessionQ=[],cur=0,score=0,answered=false,finished=false;

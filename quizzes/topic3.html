@@ -57,7 +57,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .btn-missed{background:rgba(248,113,113,0.12);color:#f87171;border:1px solid #f87171;border-radius:10px;padding:11px 24px;font-size:0.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
 .btn-hub{background:var(--surface);color:var(--muted);border:1px solid var(--border);border-radius:10px;padding:11px 24px;font-size:0.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .btn-hub:hover{border-color:var(--border-hi);color:var(--text)}
-</style>
+.btn-next,.btn-quiz{color:#000}[data-theme="light"] .btn-next{color:#fff}</style>
 </head>
 <body>
 <div class="topbar">
@@ -92,19 +92,19 @@ const POOL=[
 {"q": "How many teeth are in a full permanent dentition?", "opts": ["32", "28", "20", "36"], "ans": 0, "exp": "8 per quadrant × 4 quadrants, including wisdom teeth."},
 {"q": "How many teeth are in a full primary dentition?", "opts": ["20", "24", "32", "16"], "ans": 0, "exp": "5 per quadrant × 4 quadrants."},
 {"q": "Which permanent tooth has the longest root?", "opts": ["Canine", "Central incisor", "First premolar", "Third molar"], "ans": 0, "exp": "The upper canine has the longest root in the mouth."},
-{"q": "Teeth 18, 28, 38 and 48 are the…", "opts": ["Third molars (wisdom teeth)", "First molars", "Second premolars", "Canines"], "ans": 0, "exp": "Position 8 = third molar."},
+{"q": "Teeth 18, 28, 38 and 48 are the…", "opts": ["Third molars (wisdom teeth)", "First molars (six-year molars)", "Second premolars", "Second molars (12-year molars)"], "ans": 0, "exp": "Position 8 = third molar."},
 {"q": "At roughly what age do the first primary teeth erupt?", "opts": ["Around 6 months", "At birth", "Around 2 years", "Around 3 years"], "ans": 0, "exp": "Usually the lower central incisors, at about 6 months."},
 {"q": "At roughly what age do the first permanent teeth erupt?", "opts": ["Around 6 years", "Around 3 years", "Around 10 years", "Around 13 years"], "ans": 0, "exp": "First permanent molars and lower incisors arrive at about 6."},
-{"q": "Which primary tooth does the permanent first molar replace?", "opts": ["None, it erupts behind the primary teeth", "The primary second molar", "The primary canine", "The primary first molar"], "ans": 0, "exp": "It's an extra tooth at the back, so parents often mistake it for a baby tooth."},
+{"q": "Which primary tooth does the permanent first molar replace?", "opts": ["None; it erupts behind the primary teeth", "The primary second molar in the same quadrant", "The primary canine", "The primary first molar"], "ans": 0, "exp": "It's an extra tooth at the back, so parents often mistake it for a baby tooth."},
 {"q": "Permanent premolars replace which primary teeth?", "opts": ["Primary molars", "Primary canines", "Primary incisors", "No primary teeth"], "ans": 0, "exp": "There are no primary premolars; premolars erupt in place of the primary molars."},
-{"q": "Roughly when does a child have a mixed dentition?", "opts": ["About 6 to 12 years", "Birth to 3 years", "12 to 18 years", "After 18 years"], "ans": 0, "exp": "Both primary and permanent teeth are present."},
+{"q": "Roughly when does a child have a mixed dentition?", "opts": ["About 6 to 12 years", "About 2 to 5 years", "About 12 to 18 years", "About 18 to 21 years"], "ans": 0, "exp": "Both primary and permanent teeth are present."},
 {"q": "In Palmer notation, how are primary teeth labelled?", "opts": ["Letters A to E", "Numbers 1 to 8", "Numbers 51 to 55", "Roman numerals"], "ans": 0, "exp": "Palmer uses a grid symbol for the quadrant plus A–E for primary teeth."},
 {"q": "How should you say tooth 16 aloud?", "opts": ["One-six", "Sixteen", "First-six", "Sixteenth"], "ans": 0, "exp": "FDI digits are said separately to avoid confusion."},
 {"q": "A dental chart is drawn as you face the patient. The patient's right side is on…", "opts": ["Your left", "Your right", "The top", "The bottom"], "ans": 0, "exp": "Charts show the patient as you look at them."},
 {"q": "Which tooth is 84?", "opts": ["Lower right primary first molar", "Lower left primary first molar", "Lower right first premolar", "Upper right primary first molar"], "ans": 0, "exp": "Quadrant 8 (primary lower right), position 4 (primary first molar)."},
 {"q": "When do wisdom teeth usually erupt, if they do?", "opts": ["17 to 21 years", "6 to 8 years", "10 to 12 years", "After 30 years"], "ans": 0, "exp": "They are often impacted (blocked) because there isn't room."},
-{"q": "By about what age is the primary dentition complete?", "opts": ["2 to 3 years", "1 year", "5 years", "6 years"], "ans": 0, "exp": "All 20 primary teeth are usually present by 2–3 years."},
-{"q": "Which tooth type is absent from the primary dentition?", "opts": ["Premolars", "Canines", "Incisors", "Molars"], "ans": 0, "exp": "Primary dentition: incisors, canines and molars only."},
+{"q": "By about what age is the primary dentition complete?", "opts": ["2 to 3 years", "12 to 18 months", "4 to 5 years", "6 to 7 years"], "ans": 0, "exp": "All 20 primary teeth are usually present by 2–3 years."},
+{"q": "Which tooth type is absent from the primary dentition?", "opts": ["Premolars", "Canines", "Incisors", "Second molars"], "ans": 0, "exp": "Primary dentition: incisors, canines and molars only."},
 {"q": "How many premolars are in one quadrant of a permanent dentition?", "opts": ["2", "1", "3", "0"], "ans": 0, "exp": "Per quadrant: 2 incisors, 1 canine, 2 premolars, 3 molars."}
 ];
 POOL.forEach((q,i)=>q._id=i);

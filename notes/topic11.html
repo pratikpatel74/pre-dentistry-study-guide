@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><script>try{var _t=localStorage.getItem("theme");if(_t)document.documentElement.setAttribute("data-theme",_t);}catch(e){}</script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 11 Notes – Local Anaesthesia &amp; Pharmacology</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090f;--surface:#111118;--card:#16161e;--border:#2a2a38;--border-hi:#3d3d52;--text:#f0efff;--muted:#8b8aab;--dim:#55546e;--gold:#e8b84b;--gold-bg:rgba(232,184,75,0.10);--danger:#f87171;
+--d-enamel:#a5b4fc;--d-dentine:#fcd9b8;--d-pulp:#f9a8a8;--d-gum:#f0abfc;--d-bone:#2a2a38;--d-pdl:#fb7185;
+--d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8;--d-gum-sore:#f87171;--ok:#34d399}
+[data-theme="light"]{--bg:#f5f4f0;--surface:#eeede8;--card:#fff;--border:#dddbd4;--border-hi:#c8c5bc;--text:#1a1814;--muted:#706c60;--dim:#a09c90;--gold:#b8861a;--gold-bg:rgba(184,134,26,0.08);--danger:#dc2626;
+--d-enamel:#c7d2fe;--d-dentine:#fde7d2;--d-pulp:#fca5a5;--d-gum:#f5c2f9;--d-bone:#e7e5e0;--d-pdl:#e11d48;
+--d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1;--d-gum-sore:#fca5a5;--ok:#059669}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(9,9,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px}
+[data-theme="light"] .topbar{background:rgba(245,244,240,0.88)}
+.topbar-brand{font-size:0.9rem;font-weight:700;display:flex;align-items:center;gap:10px}
+.topbar-brand span{font-size:0.68rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold);border-radius:4px;padding:2px 8px}
+.back-link{font-size:0.78rem;font-weight:600;color:var(--muted);text-decoration:none}
+.back-link:hover{color:var(--text)}
+.theme-btn{background:var(--surface);border:1px solid var(--border);border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.container{max-width:760px;margin:0 auto;padding:48px 20px 80px}
+.eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h1{font-size:2rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:20px;line-height:1.15}
+h2{font-size:1.1rem;font-weight:700;margin:32px 0 12px;padding-top:8px;border-top:1px solid var(--border)}
+p,li{font-size:0.95rem;color:var(--text)}
+p{margin-bottom:12px}
+.lead{font-size:1.05rem;color:var(--muted);margin-bottom:24px}
+ul,ol{padding-left:22px;margin-bottom:12px}li{margin-bottom:6px}
+a{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:0.88rem;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);background:var(--surface)}
+tr:last-child td{border-bottom:none}
+.formula{font-family:ui-monospace,Menlo,monospace;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:0.9rem;overflow-x:auto}
+.callout{background:var(--accent-bg);border:1px solid var(--accent);border-radius:10px;padding:12px 16px}
+.diagram{margin:20px 0 24px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px}
+.diagram svg{width:100%;height:auto;display:block}
+.diagram figcaption{font-size:0.78rem;color:var(--dim);text-align:center;margin-top:6px}
+.diagram text{font-family:'Inter',system-ui,sans-serif;fill:var(--text);font-size:13px}
+.diagram .title{font-size:15px;font-weight:600}
+.diagram .lbl{font-weight:600}.diagram .big{font-size:14px}
+.diagram .sub{font-size:11.5px;fill:var(--muted)}.diagram .small{font-size:12px}
+.diagram .num{font-size:12.5px}.diagram .num.hl{font-weight:800}
+.diagram .ink-fill{fill:var(--text)}
+.diagram .leader{fill:none;stroke:var(--dim);stroke-width:1}.diagram .leader.thick{stroke-width:1.25}
+.diagram .axis{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .axis-fill{fill:var(--dim)}
+.diagram .bone{fill:var(--d-bone)}
+.diagram .pdl{fill:none;stroke:var(--d-pdl);stroke-width:6;opacity:.75}
+.diagram .dentine{fill:var(--d-dentine);stroke:var(--dim);stroke-width:1.25}
+.diagram .enamel{fill:var(--d-enamel);stroke:var(--dim);stroke-width:1}
+.diagram .pulp{fill:var(--d-pulp);stroke:var(--dim);stroke-width:1}
+.diagram .gum{fill:var(--d-gum);stroke:var(--dim);stroke-width:1}
+.diagram .tt{stroke:var(--dim);stroke-width:1;fill-opacity:.35}
+.diagram .tt.inc{fill:var(--d-inc)}.diagram .tt.can{fill:var(--d-can)}.diagram .tt.pm{fill:var(--d-pm)}.diagram .tt.mol{fill:var(--d-mol)}
+.diagram .tt.hl{stroke:var(--text);stroke-width:2.5}
+.diagram .danger-zone{fill:var(--danger);fill-opacity:.08}
+.diagram .crit{stroke:var(--danger);stroke-width:1.25;stroke-dasharray:5 4}
+.diagram .curve{fill:none;stroke:var(--accent);stroke-width:2.5}
+.diagram .danger{fill:var(--danger)}.diagram .ok{fill:var(--ok)}
+.diagram .box{fill:var(--surface);stroke:var(--dim);stroke-width:1.25}
+.diagram .box.acc{fill:var(--accent-bg);stroke:var(--accent);stroke-width:2}
+.diagram .arrow{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .acc-stroke{stroke:var(--accent);stroke-width:2}
+.diagram .whitespot{fill:#fff;stroke:var(--dim);stroke-width:1}
+.diagram .lesion{fill:#8a5a2b;fill-opacity:.85}.diagram .hole{fill:var(--card)}
+.diagram .pulp.inflamed{fill:var(--danger);fill-opacity:.8}
+.diagram .gum.sore{fill:var(--d-gum-sore)}
+.diagram .calculus{fill:#b8a36a;stroke:var(--dim);stroke-width:.75}
+.diagram .probe{stroke:var(--text);stroke-width:2.5;stroke-linecap:round}
+.diagram .depth{stroke:var(--accent);stroke-width:2}
+.diagram .face{fill:none;stroke:var(--dim);stroke-width:1.5}
+.diagram .feature{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .feature-line{fill:none;stroke:var(--dim);stroke-width:1.25}
+.diagram .z1{fill:var(--d-inc);fill-opacity:.45}.diagram .z2{fill:var(--d-pm);fill-opacity:.45}.diagram .z3{fill:var(--d-can);fill-opacity:.45}.diagram .zc{fill:var(--dim);fill-opacity:.45}
+.diagram .ok-text{fill:var(--ok)}.diagram .acc-text{fill:var(--accent);font-weight:600}
+.diagram .bar{fill:var(--dim);fill-opacity:.5}.diagram .bar.acc-fill{fill:var(--accent);fill-opacity:.85}
+.diagram .gridline{stroke:var(--border);stroke-width:1}.diagram .frame-stroke{stroke:var(--dim);stroke-width:1.25}
+.checks{list-style:none;padding-left:0}
+.diagram .safe-zone{fill:var(--ok);fill-opacity:.15}.diagram .frame{fill:none;stroke:var(--dim);stroke-width:1.25}
+.ref{font-size:0.7rem;color:var(--dim);margin-top:2px}
+.bridge td{font-size:0.86rem}.bridge .pd{font-size:0.8rem;white-space:nowrap}
+.bridge td a{font-weight:600;text-decoration:none}.bridge td a:hover{text-decoration:underline}
+.hub-links{font-weight:600;font-size:0.9rem}
+@media (max-width:540px){.bridge .pd{white-space:normal}}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:10px;font-size:0.88rem;font-weight:700;text-decoration:none}
+.btn-quiz{background:var(--accent);color:#fff}
+.btn-hub{background:var(--surface);color:var(--muted);border:1px solid var(--border)}
+.btn-print{background:var(--surface);color:var(--muted);border:1px solid var(--border);cursor:pointer;font-family:inherit}
+@media print{.topbar,.cta{display:none}body{background:#fff;color:#000}}
+@media (max-width:540px){.topbar{padding:0 16px}h1{font-size:1.6rem}table{display:block;overflow-x:auto}}
+
+:root{--accent:#c084fc;--accent-bg:rgba(192,132,252,0.1)}
+[data-theme="light"]{--accent:#9333ea;--accent-bg:rgba(147,51,234,0.08)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-brand"><span>Topic 11</span>Local Anaesthesia</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <a class="back-link" href="../index.html">← Hub</a>
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  </div>
+</div>
+<div class="container">
+  <div class="eyebrow">Pre-Dentistry · Topic 11 · Summary notes</div>
+  <h1>Local Anaesthesia &amp; Pharmacology</h1>
+  
+<p class="lead">Local anaesthetics block sodium channels in nerves. Almost every dental procedure you learn depends on giving them safely, so understand both the chemistry and the cautions.</p>
+<h2>How local anaesthetics work</h2>
+<ol><li>The drug is a weak base. Its uncharged form crosses the lipid nerve membrane.</li><li>Inside, it picks up H⁺ and the charged form blocks voltage-gated Na⁺ channels.</li><li>No action potential, so no pain signal.</li></ol>
+<figure class="diagram"><svg viewBox="0 0 760 350" role="img" aria-label="Local anaesthetic crosses nerve membranes in its uncharged form; acidic infected tissue keeps it charged"><text x="24" y="30" class="title">Only the uncharged form crosses, so acidic, infected tissue resists numbing</text><defs><marker id="la-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="axis-fill"/></marker></defs><rect x="300" y="70" width="60" height="270" rx="6" class="bone"/><text x="330" y="62" text-anchor="middle" class="small lbl">Nerve membrane</text><text x="152" y="62" text-anchor="middle" class="small lbl">Tissue (outside)</text><text x="560" y="62" text-anchor="middle" class="small lbl">Inside the nerve</text><text x="40" y="112" class="lbl">Normal tissue, pH ≈ 7.4</text><rect x="40" y="130" width="90" height="40" rx="8" class="box"/><text x="85.0" y="154" text-anchor="middle" class="lbl" style="font-size:15px">BH⁺</text><text x="85" y="186" text-anchor="middle" class="sub">charged</text><text x="152" y="156" text-anchor="middle" class="lbl">⇌</text><rect x="175" y="130" width="90" height="40" rx="8" class="box acc"/><text x="220.0" y="154" text-anchor="middle" class="lbl" style="font-size:15px">B</text><text x="220" y="186" text-anchor="middle" class="sub">uncharged base</text><path d="M266 150H392" class="arrow acc-stroke" marker-end="url(#la-a)"/><rect x="396" y="130" width="90" height="40" rx="8" class="box"/><text x="441.0" y="154" text-anchor="middle" class="lbl" style="font-size:13px">B → BH⁺</text><path d="M486 150H522" class="arrow" marker-end="url(#la-a)"/><rect x="526" y="126" width="200" height="48" rx="8" class="box acc"/><text x="626.0" y="150" text-anchor="middle" class="lbl">Blocks Na⁺ channel</text><text x="626" y="190" text-anchor="middle" class="sub ok-text">Pain blocked</text><text x="40" y="236" class="lbl danger">Infected tissue, pH ≈ 5–6</text><rect x="40" y="254" width="90" height="40" rx="8" class="box"/><text x="85.0" y="278" text-anchor="middle" class="lbl" style="font-size:13px">BH⁺ BH⁺</text><text x="85" y="310" text-anchor="middle" class="sub">most is charged</text><text x="152" y="280" text-anchor="middle" class="lbl">⇌</text><rect x="195" y="258" width="50" height="32" rx="8" class="box"/><text x="220.0" y="282" text-anchor="middle" class="lbl" style="font-size:11px">B</text><text x="220" y="310" text-anchor="middle" class="sub">little base left</text><path d="M246 274H296" class="arrow"/><text x="300" y="280" text-anchor="middle" class="lbl danger">✕</text><text x="396" y="270" class="small">Too little crosses the membrane,</text><text x="396" y="286" class="small">so the anaesthetic works poorly.</text></svg><figcaption>Why local anaesthetic works poorly in infection (B = base form, BH⁺ = charged form).</figcaption></figure>
+<h2>Common dental agents</h2>
+<table><tr><th>Drug</th><th>Group</th><th>Usual form</th></tr>
+<tr><td>Lidocaine</td><td>Amide</td><td>2% with 1:80,000 adrenaline</td></tr>
+<tr><td>Articaine</td><td>Amide (with an ester side group)</td><td>4% with adrenaline</td></tr>
+<tr><td>Prilocaine</td><td>Amide</td><td>3% with felypressin</td></tr>
+<tr><td>Mepivacaine</td><td>Amide</td><td>3% plain</td></tr>
+<tr><td>Benzocaine</td><td>Ester</td><td>Topical gel before injections</td></tr></table>
+<ul><li><b>Vasoconstrictors</b> (adrenaline, felypressin) make the anaesthetic last longer and reduce bleeding.</li><li><b>Aspirate</b> before injecting to avoid a blood vessel.</li><li><b>Maximum doses</b> are per kg of body weight. Learn the official figures on your course.</li></ul>
+<h2>Other medicines you'll meet</h2>
+<ul><li><b>Painkillers:</b> ibuprofen plus paracetamol is effective for most dental pain. Take care with NSAIDs in some asthma, stomach ulcers and kidney disease.</li>
+<li><b>Antibiotics:</b> only for spreading infection or systemic signs, always with treatment of the cause. Amoxicillin or penicillin V first-line; metronidazole (no alcohol); clarithromycin in penicillin allergy.</li>
+<li><b>Anticoagulants:</b> warfarin (check INR) and newer DOACs raise bleeding risk after extractions.</li>
+<li><b>Bisphosphonates</b> and similar bone drugs: risk of medication-related osteonecrosis of the jaw (MRONJ) after extractions.</li></ul>
+<p>Always take an up-to-date medical history before treatment.</p>
+
+  <div class="cta">
+    <a class="btn btn-quiz" href="../quizzes/topic11.html">Take the quiz →</a>
+    <button class="btn btn-print" onclick="window.print()">Print / save as PDF</button>
+    <a class="btn btn-hub" href="../index.html">← Hub</a>
+  </div>
+</div>
+<script>function toggleTheme(){const c=document.documentElement.getAttribute('data-theme')||'dark';const n=c==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);document.querySelector('.theme-btn').textContent=n==='dark'?'☀️':'🌙';try{localStorage.setItem('theme',n);}catch(e){}}
+try{if(document.documentElement.getAttribute('data-theme')==='light')document.querySelector('.theme-btn').textContent='🌙';}catch(e){}</script>
+</body>
+</html>

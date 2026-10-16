@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><script>try{var _t=localStorage.getItem("theme");if(_t)document.documentElement.setAttribute("data-theme",_t);}catch(e){}</script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 13 Notes – Dental Radiography</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090f;--surface:#111118;--card:#16161e;--border:#2a2a38;--border-hi:#3d3d52;--text:#f0efff;--muted:#8b8aab;--dim:#55546e;--gold:#e8b84b;--gold-bg:rgba(232,184,75,0.10);--danger:#f87171;
+--d-enamel:#a5b4fc;--d-dentine:#fcd9b8;--d-pulp:#f9a8a8;--d-gum:#f0abfc;--d-bone:#2a2a38;--d-pdl:#fb7185;
+--d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8;--d-gum-sore:#f87171;--ok:#34d399}
+[data-theme="light"]{--bg:#f5f4f0;--surface:#eeede8;--card:#fff;--border:#dddbd4;--border-hi:#c8c5bc;--text:#1a1814;--muted:#706c60;--dim:#a09c90;--gold:#b8861a;--gold-bg:rgba(184,134,26,0.08);--danger:#dc2626;
+--d-enamel:#c7d2fe;--d-dentine:#fde7d2;--d-pulp:#fca5a5;--d-gum:#f5c2f9;--d-bone:#e7e5e0;--d-pdl:#e11d48;
+--d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1;--d-gum-sore:#fca5a5;--ok:#059669}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(9,9,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px}
+[data-theme="light"] .topbar{background:rgba(245,244,240,0.88)}
+.topbar-brand{font-size:0.9rem;font-weight:700;display:flex;align-items:center;gap:10px}
+.topbar-brand span{font-size:0.68rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold);border-radius:4px;padding:2px 8px}
+.back-link{font-size:0.78rem;font-weight:600;color:var(--muted);text-decoration:none}
+.back-link:hover{color:var(--text)}
+.theme-btn{background:var(--surface);border:1px solid var(--border);border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.container{max-width:760px;margin:0 auto;padding:48px 20px 80px}
+.eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h1{font-size:2rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:20px;line-height:1.15}
+h2{font-size:1.1rem;font-weight:700;margin:32px 0 12px;padding-top:8px;border-top:1px solid var(--border)}
+p,li{font-size:0.95rem;color:var(--text)}
+p{margin-bottom:12px}
+.lead{font-size:1.05rem;color:var(--muted);margin-bottom:24px}
+ul,ol{padding-left:22px;margin-bottom:12px}li{margin-bottom:6px}
+a{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:0.88rem;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);background:var(--surface)}
+tr:last-child td{border-bottom:none}
+.formula{font-family:ui-monospace,Menlo,monospace;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:0.9rem;overflow-x:auto}
+.callout{background:var(--accent-bg);border:1px solid var(--accent);border-radius:10px;padding:12px 16px}
+.diagram{margin:20px 0 24px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px}
+.diagram svg{width:100%;height:auto;display:block}
+.diagram figcaption{font-size:0.78rem;color:var(--dim);text-align:center;margin-top:6px}
+.diagram text{font-family:'Inter',system-ui,sans-serif;fill:var(--text);font-size:13px}
+.diagram .title{font-size:15px;font-weight:600}
+.diagram .lbl{font-weight:600}.diagram .big{font-size:14px}
+.diagram .sub{font-size:11.5px;fill:var(--muted)}.diagram .small{font-size:12px}
+.diagram .num{font-size:12.5px}.diagram .num.hl{font-weight:800}
+.diagram .ink-fill{fill:var(--text)}
+.diagram .leader{fill:none;stroke:var(--dim);stroke-width:1}.diagram .leader.thick{stroke-width:1.25}
+.diagram .axis{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .axis-fill{fill:var(--dim)}
+.diagram .bone{fill:var(--d-bone)}
+.diagram .pdl{fill:none;stroke:var(--d-pdl);stroke-width:6;opacity:.75}
+.diagram .dentine{fill:var(--d-dentine);stroke:var(--dim);stroke-width:1.25}
+.diagram .enamel{fill:var(--d-enamel);stroke:var(--dim);stroke-width:1}
+.diagram .pulp{fill:var(--d-pulp);stroke:var(--dim);stroke-width:1}
+.diagram .gum{fill:var(--d-gum);stroke:var(--dim);stroke-width:1}
+.diagram .tt{stroke:var(--dim);stroke-width:1;fill-opacity:.35}
+.diagram .tt.inc{fill:var(--d-inc)}.diagram .tt.can{fill:var(--d-can)}.diagram .tt.pm{fill:var(--d-pm)}.diagram .tt.mol{fill:var(--d-mol)}
+.diagram .tt.hl{stroke:var(--text);stroke-width:2.5}
+.diagram .danger-zone{fill:var(--danger);fill-opacity:.08}
+.diagram .crit{stroke:var(--danger);stroke-width:1.25;stroke-dasharray:5 4}
+.diagram .curve{fill:none;stroke:var(--accent);stroke-width:2.5}
+.diagram .danger{fill:var(--danger)}.diagram .ok{fill:var(--ok)}
+.diagram .box{fill:var(--surface);stroke:var(--dim);stroke-width:1.25}
+.diagram .box.acc{fill:var(--accent-bg);stroke:var(--accent);stroke-width:2}
+.diagram .arrow{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .acc-stroke{stroke:var(--accent);stroke-width:2}
+.diagram .whitespot{fill:#fff;stroke:var(--dim);stroke-width:1}
+.diagram .lesion{fill:#8a5a2b;fill-opacity:.85}.diagram .hole{fill:var(--card)}
+.diagram .pulp.inflamed{fill:var(--danger);fill-opacity:.8}
+.diagram .gum.sore{fill:var(--d-gum-sore)}
+.diagram .calculus{fill:#b8a36a;stroke:var(--dim);stroke-width:.75}
+.diagram .probe{stroke:var(--text);stroke-width:2.5;stroke-linecap:round}
+.diagram .depth{stroke:var(--accent);stroke-width:2}
+.diagram .face{fill:none;stroke:var(--dim);stroke-width:1.5}
+.diagram .feature{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .feature-line{fill:none;stroke:var(--dim);stroke-width:1.25}
+.diagram .z1{fill:var(--d-inc);fill-opacity:.45}.diagram .z2{fill:var(--d-pm);fill-opacity:.45}.diagram .z3{fill:var(--d-can);fill-opacity:.45}.diagram .zc{fill:var(--dim);fill-opacity:.45}
+.diagram .ok-text{fill:var(--ok)}.diagram .acc-text{fill:var(--accent);font-weight:600}
+.diagram .bar{fill:var(--dim);fill-opacity:.5}.diagram .bar.acc-fill{fill:var(--accent);fill-opacity:.85}
+.diagram .gridline{stroke:var(--border);stroke-width:1}.diagram .frame-stroke{stroke:var(--dim);stroke-width:1.25}
+.checks{list-style:none;padding-left:0}
+.diagram .safe-zone{fill:var(--ok);fill-opacity:.15}.diagram .frame{fill:none;stroke:var(--dim);stroke-width:1.25}
+.ref{font-size:0.7rem;color:var(--dim);margin-top:2px}
+.bridge td{font-size:0.86rem}.bridge .pd{font-size:0.8rem;white-space:nowrap}
+.bridge td a{font-weight:600;text-decoration:none}.bridge td a:hover{text-decoration:underline}
+.hub-links{font-weight:600;font-size:0.9rem}
+@media (max-width:540px){.bridge .pd{white-space:normal}}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:10px;font-size:0.88rem;font-weight:700;text-decoration:none}
+.btn-quiz{background:var(--accent);color:#fff}
+.btn-hub{background:var(--surface);color:var(--muted);border:1px solid var(--border)}
+.btn-print{background:var(--surface);color:var(--muted);border:1px solid var(--border);cursor:pointer;font-family:inherit}
+@media print{.topbar,.cta{display:none}body{background:#fff;color:#000}}
+@media (max-width:540px){.topbar{padding:0 16px}h1{font-size:1.6rem}table{display:block;overflow-x:auto}}
+
+:root{--accent:#94a3b8;--accent-bg:rgba(148,163,184,0.1)}
+[data-theme="light"]{--accent:#475569;--accent-bg:rgba(71,85,105,0.08)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-brand"><span>Topic 13</span>Radiography</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <a class="back-link" href="../index.html">← Hub</a>
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  </div>
+</div>
+<div class="container">
+  <div class="eyebrow">Pre-Dentistry · Topic 13 · Summary notes</div>
+  <h1>Dental Radiography</h1>
+  
+<p class="lead">X-rays let you see decay between teeth, root problems and bone loss. Every exposure is ionising radiation, so it must be justified and kept as low as reasonably practicable.</p>
+<h2>Types of dental radiograph</h2>
+<table><tr><th>View</th><th>Shows</th><th>Used for</th></tr>
+<tr><td>Bitewing</td><td>Crowns of upper and lower back teeth; bone levels</td><td>Decay between teeth; gum disease monitoring</td></tr>
+<tr><td>Periapical</td><td>Whole tooth to the root tip</td><td>Abscesses, root canal treatment, trauma</td></tr>
+<tr><td>Occlusal</td><td>A section of the arch from above or below</td><td>Unerupted teeth, salivary stones</td></tr>
+<tr><td>OPG / DPT (panoramic)</td><td>Both jaws, all teeth</td><td>Wisdom teeth, fractures, overview</td></tr>
+<tr><td>Lateral cephalogram</td><td>Skull from the side</td><td>Orthodontic planning</td></tr>
+<tr><td>CBCT</td><td>3D slices of teeth and jaws</td><td>Implants, complex roots (higher dose)</td></tr></table>
+<figure class="diagram"><svg viewBox="0 0 760 306" role="img" aria-label="Scale from radiolucent to radiopaque: air, pulp, decay, bone, dentine, enamel, metal"><text x="24" y="30" class="title">Decay shows as a dark area because it has lost mineral</text><text x="24" y="50" class="sub">How dark or white each tissue looks on a radiograph (schematic order)</text><defs><linearGradient id="rg-grad" x1="0" x2="1"><stop offset="0" stop-color="#111"/><stop offset="1" stop-color="#f5f5f5"/></linearGradient></defs><rect x="60" y="150" width="640" height="34" rx="6" fill="url(#rg-grad)" class="frame-stroke"/><line x1="92" x2="92" y1="126" y2="150" class="leader thick"/><circle cx="92" cy="150" r="3.5" class="ink-fill"/><text x="92" y="120" text-anchor="middle" class="lbl">Air / soft tissue</text><line x1="169" x2="169" y1="206" y2="184" class="leader thick"/><circle cx="169" cy="184" r="3.5" class="ink-fill"/><text x="169" y="222" text-anchor="middle" class="lbl">Pulp</text><line x1="233" x2="233" y1="126" y2="150" class="leader thick"/><circle cx="233" cy="150" r="3.5" class="ink-fill"/><text x="233" y="120" text-anchor="middle" class="lbl">Decay</text><line x1="348" x2="348" y1="206" y2="184" class="leader thick"/><circle cx="348" cy="184" r="3.5" class="ink-fill"/><text x="348" y="222" text-anchor="middle" class="lbl">Bone</text><line x1="431" x2="431" y1="126" y2="150" class="leader thick"/><circle cx="431" cy="150" r="3.5" class="ink-fill"/><text x="431" y="120" text-anchor="middle" class="lbl">Dentine</text><line x1="534" x2="534" y1="206" y2="184" class="leader thick"/><circle cx="534" cy="184" r="3.5" class="ink-fill"/><text x="534" y="222" text-anchor="middle" class="lbl">Enamel</text><line x1="668" x2="668" y1="126" y2="150" class="leader thick"/><circle cx="668" cy="150" r="3.5" class="ink-fill"/><text x="668" y="120" text-anchor="middle" class="lbl">Amalgam / metal</text><text x="60" y="270" class="lbl">← Radiolucent (dark)</text><text x="60" y="288" class="sub">X-rays pass through</text><text x="700" y="270" text-anchor="end" class="lbl">Radiopaque (white) →</text><text x="700" y="288" text-anchor="end" class="sub">X-rays blocked</text></svg><figcaption>Reading radiographs: radiolucent vs radiopaque.</figcaption></figure>
+<h2>Radiation protection</h2>
+<ul><li><b>IR(ME)R</b> roles: <b>referrer</b> requests, <b>practitioner</b> justifies, <b>operator</b> takes the image. One dentist can be all three.</li>
+<li><b>Justification:</b> benefit must outweigh risk. <b>Optimisation:</b> keep dose as low as reasonably practicable (ALARP).</li>
+<li><b>Inverse square law:</b> double the distance, quarter the dose.</li>
+<li>Rectangular collimation and digital sensors reduce dose.</li>
+<li>Pregnancy isn't a bar to a justified dental X-ray.</li>
+<li>Every image must be <b>reported</b> (clinically evaluated) and recorded.</li></ul>
+
+  <div class="cta">
+    <a class="btn btn-quiz" href="../quizzes/topic13.html">Take the quiz →</a>
+    <button class="btn btn-print" onclick="window.print()">Print / save as PDF</button>
+    <a class="btn btn-hub" href="../index.html">← Hub</a>
+  </div>
+</div>
+<script>function toggleTheme(){const c=document.documentElement.getAttribute('data-theme')||'dark';const n=c==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);document.querySelector('.theme-btn').textContent=n==='dark'?'☀️':'🌙';try{localStorage.setItem('theme',n);}catch(e){}}
+try{if(document.documentElement.getAttribute('data-theme')==='light')document.querySelector('.theme-btn').textContent='🌙';}catch(e){}</script>
+</body>
+</html>

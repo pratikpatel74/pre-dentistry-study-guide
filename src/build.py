@@ -8,13 +8,31 @@ import html, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content_a import T1, T2, T3, T4, T5
 from content_b import T6, T7, T8, T9
+from content_c import T10, T11, T12, T13
+from content_d import T14, T15, T16, T17
 from diagrams import DIAGRAMS
 from diagrams2 import DIAGRAMS2
 DIAGRAMS.update(DIAGRAMS2)
+from diagrams3 import DIAGRAMS3
+DIAGRAMS.update(DIAGRAMS3)
 import bridge
 
-TOPICS = [T1, T2, T3, T4, T5, T6, T7, T8, T9]
+TOPICS = [T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17]
+for _t in TOPICS:
+    _t.setdefault("label", "Topic %d" % _t["num"])
+    _t.setdefault("section", "science")
+SECTION_NAME = {"apply": "Getting in", "science": "Pre-Dentistry"}
+
+def light_accent(hexc):
+    h = hexc.lstrip("#"); r, g, b = (int(h[i:i+2], 16) / 255 for i in (0, 2, 4))
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.55
 T9['notes'] = bridge.notes()
+from rebalance import FIX
+_bynum = {t["num"]: t for t in TOPICS}
+for (_n, _i), _opts in FIX.items():
+    _q, _o, _e = _bynum[_n]["qs"][_i]
+    assert len(_opts) == 4, (_n, _i)
+    _bynum[_n]["qs"][_i] = (_q, _opts, _e)
 T9['blurb'] = 'The A-level topics that come straight back in dentistry (%d of them), each linked to your AQA Biology, Chemistry and Maths hubs.' % bridge.count()
 HERE = os.path.dirname(os.path.abspath(__file__))
 TPL = os.path.join(HERE, "templates")
@@ -51,8 +69,8 @@ for t in TOPICS:
     s = re.sub(r'(\[data-theme="light"\]\{[^}]*?)--accent:#[0-9a-f]+;--accent-bg:rgba\([^)]*\);',
                lambda m: m.group(1) + f"--accent:{t['light']};--accent-bg:{rgba(t['light'],0.10)};", s, count=1)
     s = re.sub(r'<div class="topbar-brand"><span>.*?</span>.*?</div>',
-               f'<div class="topbar-brand"><span>Topic {n}</span>{esc(t["short"])}</div>', s, count=1)
-    s = re.sub(r'<div class="quiz-eyebrow">.*?</div>', '<div class="quiz-eyebrow">Pre-Dentistry · Topic %d</div>' % n, s, count=1)
+               f'<div class="topbar-brand"><span>{t["label"]}</span>{esc(t["short"])}</div>', s, count=1)
+    s = re.sub(r'<div class="quiz-eyebrow">.*?</div>', '<div class="quiz-eyebrow">%s · %s</div>' % (SECTION_NAME[t["section"]], t["label"]), s, count=1)
     s = re.sub(r'<h1 class="quiz-title">.*?</h1>', f'<h1 class="quiz-title">{esc(title)}</h1>', s, count=1)
     s = s.replace("const TOPIC_ID='topic9'", f"const TOPIC_ID='topic{n}'")
     pool = ",\n".join(json.dumps({"q": esc(q), "opts": [esc(o) for o in opts], "ans": 0, "exp": esc(exp)}, ensure_ascii=False)
@@ -63,7 +81,7 @@ for t in TOPICS:
                   "sessionQ=pool.slice(0,Math.min(DRAW,pool.length)).map(q=>{const o=[0,1,2,3];"
                   "for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[o[i],o[j]]=[o[j],o[i]];}"
                   "return Object.assign({},q,{opts:o.map(k=>q.opts[k]),ans:o.indexOf(q.ans)});});")
-    if n in (5, 9):  # light accents need dark text in the dark theme
+    if light_accent(t['dark']):  # light accents need dark text in the dark theme
         s = s.replace("</style>", ".btn-next,.btn-quiz{color:#000}[data-theme=\"light\"] .btn-next{color:#fff}</style>", 1)
     s = s.replace("initSession();\n</script>", "try{if(document.documentElement.getAttribute('data-theme')==='light')document.querySelector('.theme-btn').textContent='🌙';}catch(e){}\ninitSession();\n</script>", 1)
     assert "textContent='🌙'" in s
@@ -139,6 +157,10 @@ tr:last-child td{border-bottom:none}
 .diagram .face{fill:none;stroke:var(--dim);stroke-width:1.5}
 .diagram .feature{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .feature-line{fill:none;stroke:var(--dim);stroke-width:1.25}
 .diagram .z1{fill:var(--d-inc);fill-opacity:.45}.diagram .z2{fill:var(--d-pm);fill-opacity:.45}.diagram .z3{fill:var(--d-can);fill-opacity:.45}.diagram .zc{fill:var(--dim);fill-opacity:.45}
+.diagram .ok-text{fill:var(--ok)}.diagram .acc-text{fill:var(--accent);font-weight:600}
+.diagram .bar{fill:var(--dim);fill-opacity:.5}.diagram .bar.acc-fill{fill:var(--accent);fill-opacity:.85}
+.diagram .gridline{stroke:var(--border);stroke-width:1}.diagram .frame-stroke{stroke:var(--dim);stroke-width:1.25}
+.checks{list-style:none;padding-left:0}
 .diagram .safe-zone{fill:var(--ok);fill-opacity:.15}.diagram .frame{fill:none;stroke:var(--dim);stroke-width:1.25}
 .ref{font-size:0.7rem;color:var(--dim);margin-top:2px}
 .bridge td{font-size:0.86rem}.bridge .pd{font-size:0.8rem;white-space:nowrap}
@@ -177,14 +199,14 @@ for t in TOPICS:
 </head>
 <body>
 <div class="topbar">
-  <div class="topbar-brand"><span>Topic {n}</span>{esc(t['short'])}</div>
+  <div class="topbar-brand"><span>{t['label']}</span>{esc(t['short'])}</div>
   <div style="display:flex;align-items:center;gap:12px">
     <a class="back-link" href="../index.html">← Hub</a>
     <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
   </div>
 </div>
 <div class="container">
-  <div class="eyebrow">Pre-Dentistry · Topic {n} · Summary notes</div>
+  <div class="eyebrow">{SECTION_NAME[t['section']]} · {t['label']} · Summary notes</div>
   <h1>{esc(t['title'])}</h1>
   {body}
   <div class="cta">
@@ -215,18 +237,21 @@ per_topic = "\n".join(
     f".t{t['num']} .card-accent {{ background: var(--t{t['num']}); }}\n"
     f".t{t['num']} .topic-icon {{ background: var(--t{t['num']}-bg); color: var(--t{t['num']}); }}\n"
     f".t{t['num']} .btn-quiz {{ background: var(--t{t['num']}); }}" for t in TOPICS)
-light_btn_text = ".t5 .btn-quiz, .t9 .btn-quiz { color: #000; }\n:root[data-theme=\"light\"] .t5 .btn-quiz, :root[data-theme=\"light\"] .t9 .btn-quiz { color: #fff; }"
+_lt = [t for t in TOPICS if light_accent(t['dark'])]
+light_btn_text = (", ".join(f".t{t['num']} .btn-quiz" for t in _lt) + " { color: #000; }\n"
+                  + ", ".join(f':root[data-theme="light"] .t{t["num"]} .btn-quiz' for t in _lt) + " { color: #fff; }") if _lt else ""
 
 QUIZ_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>'
 DOC_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>'
-cards = "\n".join(f"""
+def card(t):
+    return f"""
     <div class="topic-card t{t['num']}">
       <div class="card-accent"></div>
       <div class="card-body">
         <div class="card-header">
           <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">{t['icon']}</svg></div>
           <div class="card-meta">
-            <div class="card-num">Topic {t['num']}{(' · %d diagram%s' % (t['ndiag'], '' if t['ndiag']==1 else 's')) if t['ndiag'] else ''}</div>
+            <div class="card-num">{t['label']}{(' · %d diagram%s' % (t['ndiag'], '' if t['ndiag']==1 else 's')) if t['ndiag'] else ''}</div>
             <div class="card-title">{esc(t['title'])}</div>
           </div>
           <span class="score-badge" id="score-t{t['num']}"></span>
@@ -238,7 +263,11 @@ cards = "\n".join(f"""
           <a class="btn btn-doc" href="notes/topic{t['num']}.html">{DOC_ICON}Notes</a>
         </div>
       </div>
-    </div>""" for t in TOPICS)
+    </div>"""
+APPLY = [t for t in TOPICS if t["section"] == "apply"]
+SCIENCE = [t for t in TOPICS if t["section"] == "science"]
+cards_apply = "\n".join(card(t) for t in APPLY)
+cards_science = "\n".join(card(t) for t in SCIENCE)
 nq = sum(len(t["qs"]) for t in TOPICS)
 ids = ",".join(f"'{t['num']}'" for t in TOPICS)
 
@@ -248,19 +277,20 @@ index = f"""<!doctype html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pre-Dentistry Study Hub</title>
-<meta name="description" content="Revision hub for students starting a UK dentistry (BDS) degree: notes, diagrams and quizzes.">
+<meta name="description" content="For UK students aiming for dentistry: UCAT, application and interview prep, plus the dental science to know before year 1.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 {FONT}
 <style>
 {root_dark}{root_light}{css}
 {per_topic}
 {light_btn_text}
+.section-intro {{ color: var(--muted); font-size: 0.9rem; margin: -16px 0 24px; }}
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <div class="topbar-brand"><span>BDS · Year 0</span>Pre-Dentistry Study Hub</div>
+  <div class="topbar-brand"><span>Year 12 → BDS</span>Pre-Dentistry Study Hub</div>
   <div class="topbar-right">
     <a class="home-link" href="{LANDING}">← All subjects</a>
     <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
@@ -268,9 +298,9 @@ index = f"""<!doctype html>
 </div>
 
 <div class="hero">
-  <div class="hero-eyebrow">Before you start Dentistry · UK</div>
+  <div class="hero-eyebrow">Year 12 to dental school · UK</div>
   <h1>Pre-Dentistry<br><em>Study Hub</em></h1>
-  <p class="hero-sub">{len(TOPICS)} topics · 10 questions drawn from a pool of 22 · Notes and diagrams for every topic.</p>
+  <p class="hero-sub">{len(APPLY)} steps to getting in and {len(SCIENCE)} science topics · 10 questions per quiz from a pool of 22 · notes and diagrams throughout.</p>
   <div class="stats-strip">
     <div class="stat-cell"><div class="stat-num">{len(TOPICS)}</div><div class="stat-label">Topics</div></div>
     <div class="stat-cell"><div class="stat-num">{nq}</div><div class="stat-label">Questions</div></div>
@@ -279,13 +309,18 @@ index = f"""<!doctype html>
 </div>
 
 <div class="main">
-  <div class="section-head"><div class="section-head-label">Suggested order</div><div class="section-head-line"></div></div>
-  <div class="grid">{cards}
+  <div class="section-head"><div class="section-head-label">Getting in · Year 12 to 2028 entry</div><div class="section-head-line"></div></div>
+  <p class="section-intro">Grades, UCAT, application and interviews: the next two years, step by step.</p>
+  <div class="grid">{cards_apply}
+  </div>
+  <div class="section-head" style="margin-top:56px"><div class="section-head-label">Dental science · ready for year 1</div><div class="section-head-line"></div></div>
+  <p class="section-intro">What a first-year dental student needs to know, built on A-level Biology and Chemistry.</p>
+  <div class="grid">{cards_science}
   </div>
 </div>
 
 <div class="footer">
-  <strong>Pre-Dentistry Study Hub</strong> &nbsp;·&nbsp; For students starting a UK BDS &nbsp;·&nbsp; Facts checked October 2026; always follow your dental school's guidance
+  <strong>Pre-Dentistry Study Hub</strong> &nbsp;·&nbsp; From Year 12 to a UK BDS &nbsp;·&nbsp; Facts checked October 2026; always follow your dental school's guidance
 </div>
 
 <script>
@@ -315,7 +350,7 @@ open(f"{OUT}/index.html", "w", encoding="utf-8").write(index)
 
 readme = f"""# Pre-Dentistry Study Hub
 
-Revision hub for a student starting a UK dentistry (BDS) degree: {len(TOPICS)} topics, {nq} quiz questions, notes and diagrams.
+Revision hub for a Year 12 student aiming for UK dentistry (BDS, 2028 entry): {len(APPLY)} 'Getting in' steps and {len(SCIENCE)} science topics, {nq} quiz questions, notes and diagrams.
 Same design and quiz engine as the A-level finance hub. Netlify serves the repo root; the HTML is generated by `src/build.py`.
 
 **Claude sessions: read `HANDOVER.md` first.**
@@ -327,7 +362,7 @@ Same design and quiz engine as the A-level finance hub. Netlify serves the repo 
 - `src/` – content, diagrams and the build script (edit here, never the generated HTML)
 
 ## Topics
-""" + "\n".join(f"{t['num']}. {t['title']}" for t in TOPICS) + """
+""" + "\n".join(f"- {t['label']} (`topic{t['num']}`): {t['title']}" for t in APPLY + SCIENCE) + """
 
 ## Rebuild after editing src/
 ```bash

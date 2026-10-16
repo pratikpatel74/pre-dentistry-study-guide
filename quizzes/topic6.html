@@ -57,7 +57,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .btn-missed{background:rgba(248,113,113,0.12);color:#f87171;border:1px solid #f87171;border-radius:10px;padding:11px 24px;font-size:0.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
 .btn-hub{background:var(--surface);color:var(--muted);border:1px solid var(--border);border-radius:10px;padding:11px 24px;font-size:0.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .btn-hub:hover{border-color:var(--border-hi);color:var(--text)}
-</style>
+.btn-next,.btn-quiz{color:#000}[data-theme="light"] .btn-next{color:#fff}</style>
 </head>
 <body>
 <div class="topbar">
@@ -88,24 +88,24 @@ const POOL=[
 {"q": "Which branch of the trigeminal nerve supplies the lower teeth?", "opts": ["Mandibular (V3)", "Maxillary (V2)", "Ophthalmic (V1)", "Facial (VII)"], "ans": 0, "exp": "V3 supplies the lower teeth, lower lip, chin and tongue sensation."},
 {"q": "Which branch supplies the upper teeth?", "opts": ["Maxillary (V2)", "Mandibular (V3)", "Ophthalmic (V1)", "Glossopharyngeal (IX)"], "ans": 0, "exp": "V2 supplies upper teeth, upper lip, palate and cheek."},
 {"q": "How are lower molars usually numbed?", "opts": ["Inferior alveolar nerve block", "Simple infiltration next to the tooth", "Topical gel only", "General anaesthetic"], "ans": 0, "exp": "The thick mandible stops infiltration working well, so the nerve is blocked before it enters the bone."},
-{"q": "Why does infiltration usually work for upper teeth?", "opts": ["The maxillary bone is thin and porous", "Upper teeth have no nerves", "The palate absorbs anaesthetic", "Upper teeth have shorter roots"], "ans": 0, "exp": "Anaesthetic soaks through thin bone to the nerves at the root tips."},
+{"q": "Why does infiltration usually work for upper teeth?", "opts": ["The maxillary bone is thin and porous", "Upper teeth have fewer nerve fibres", "The palate absorbs the anaesthetic", "Upper teeth have shorter, thinner roots"], "ans": 0, "exp": "Anaesthetic soaks through thin bone to the nerves at the root tips."},
 {"q": "Which nerve moves the muscles of facial expression?", "opts": ["Facial nerve (CN VII)", "Trigeminal nerve (CN V)", "Vagus nerve (CN X)", "Accessory nerve (CN XI)"], "ans": 0, "exp": "CN VII is motor to the face."},
-{"q": "A misplaced inferior alveolar block into the parotid gland can cause…", "opts": ["Temporary one-sided facial paralysis", "Permanent loss of taste", "Loss of hearing", "A broken jaw"], "ans": 0, "exp": "The facial nerve runs through the parotid; the effect wears off with the anaesthetic."},
-{"q": "Which nerve supplies the muscles of mastication?", "opts": ["Mandibular branch of the trigeminal (V3)", "Facial nerve (VII)", "Maxillary branch (V2)", "Hypoglossal nerve (XII)"], "ans": 0, "exp": "V3 is the only trigeminal branch with a motor root."},
+{"q": "A misplaced inferior alveolar block into the parotid gland can cause…", "opts": ["Temporary one-sided facial paralysis", "Permanent loss of taste on one side", "Temporary loss of hearing in one ear", "A dislocated temporomandibular joint"], "ans": 0, "exp": "The facial nerve runs through the parotid; the effect wears off with the anaesthetic."},
+{"q": "Which nerve supplies the muscles of mastication?", "opts": ["Mandibular branch of the trigeminal (V3)", "Facial nerve, cranial nerve VII", "Maxillary branch of the trigeminal (V2)", "Hypoglossal nerve, cranial nerve XII"], "ans": 0, "exp": "V3 is the only trigeminal branch with a motor root."},
 {"q": "Which muscle of mastication opens the jaw and moves it forward?", "opts": ["Lateral pterygoid", "Masseter", "Temporalis", "Medial pterygoid"], "ans": 0, "exp": "The other three mainly close the jaw."},
 {"q": "Which strong jaw-closing muscle can you feel at the angle of the jaw when clenching?", "opts": ["Masseter", "Lateral pterygoid", "Buccinator", "Orbicularis oris"], "ans": 0, "exp": "The masseter is the most powerful chewing muscle."},
 {"q": "Which of these is NOT a muscle of mastication?", "opts": ["Buccinator", "Masseter", "Temporalis", "Medial pterygoid"], "ans": 0, "exp": "Buccinator is a facial expression muscle supplied by CN VII."},
-{"q": "The temporomandibular joint (TMJ) is between…", "opts": ["The mandibular condyle and the temporal bone", "The maxilla and the mandible", "The hyoid and the mandible", "The zygoma and the maxilla"], "ans": 0, "exp": "A fibrous disc sits between the two."},
+{"q": "The temporomandibular joint (TMJ) is between…", "opts": ["The mandibular condyle and temporal bone", "The maxilla and the mandible at the molars", "The hyoid bone and the mandible", "The zygomatic arch and the maxilla"], "ans": 0, "exp": "A fibrous disc sits between the two."},
 {"q": "How does the TMJ move?", "opts": ["It both hinges and glides", "It only hinges", "It only rotates sideways", "It doesn't move; it's fixed"], "ans": 0, "exp": "Gliding forward lets the mouth open wide."},
 {"q": "Which is the largest salivary gland?", "opts": ["Parotid", "Submandibular", "Sublingual", "Minor labial glands"], "ans": 0, "exp": "The parotid sits in front of the ear."},
-{"q": "Where does the parotid duct open?", "opts": ["In the cheek, opposite the upper second molar", "Under the tongue", "On the palate", "Behind the lower incisors"], "ans": 0, "exp": "The parotid (Stensen's) duct opening is a useful landmark."},
+{"q": "Where does the parotid duct open?", "opts": ["In the cheek, opposite the upper second molar", "Under the tongue, beside the lingual frenum", "On the hard palate, behind the incisors", "Behind the lower incisors, on the lingual side"], "ans": 0, "exp": "The parotid (Stensen's) duct opening is a useful landmark."},
 {"q": "Which gland produces most of the saliva at rest?", "opts": ["Submandibular", "Parotid", "Sublingual", "Minor glands of the palate"], "ans": 0, "exp": "The parotid takes over during eating."},
 {"q": "Sublingual saliva is mostly…", "opts": ["Mucous", "Watery (serous)", "Acidic", "Bloody"], "ans": 0, "exp": "Parotid saliva is watery; submandibular is mixed."},
 {"q": "What is xerostomia?", "opts": ["A dry mouth", "Bad breath", "Excess saliva", "Jaw clicking"], "ans": 0, "exp": "Causes include medicines, radiotherapy and some conditions."},
 {"q": "How does a dry mouth affect caries risk?", "opts": ["It raises it sharply", "It lowers it", "No effect", "It only affects gum disease"], "ans": 0, "exp": "Less saliva means less buffering, clearance and remineralisation."},
 {"q": "Which of these is a protective role of saliva?", "opts": ["Buffering acid with bicarbonate", "Dissolving enamel", "Feeding plaque bacteria", "Hardening calculus to protect teeth"], "ans": 0, "exp": "Saliva also supplies calcium and phosphate for remineralisation."},
-{"q": "General sensation to the front two-thirds of the tongue comes via which nerve?", "opts": ["Lingual nerve (from V3)", "Hypoglossal nerve", "Vagus nerve", "Ophthalmic nerve"], "ans": 0, "exp": "The lingual nerve is often numbed alongside an inferior alveolar block."},
-{"q": "What is the main action of temporalis?", "opts": ["Closing and pulling the jaw back", "Opening the jaw", "Moving the tongue", "Raising the eyebrows"], "ans": 0, "exp": "Its fan shape sits over the side of the skull."}
+{"q": "General sensation to the front two-thirds of the tongue comes via which nerve?", "opts": ["Lingual nerve (from V3)", "Hypoglossal nerve (XII)", "Glossopharyngeal nerve (IX)", "Chorda tympani (from VII)"], "ans": 0, "exp": "The lingual nerve is often numbed alongside an inferior alveolar block."},
+{"q": "What is the main action of temporalis?", "opts": ["Closing and pulling the jaw back", "Opening and pushing the jaw forward", "Moving the tongue during swallowing", "Raising the eyebrows and forehead"], "ans": 0, "exp": "Its fan shape sits over the side of the skull."}
 ];
 POOL.forEach((q,i)=>q._id=i);
 let sessionQ=[],cur=0,score=0,answered=false,finished=false;
