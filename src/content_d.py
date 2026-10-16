@@ -56,7 +56,7 @@ T14 = dict(
 )
 
 T15 = dict(
-    num=15, slug="ucat", short="UCAT", label="Step 2", section="apply",
+    num=15, slug="ucat", short="UCAT", label="Step 2", section="apply", practice="ucat/index.html",
     title="The UCAT",
     dark="#38bdf8", light="#0284c7",
     blurb="The four subtests, timings and scoring, time per question, how dental schools use your result and how to prepare.",
@@ -87,6 +87,7 @@ T15 = dict(
         ("Why practise under strictly timed conditions?", ["The UCAT is very time-pressured", "Timing doesn't matter in the UCAT", "Only accuracy is marked, not speed", "You can pause the test whenever you like"], "Most candidates find timing harder than the questions themselves."),
     ],
     notes="""
+<p class="callout"><b>Practise now:</b> <a href="../ucat/index.html">UCAT practice: untimed drills, timed sets and a full-length mock →</a></p>
 <p class="lead">The UCAT is a 2-hour computer test of aptitude, not knowledge. You sit it once, in the summer before you apply (summer 2027 for 2028 entry). Timing is the hardest part.</p>
 <h2>The four subtests (standard timings)</h2>
 <table><tr><th>Subtest</th><th>Questions</th><th>Time</th><th>Tests</th><th>Scored</th></tr>

@@ -46,6 +46,22 @@ Audience: a **Year 12** student (AQA A-level Maths, Chemistry, Biology) applying
 | 12 | Oral Pathology & Oral Cancer | `referral` |
 | 13 | Dental Radiography | `radio` |
 
+## UCAT practice (`ucat/`)
+
+`ucat/index.html` links 9 tests (288 original questions), all built from `src/ucat_*.py` by `ucat_build.build_ucat()` (called from `build.py`):
+
+| Test | Questions | Time |
+|---|---|---|
+| Drills: `drill-vr`, `drill-dm`, `drill-qr`, `drill-sjt` | 10 each | untimed, feedback after each answer |
+| Timed: `timed-vr` / `timed-dm` / `timed-qr` / `timed-sjt` | 16 / 12 / 12 / 24 | 8 / 13 / 9 / 9 min (real pace) |
+| `mock` | 44 VR, 35 DM, 36 QR, 69 SJT | 22 / 37 / 26 / 26 min (+25% or untimed option) |
+
+- **Never copy official UCAT or third-party questions.** UCAT doesn't publish past papers; its free practice tests are linked instead (https://www.ucat.ac.uk/prepare/practice-tests/).
+- `ucat_engine.html`: one page template (passage beside question, section timers that auto-advance, flag and question grid, on-screen calculator in QR, results, review of all or wrong answers). Scores are saved in localStorage as `ucat_<id>_last`. Marking: MC 1; DM Yes/No sets 2 (1 with one slip); SJT ratings 1 (½ if one step away).
+- `ucat_gen.py`: QR scenarios (9 types) and DM syllogisms (model-checked across all possible worlds), ordering puzzles (brute-force unique), Venn, probability (exact fractions) and table Yes/No items. **Answers are computed.** Seeds 101 (mock), 202 (timed), 303 (drill). Stress-tested over 400 seeds.
+- `ucat_vr.py` (18 passages, 72 Qs), `ucat_sjt.py` (27 scenarios), `ucat_dm.py` (9 strongest-argument items): hand-written. Banks are split so no question appears in two tests.
+- To check: play every set and confirm full marks when answered correctly (the Playwright pattern in the "How Claude commits" section's checks).
+
 ## Source layout (`src/`)
 
 ```
@@ -55,6 +71,10 @@ src/
   content_b.py      # topics 6–9
   content_c.py      # topics 10–13 (year-1 science)
   content_d.py      # topics 14–17 ("Getting in": label + section="apply")
+  ucat_engine.html  # UCAT practice page template
+  ucat_build.py     # assembles the 9 UCAT tests and ucat/index.html
+  ucat_gen.py       # computed QR and DM items
+  ucat_vr.py, ucat_sjt.py, ucat_dm.py   # hand-written VR passages, SJT scenarios, DM arguments
   rebalance.py      # FIX[(topic, q index)] = replacement options; applied by build.py (see Content rules)
   bridge.py         # Topic 9 notes: ROWS of (hub id, A-level title, comes-back-as, [pre-dentistry topics])
   diagrams.py       # tooth, fdi, stephan
@@ -138,7 +158,9 @@ The device needs folder access to `~/Documents/Projects`: request it with device
 | d6d773d | 9 more diagrams; Topic 9 expanded to 32 rows linked to the AQA hubs |
 | 3151145 | Fixed homepage light mode (light colour block had been sliced from the wrong place) |
 | ee3c465 | Added `src/`, this handover doc, quiz theme-icon fix |
-| (after ee3c465) | Rebalanced answer lengths; 8 new topics (10–13 science, 14–17 Getting in); 20 diagrams; homepage sections |
+| 5be1df0 | Rebalanced answer lengths; 8 new topics (10–13 science, 14–17 Getting in); 20 diagrams; homepage sections |
+| 941e14e | Handover: Claude Doc retired |
+| (after 941e14e) | UCAT practice: 4 drills, 4 timed sets, full mock (288 original questions) |
 
 ## Open items / ideas
 

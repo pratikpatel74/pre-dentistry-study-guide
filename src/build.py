@@ -221,6 +221,10 @@ for t in TOPICS:
 """
     open(f"{OUT}/notes/topic{n}.html", "w", encoding="utf-8").write(page)
 
+# ---------- UCAT practice ----------
+import ucat_build
+UCAT_COUNTS = ucat_build.build_ucat(OUT, THEME_HEAD, FONT, NOTES_CSS)
+
 # ---------- index ----------
 fi = open(os.path.join(TPL, "index-template.html"), encoding="utf-8").read()
 css = fi[fi.index("* { box-sizing"):fi.index("</style>")]
@@ -242,6 +246,7 @@ light_btn_text = (", ".join(f".t{t['num']} .btn-quiz" for t in _lt) + " { color:
                   + ", ".join(f':root[data-theme="light"] .t{t["num"]} .btn-quiz' for t in _lt) + " { color: #fff; }") if _lt else ""
 
 QUIZ_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>'
+PRACTICE_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg>'
 DOC_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>'
 def card(t):
     return f"""
@@ -260,7 +265,7 @@ def card(t):
         <p class="card-desc">{esc(t['blurb'])}</p>
         <div class="card-actions">
           <a class="btn btn-quiz" href="quizzes/topic{t['num']}.html">{QUIZ_ICON}Quiz</a>
-          <a class="btn btn-doc" href="notes/topic{t['num']}.html">{DOC_ICON}Notes</a>
+          <a class="btn btn-doc" href="notes/topic{t['num']}.html">{DOC_ICON}Notes</a>{(f'<a class="btn btn-doc" href="{t["practice"]}">{PRACTICE_ICON}Practice</a>') if t.get('practice') else ''}
         </div>
       </div>
     </div>"""
