@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 – Financial Services Study Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #09090f;
+  --surface:  #111118;
+  --card:     #16161e;
+  --card-hover: #1c1c26;
+  --border:   #2a2a38;
+  --border-hi: #3d3d52;
+  --text:     #f0efff;
+  --muted:    #8b8aab;
+  --dim:      #55546e;
+  --gold:     #e8b84b;
+  --gold-dim: #a8832a;
+  --gold-bg:  rgba(232,184,75,0.08);
+  --t1: #818cf8; --t1-bg: rgba(129,140,248,0.10); --t1-glow: rgba(129,140,248,0.20);
+  --t2: #38bdf8; --t2-bg: rgba(56,189,248,0.10);  --t2-glow: rgba(56,189,248,0.20);
+  --t5: #a78bfa; --t5-bg: rgba(167,139,250,0.10); --t5-glow: rgba(167,139,250,0.20);
+  --t6: #34d399; --t6-bg: rgba(52,211,153,0.10);  --t6-glow: rgba(52,211,153,0.20);
+  --t7: #fbbf24; --t7-bg: rgba(251,191,36,0.10);  --t7-glow: rgba(251,191,36,0.20);
+  --t8: #f87171; --t8-bg: rgba(248,113,113,0.10); --t8-glow: rgba(248,113,113,0.20);
+  --t9: #10b981; --t9-bg: rgba(16,185,129,0.10);  --t9-glow: rgba(16,185,129,0.20);
+  --t10: #f59e0b; --t10-bg: rgba(245,158,11,0.10); --t10-glow: rgba(245,158,11,0.20);
+  --t11: #c084fc; --t11-bg: rgba(192,132,252,0.10);--t11-glow: rgba(192,132,252,0.20);
+}
+:root[data-theme="light"] {
+  --bg:       #f5f4f0;
+  --surface:  #eeede8;
+  --card:     #ffffff;
+  --card-hover: #fafaf8;
+  --border:   #dddbd4;
+  --border-hi: #c8c5bc;
+  --text:     #1a1814;
+  --muted:    #706c60;
+  --dim:      #a09c90;
+  --gold:     #b8861a;
+  --gold-dim: #d4a030;
+  --gold-bg:  rgba(184,134,26,0.07);
+  --t1-bg: rgba(99,102,241,0.08); --t1-glow: rgba(99,102,241,0.15);
+  --t2-bg: rgba(14,165,233,0.08); --t2-glow: rgba(14,165,233,0.15);
+  --t5-bg: rgba(124,58,237,0.08); --t5-glow: rgba(124,58,237,0.15);
+  --t6-bg: rgba(5,150,105,0.08);  --t6-glow: rgba(5,150,105,0.15);
+  --t7-bg: rgba(217,119,6,0.08);  --t7-glow: rgba(217,119,6,0.15);
+  --t8-bg: rgba(220,38,38,0.08);  --t8-glow: rgba(220,38,38,0.15);
+  --t9-bg: rgba(5,150,105,0.08);  --t9-glow: rgba(5,150,105,0.15);
+  --t10-bg: rgba(180,83,9,0.08);  --t10-glow: rgba(180,83,9,0.15);
+  --t11-bg: rgba(124,58,237,0.08);--t11-glow: rgba(124,58,237,0.15);
+  --t1: #6366f1; --t2: #0ea5e9; --t5: #7c3aed;
+  --t6: #059669; --t7: #d97706; --t8: #dc2626;
+  --t9: #059669; --t10: #d97706; --t11: #7c3aed;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; line-height: 1.5;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ── Top bar ── */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(9,9,15,0.85);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 52px;
+  transition: background 0.3s;
+}
+:root[data-theme="light"] .topbar { background: rgba(245,244,240,0.88); }
+.topbar-brand {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em;
+  color: var(--text); display: flex; align-items: center; gap: 10px;
+}
+.topbar-brand span {
+  font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  background: var(--gold-bg); color: var(--gold);
+  border: 1px solid var(--gold-dim); border-radius: 4px; padding: 2px 8px;
+}
+.topbar-right { display: flex; align-items: center; gap: 14px; }
+.home-link { display:inline-flex; align-items:center; height:34px; padding:0 12px; border-radius:8px; background:var(--surface); border:1px solid var(--border); color:var(--muted); font-size:0.74rem; font-weight:700; text-decoration:none; white-space:nowrap; }
+.home-link:hover { border-color:var(--border-hi); color:var(--text); }
+@media (max-width:540px) { .topbar-right { gap:8px; } }
+.theme-btn {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; width: 34px; height: 34px;
+  cursor: pointer; font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); transition: border-color 0.15s, color 0.15s;
+}
+.theme-btn:hover { border-color: var(--border-hi); color: var(--text); }
+
+/* ── Hero ── */
+.hero {
+  padding: 80px 24px 72px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232,184,75,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 24px;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; display: block; width: 28px; height: 1px; background: var(--gold-dim);
+}
+.hero h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  font-weight: 800; line-height: 1.05;
+  letter-spacing: -0.03em; margin-bottom: 16px;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  color: var(--muted); font-size: 1rem; max-width: 420px;
+  margin: 0 auto 40px; line-height: 1.7;
+}
+
+/* ── Stats strip ── */
+.stats-strip {
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  background: var(--surface);
+}
+.stat-cell {
+  padding: 14px 28px; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem; font-weight: 800; color: var(--gold); line-height: 1; letter-spacing: -0.02em;
+}
+.stat-label {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--dim); margin-top: 4px;
+}
+
+/* ── Main ── */
+.main { max-width: 860px; margin: 0 auto; padding: 56px 20px 80px; }
+
+.section-head {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 28px;
+}
+.section-head-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--dim); white-space: nowrap;
+}
+.section-head-line { flex: 1; height: 1px; background: var(--border); }
+
+/* ── Grid ── */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; }
+
+/* ── Cards ── */
+.topic-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: flex; flex-direction: column;
+  cursor: default;
+}
+.topic-card:hover {
+  border-color: var(--border-hi);
+  background: var(--card-hover);
+  transform: translateY(-2px);
+}
+.t1:hover { box-shadow: 0 8px 32px var(--t1-glow); }
+.t2:hover { box-shadow: 0 8px 32px var(--t2-glow); }
+.t5:hover { box-shadow: 0 8px 32px var(--t5-glow); }
+.t6:hover { box-shadow: 0 8px 32px var(--t6-glow); }
+.t7:hover { box-shadow: 0 8px 32px var(--t7-glow); }
+.t8:hover { box-shadow: 0 8px 32px var(--t8-glow); }
+.t9:hover { box-shadow: 0 8px 32px var(--t9-glow); }
+.t10:hover { box-shadow: 0 8px 32px var(--t10-glow); }
+.t11:hover { box-shadow: 0 8px 32px var(--t11-glow); }
+
+/* Top border accent */
+.card-accent { height: 2px; }
+.t1 .card-accent { background: var(--t1); }
+.t2 .card-accent { background: var(--t2); }
+.t5 .card-accent { background: var(--t5); }
+.t6 .card-accent { background: var(--t6); }
+.t7 .card-accent { background: var(--t7); }
+.t8 .card-accent { background: var(--t8); }
+.t9 .card-accent { background: var(--t9); }
+.t10 .card-accent { background: var(--t10); }
+.t11 .card-accent { background: var(--t11); }
+
+.card-body { padding: 22px 22px 20px; flex: 1; display: flex; flex-direction: column; }
+
+.card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+.topic-icon {
+  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border);
+}
+.topic-icon svg { width: 18px; height: 18px; stroke-width: 1.75; }
+.t1 .topic-icon { background: var(--t1-bg); }
+.t2 .topic-icon { background: var(--t2-bg); }
+.t5 .topic-icon { background: var(--t5-bg); }
+.t6 .topic-icon { background: var(--t6-bg); }
+.t7 .topic-icon { background: var(--t7-bg); }
+.t8 .topic-icon { background: var(--t8-bg); }
+.t9 .topic-icon { background: var(--t9-bg); }
+.t10 .topic-icon { background: var(--t10-bg); }
+.t11 .topic-icon { background: var(--t11-bg); }
+
+.card-meta { min-width: 0; padding-top: 1px; }
+.card-num {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--dim); margin-bottom: 4px;
+}
+.card-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; color: var(--text);
+}
+
+.card-divider { height: 1px; background: var(--border); margin-bottom: 14px; }
+
+.card-desc {
+  color: var(--muted); font-size: 0.835rem; line-height: 1.65;
+  flex: 1; margin-bottom: 20px;
+}
+
+.card-actions { display: flex; gap: 8px; }
+.btn svg { width: 13px; height: 13px; stroke-width: 2; flex-shrink: 0; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 8px;
+  font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: opacity 0.15s, transform 0.12s;
+  letter-spacing: 0.01em;
+}
+.btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.btn-quiz { color: #fff; }
+.t1 .btn-quiz { background: var(--t1); }
+.t2 .btn-quiz { background: var(--t2); }
+.t5 .btn-quiz { background: var(--t5); }
+.t6 .btn-quiz { background: var(--t6); }
+.t7 .btn-quiz { background: var(--t7); }
+.t8 .btn-quiz { background: var(--t8); }
+.t9 .btn-quiz { background: var(--t9); }
+.t10 .btn-quiz { background: var(--t10); color: #000; }
+.t11 .btn-quiz { background: var(--t11); }
+
+.btn-doc {
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--muted);
+}
+.btn-doc:hover { border-color: var(--border-hi); color: var(--text); }
+.btn-src {
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--muted);
+}
+.btn-src:hover { border-color: var(--border-hi); color: var(--text); }
+.btn-disabled {
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--dim); opacity: 0.4; cursor: not-allowed; pointer-events: none;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center; padding: 28px 20px 48px;
+  border-top: 1px solid var(--border);
+  color: var(--dim); font-size: 0.78rem; letter-spacing: 0.03em;
+}
+.footer strong { color: var(--muted); }
+
+/* ── Responsive ── */
+@media (max-width: 540px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero { padding: 60px 20px 52px; }
+  .stats-strip { flex-direction: column; width: 100%; }
+  .stat-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat-cell:last-child { border-bottom: none; }
+  .topbar { padding: 0 16px; }
+}
+
+.score-badge{font-size:0.66rem;font-weight:700;padding:2px 8px;border-radius:5px;letter-spacing:0.04em;display:none;margin-left:auto;align-self:flex-start;margin-top:3px}
+.score-badge.pass{background:rgba(52,211,153,0.15);color:#34d399}
+.score-badge.fail{background:rgba(248,113,113,0.15);color:#f87171}
+[data-theme="light"] .score-badge.pass{background:rgba(5,150,105,0.12);color:#059669}
+[data-theme="light"] .score-badge.fail{background:rgba(220,38,38,0.12);color:#dc2626}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-brand">
+    <span>LIBF · Unit 1</span>
+    Financial Services Study Hub
+  </div>
+  <div class="topbar-right">
+    <a class="home-link" href="https://alevel-study-hubs.netlify.app/">← All subjects</a>
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">A-Level Finance · Unit 1</div>
+  <h1>Financial Services<br><em>Study Hub</em></h1>
+  <p class="hero-sub">Nine topics · 10 questions drawn from a pool of 22 · Summaries and source material for every topic.</p>
+  <div class="stats-strip">
+    <div class="stat-cell">
+      <div class="stat-num">9</div>
+      <div class="stat-label">Topics</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">198</div>
+      <div class="stat-label">Questions</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">9</div>
+      <div class="stat-label">Summaries</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="section-head">
+    <div class="section-head-label">All topics</div>
+    <div class="section-head-line"></div>
+  </div>
+
+  <div class="grid">
+
+    <div class="topic-card t1">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 1</div>
+            <div class="card-title">Purposes of Money</div>
+          </div>
+        <span class="score-badge" id="score-t1"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Functions of money, types of financial institution, payment systems (Faster Payments, CHAPS, Bacs), personal and business finance needs.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic1.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="docs/Topic1_Summary.docx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Summary</a>
+          <span class="btn btn-disabled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Source</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t2">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 2</div>
+            <div class="card-title">The Personal Life Cycle</div>
+          </div>
+        <span class="score-badge" id="score-t2"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Financial needs at each life stage (childhood to retirement), ISAs, pensions, mortgages, protection products and life events.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic2.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="docs/Topic2_Summary.docx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Summary</a>
+          <a class="btn btn-src" href="docs/Topic2_Source.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Source</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t5">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 5</div>
+            <div class="card-title">Savings Products</div>
+          </div>
+        <span class="score-badge" id="score-t5"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Instant access accounts, fixed-term deposits, notice accounts, Cash ISAs, AER and interest calculations, comparing savings products.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic5.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="docs/Topic5_Summary.docx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Summary</a>
+          <a class="btn btn-src" href="docs/Topic5_Source.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Source</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t6">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 6</div>
+            <div class="card-title">Credit &amp; Debt</div>
+          </div>
+        <span class="score-badge" id="score-t6"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">APR, overdrafts, credit cards (types and protections), personal loans, payday loans, credit reference agencies and CCJs.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic6.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="docs/Topic6_Summary.docx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Summary</a>
+          <a class="btn btn-src" href="docs/Topic6_Source.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Source</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t7">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 7</div>
+            <div class="card-title">Providers of Financial Services</div>
+          </div>
+        <span class="score-badge" id="score-t7"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Banks, building societies (mutual, demutualisation), credit unions (ABCUL, loan cap), NS&amp;I (Premium Bonds), Post Office, communication channels and switching.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic7.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="docs/Topic7_Summary.docx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Summary</a>
+          <a class="btn btn-src" href="docs/Topic7_Source.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Source</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t8">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 8</div>
+            <div class="card-title">Consumer Protection</div>
+          </div>
+        <span class="score-badge" id="score-t8"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Credit crunch, ring-fencing, PRA, FCA, Financial Ombudsman Service, FSCS (£85,000 limit), Competition and Markets Authority, voluntary codes of conduct.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic8.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="docs/Topic8_Summary.docx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Summary</a>
+          <a class="btn btn-src" href="docs/Topic8_Source.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Source</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t9">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">LO5</div>
+            <div class="card-title">Bank Accounts &amp; Cards</div>
+          </div>
+        <span class="score-badge" id="score-t9"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Current, basic &amp; student accounts, overdrafts, standing orders vs direct debits, debit/credit/prepaid/charge cards, contactless (£100), CHAPS, Faster Payments, FSCS (£85k), internet &amp; mobile banking.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic9.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="docs/Topic9_Summary.docx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Summary</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t10">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">LO6</div>
+            <div class="card-title">Short-Term Financial Management</div>
+          </div>
+        <span class="score-badge" id="score-t10"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Cash flow forecasts, budgeting, fixed vs variable expenditure, CPI inflation, emergency funds (3–6 months), good vs bad debt, DMPs, StepChange, MaPS/MoneyHelper, mandatory vs voluntary insurance.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic10.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="docs/Topic10_Summary.docx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Summary</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t11">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">LO7</div>
+            <div class="card-title">Earnings, Tax &amp; NI</div>
+          </div>
+        <span class="score-badge" id="score-t11"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">NLW £11.44 (21+), PAYE, personal allowance £12,570, basic rate 20%, P60/P45, employee NI 8%, payslip contents, gross vs net pay, higher rate 40%, Self Assessment, tax year 6 Apr–5 Apr.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic11.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="docs/Topic11_Summary.docx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Summary</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <strong>Unit 1 · Introduction to Financial Services</strong> &nbsp;·&nbsp; LIBF
+</div>
+
+<script>
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    document.querySelector('.theme-btn').textContent = saved === 'dark' ? '☀️' : '🌙';
+  }
+})();
+function toggleTheme() {
+  const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.querySelector('.theme-btn').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+</script>
+
+<script>
+function loadScores(){
+  ['1','2','5','6','7','8','9','10','11'].forEach(function(t){
+    try{
+      var d=JSON.parse(localStorage.getItem('topic'+t+'_last')||'null');
+      var el=document.getElementById('score-t'+t);
+      if(d&&el){el.textContent=d.score+'/'+d.total;el.className='score-badge '+(d.pct>=60?'pass':'fail');el.style.display='inline-block';}
+    }catch(e){}
+  });
+}
+loadScores();
+</script>
+</body>
+</html>
