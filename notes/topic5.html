@@ -8,10 +8,10 @@
 <style>
 :root{--bg:#09090f;--surface:#111118;--card:#16161e;--border:#2a2a38;--border-hi:#3d3d52;--text:#f0efff;--muted:#8b8aab;--dim:#55546e;--gold:#e8b84b;--gold-bg:rgba(232,184,75,0.10);--danger:#f87171;
 --d-enamel:#a5b4fc;--d-dentine:#fcd9b8;--d-pulp:#f9a8a8;--d-gum:#f0abfc;--d-bone:#2a2a38;--d-pdl:#fb7185;
---d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8}
+--d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8;--d-gum-sore:#f87171;--ok:#34d399}
 [data-theme="light"]{--bg:#f5f4f0;--surface:#eeede8;--card:#fff;--border:#dddbd4;--border-hi:#c8c5bc;--text:#1a1814;--muted:#706c60;--dim:#a09c90;--gold:#b8861a;--gold-bg:rgba(184,134,26,0.08);--danger:#dc2626;
 --d-enamel:#c7d2fe;--d-dentine:#fde7d2;--d-pulp:#fca5a5;--d-gum:#f5c2f9;--d-bone:#e7e5e0;--d-pdl:#e11d48;
---d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1}
+--d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1;--d-gum-sore:#fca5a5;--ok:#059669}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
 .topbar{position:sticky;top:0;z-index:50;background:rgba(9,9,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px}
@@ -59,7 +59,26 @@ tr:last-child td{border-bottom:none}
 .diagram .danger-zone{fill:var(--danger);fill-opacity:.08}
 .diagram .crit{stroke:var(--danger);stroke-width:1.25;stroke-dasharray:5 4}
 .diagram .curve{fill:none;stroke:var(--accent);stroke-width:2.5}
-.diagram .danger{fill:var(--danger)}
+.diagram .danger{fill:var(--danger)}.diagram .ok{fill:var(--ok)}
+.diagram .box{fill:var(--surface);stroke:var(--dim);stroke-width:1.25}
+.diagram .box.acc{fill:var(--accent-bg);stroke:var(--accent);stroke-width:2}
+.diagram .arrow{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .acc-stroke{stroke:var(--accent);stroke-width:2}
+.diagram .whitespot{fill:#fff;stroke:var(--dim);stroke-width:1}
+.diagram .lesion{fill:#8a5a2b;fill-opacity:.85}.diagram .hole{fill:var(--card)}
+.diagram .pulp.inflamed{fill:var(--danger);fill-opacity:.8}
+.diagram .gum.sore{fill:var(--d-gum-sore)}
+.diagram .calculus{fill:#b8a36a;stroke:var(--dim);stroke-width:.75}
+.diagram .probe{stroke:var(--text);stroke-width:2.5;stroke-linecap:round}
+.diagram .depth{stroke:var(--accent);stroke-width:2}
+.diagram .face{fill:none;stroke:var(--dim);stroke-width:1.5}
+.diagram .feature{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .feature-line{fill:none;stroke:var(--dim);stroke-width:1.25}
+.diagram .z1{fill:var(--d-inc);fill-opacity:.45}.diagram .z2{fill:var(--d-pm);fill-opacity:.45}.diagram .z3{fill:var(--d-can);fill-opacity:.45}.diagram .zc{fill:var(--dim);fill-opacity:.45}
+.diagram .safe-zone{fill:var(--ok);fill-opacity:.15}.diagram .frame{fill:none;stroke:var(--dim);stroke-width:1.25}
+.ref{font-size:0.7rem;color:var(--dim);margin-top:2px}
+.bridge td{font-size:0.86rem}.bridge .pd{font-size:0.8rem;white-space:nowrap}
+.bridge td a{font-weight:600;text-decoration:none}.bridge td a:hover{text-decoration:underline}
+.hub-links{font-weight:600;font-size:0.9rem}
+@media (max-width:540px){.bridge .pd{white-space:normal}}
 .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:10px;font-size:0.88rem;font-weight:700;text-decoration:none}
 .btn-quiz{background:var(--accent);color:#fff}
@@ -85,6 +104,7 @@ tr:last-child td{border-bottom:none}
   <h1>Periodontal (Gum) Disease</h1>
   
 <p class="lead">Gum disease is driven by plaque bacteria and the body's inflammatory response. Gingivitis is reversible; periodontitis destroys bone and is not.</p>
+<figure class="diagram"><svg viewBox="0 0 760 506" role="img" aria-label="Healthy gums, gingivitis and periodontitis compared"><text x="24" y="30" class="title">Gingivitis stays in the gum; periodontitis takes the bone</text><g transform="translate(20,56)"><rect x="10" y="140" width="200" height="190" rx="6" class="bone"/><path d="M75 120 C72 80, 80 45, 110 40 C140 45, 148 80, 145 120 L135 280 Q110 310 85 280 Z" class="dentine"/><path d="M75 120 C72 80, 80 45, 110 40 C140 45, 148 80, 145 120 L139 120 C140 86, 132 56, 110 52 C88 56, 80 86, 81 120 Z" class="enamel"/><path d="M146.5 112 C159.9 106, 169.5 120, 210 138 L210 152 L144.8 152 L145.5 128 Z" class="gum"/><path d="M73.5 112 C60.1 106, 50.5 120, 10 138 L10 152 L75.2 152 L74.5 128 Z" class="gum"/><line x1="149.5" y1="68" x2="147.5" y2="128" class="probe"/><line x1="152.5" y1="112" x2="152.5" y2="128" class="depth"/></g><text x="130" y="420" text-anchor="middle" class="lbl">Healthy</text><text x="130" y="438" text-anchor="middle" class="sub">Pocket 1–3 mm</text><text x="130" y="454" text-anchor="middle" class="sub">Bone just below the neck</text><g transform="translate(265,56)"><rect x="10" y="140" width="200" height="190" rx="6" class="bone"/><path d="M75 120 C72 80, 80 45, 110 40 C140 45, 148 80, 145 120 L135 280 Q110 310 85 280 Z" class="dentine"/><path d="M75 120 C72 80, 80 45, 110 40 C140 45, 148 80, 145 120 L139 120 C140 86, 132 56, 110 52 C88 56, 80 86, 81 120 Z" class="enamel"/><path d="M147.2 100 C170.2 94, 186.2 108, 210 126 L210 152 L144.8 152 L145.2 132 Z" class="gum sore"/><path d="M72.8 100 C49.8 94, 33.8 108, 10 126 L10 152 L75.2 152 L74.8 132 Z" class="gum sore"/><line x1="150.2" y1="56" x2="147.2" y2="132" class="probe"/><line x1="152.2" y1="100" x2="152.2" y2="132" class="depth"/></g><text x="375" y="420" text-anchor="middle" class="lbl">Gingivitis</text><text x="375" y="438" text-anchor="middle" class="sub">Red, swollen, bleeds</text><text x="375" y="454" text-anchor="middle" class="sub">Bone unaffected · reversible</text><g transform="translate(510,56)"><rect x="10" y="212" width="200" height="118" rx="6" class="bone"/><path d="M75 120 C72 80, 80 45, 110 40 C140 45, 148 80, 145 120 L135 280 Q110 310 85 280 Z" class="dentine"/><path d="M75 120 C72 80, 80 45, 110 40 C140 45, 148 80, 145 120 L139 120 C140 86, 132 56, 110 52 C88 56, 80 86, 81 120 Z" class="enamel"/><path d="M145.5 128 C160.1 122, 170.5 136, 210 154 L210 224 L140.2 224 L140.8 204 Z" class="gum sore"/><path d="M74.5 128 C59.9 122, 49.5 136, 10 154 L10 224 L79.8 224 L79.2 204 Z" class="gum sore"/><ellipse cx="144.1" cy="150" rx="4" ry="7" class="calculus"/><ellipse cx="142.8" cy="172" rx="4" ry="7" class="calculus"/><ellipse cx="141.5" cy="192" rx="4" ry="7" class="calculus"/><line x1="148.5" y1="84" x2="142.8" y2="204" class="probe"/><line x1="147.8" y1="128" x2="147.8" y2="204" class="depth"/></g><text x="620" y="420" text-anchor="middle" class="lbl">Periodontitis</text><text x="620" y="438" text-anchor="middle" class="sub">Deep pocket, calculus</text><text x="620" y="454" text-anchor="middle" class="sub">Bone lost · permanent</text><rect x="40" y="476" width="16" height="16" rx="4" class="gum"/><text x="64" y="489" class="small">Gum</text><rect x="190" y="476" width="16" height="16" rx="4" class="gum sore"/><text x="214" y="489" class="small">Inflamed gum</text><rect x="340" y="476" width="16" height="16" rx="4" class="bone"/><text x="364" y="489" class="small">Alveolar bone</text><rect x="490" y="476" width="16" height="16" rx="4" class="calculus"/><text x="514" y="489" class="small">Calculus</text><line x1="640" y1="484" x2="658" y2="484" class="probe"/><text x="666" y="489" class="small">Probe</text></svg><figcaption>Gum and bone levels in health, gingivitis and periodontitis (schematic).</figcaption></figure>
 <h2>The periodontium</h2>
 <ul><li><b>Gingiva</b>: gum around the neck of the tooth</li><li><b>Periodontal ligament</b>: collagen fibres from cementum to bone</li><li><b>Cementum</b>: covers the root</li><li><b>Alveolar bone</b>: the socket</li></ul>
 <h2>Gingivitis vs periodontitis</h2>

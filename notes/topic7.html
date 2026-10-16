@@ -8,10 +8,10 @@
 <style>
 :root{--bg:#09090f;--surface:#111118;--card:#16161e;--border:#2a2a38;--border-hi:#3d3d52;--text:#f0efff;--muted:#8b8aab;--dim:#55546e;--gold:#e8b84b;--gold-bg:rgba(232,184,75,0.10);--danger:#f87171;
 --d-enamel:#a5b4fc;--d-dentine:#fcd9b8;--d-pulp:#f9a8a8;--d-gum:#f0abfc;--d-bone:#2a2a38;--d-pdl:#fb7185;
---d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8}
+--d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8;--d-gum-sore:#f87171;--ok:#34d399}
 [data-theme="light"]{--bg:#f5f4f0;--surface:#eeede8;--card:#fff;--border:#dddbd4;--border-hi:#c8c5bc;--text:#1a1814;--muted:#706c60;--dim:#a09c90;--gold:#b8861a;--gold-bg:rgba(184,134,26,0.08);--danger:#dc2626;
 --d-enamel:#c7d2fe;--d-dentine:#fde7d2;--d-pulp:#fca5a5;--d-gum:#f5c2f9;--d-bone:#e7e5e0;--d-pdl:#e11d48;
---d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1}
+--d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1;--d-gum-sore:#fca5a5;--ok:#059669}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
 .topbar{position:sticky;top:0;z-index:50;background:rgba(9,9,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px}
@@ -59,7 +59,26 @@ tr:last-child td{border-bottom:none}
 .diagram .danger-zone{fill:var(--danger);fill-opacity:.08}
 .diagram .crit{stroke:var(--danger);stroke-width:1.25;stroke-dasharray:5 4}
 .diagram .curve{fill:none;stroke:var(--accent);stroke-width:2.5}
-.diagram .danger{fill:var(--danger)}
+.diagram .danger{fill:var(--danger)}.diagram .ok{fill:var(--ok)}
+.diagram .box{fill:var(--surface);stroke:var(--dim);stroke-width:1.25}
+.diagram .box.acc{fill:var(--accent-bg);stroke:var(--accent);stroke-width:2}
+.diagram .arrow{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .acc-stroke{stroke:var(--accent);stroke-width:2}
+.diagram .whitespot{fill:#fff;stroke:var(--dim);stroke-width:1}
+.diagram .lesion{fill:#8a5a2b;fill-opacity:.85}.diagram .hole{fill:var(--card)}
+.diagram .pulp.inflamed{fill:var(--danger);fill-opacity:.8}
+.diagram .gum.sore{fill:var(--d-gum-sore)}
+.diagram .calculus{fill:#b8a36a;stroke:var(--dim);stroke-width:.75}
+.diagram .probe{stroke:var(--text);stroke-width:2.5;stroke-linecap:round}
+.diagram .depth{stroke:var(--accent);stroke-width:2}
+.diagram .face{fill:none;stroke:var(--dim);stroke-width:1.5}
+.diagram .feature{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .feature-line{fill:none;stroke:var(--dim);stroke-width:1.25}
+.diagram .z1{fill:var(--d-inc);fill-opacity:.45}.diagram .z2{fill:var(--d-pm);fill-opacity:.45}.diagram .z3{fill:var(--d-can);fill-opacity:.45}.diagram .zc{fill:var(--dim);fill-opacity:.45}
+.diagram .safe-zone{fill:var(--ok);fill-opacity:.15}.diagram .frame{fill:none;stroke:var(--dim);stroke-width:1.25}
+.ref{font-size:0.7rem;color:var(--dim);margin-top:2px}
+.bridge td{font-size:0.86rem}.bridge .pd{font-size:0.8rem;white-space:nowrap}
+.bridge td a{font-weight:600;text-decoration:none}.bridge td a:hover{text-decoration:underline}
+.hub-links{font-weight:600;font-size:0.9rem}
+@media (max-width:540px){.bridge .pd{white-space:normal}}
 .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:10px;font-size:0.88rem;font-weight:700;text-decoration:none}
 .btn-quiz{background:var(--accent);color:#fff}
@@ -92,6 +111,8 @@ tr:last-child td{border-bottom:none}
 <li><b>Enhanced DBS</b> check.</li></ul>
 <h2>Core infection control</h2>
 <ol><li><b>Standard precautions</b>: every patient is potentially infectious</li><li><b>Hand hygiene</b>: the most effective measure</li><li><b>Decontamination</b>: clean → inspect → sterilise (autoclave) → store; England follows HTM 01-05</li><li><b>Sharps injury</b>: bleed it, wash it, cover it, report it</li><li><b>Waste</b>: colour-coded bags and sharps bins</li></ol>
+<figure class="diagram"><svg viewBox="0 0 760 480" role="img" aria-label="Instrument decontamination cycle: use, clean, inspect, sterilise, store"><text x="24" y="30" class="title">Instruments must be clean before they can be sterilised</text><defs><marker id="dc-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="axis-fill"/></marker></defs><rect x="312.0" y="61.0" width="136" height="58" rx="8" class="box"/><text x="380.0" y="85.0" text-anchor="middle" class="lbl">Use</text><text x="380.0" y="103.0" text-anchor="middle" class="sub">On one patient</text><rect x="475.5817208027664" y="179.84907696750906" width="136" height="58" rx="8" class="box"/><text x="543.5817208027664" y="203.84907696750906" text-anchor="middle" class="lbl">Clean</text><text x="543.5817208027664" y="221.84907696750906" text-anchor="middle" class="sub">Washer-disinfector</text><rect x="413.0990633943054" y="372.15092303249094" width="136" height="58" rx="8" class="box"/><text x="481.0990633943054" y="396.15092303249094" text-anchor="middle" class="lbl">Inspect</text><text x="481.0990633943054" y="414.15092303249094" text-anchor="middle" class="sub">Check it's clean</text><rect x="210.90093660569465" y="372.15092303249094" width="136" height="58" rx="8" class="box acc"/><text x="278.90093660569465" y="396.15092303249094" text-anchor="middle" class="lbl">Sterilise</text><text x="278.90093660569465" y="414.15092303249094" text-anchor="middle" class="sub">Steam autoclave</text><rect x="148.41827919723357" y="179.84907696750906" width="136" height="58" rx="8" class="box"/><text x="216.41827919723357" y="203.84907696750906" text-anchor="middle" class="lbl">Store</text><text x="216.41827919723357" y="221.84907696750906" text-anchor="middle" class="sub">Wrapped and dated</text><path d="M452.7 106.1 A172 172 0 0 1 505.8 144.7" class="arrow" marker-end="url(#dc-a)"/><path d="M550.7 283.0 A172 172 0 0 1 530.4 345.4" class="arrow" marker-end="url(#dc-a)"/><path d="M412.8 430.8 A172 172 0 0 1 347.2 430.8" class="arrow" marker-end="url(#dc-a)"/><path d="M229.6 345.4 A172 172 0 0 1 209.3 283.0" class="arrow" marker-end="url(#dc-a)"/><path d="M254.2 144.7 A172 172 0 0 1 307.3 106.1" class="arrow" marker-end="url(#dc-a)"/><text x="380" y="256" text-anchor="middle" class="lbl big">HTM 01-05</text><text x="380" y="276" text-anchor="middle" class="sub">decontamination cycle</text><text x="380" y="292" text-anchor="middle" class="sub">(England)</text></svg><figcaption>Reusable instrument cycle (single-use items are never reprocessed).</figcaption></figure>
+<figure class="diagram"><svg viewBox="0 0 760 170" role="img" aria-label="Four steps after a sharps injury"><text x="24" y="30" class="title">After a sharps injury: four steps, in order, straight away</text><defs><marker id="sh-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="axis-fill"/></marker></defs><rect x="24" y="62" width="160" height="70" rx="8" class="box"/><text x="104.0" y="86" text-anchor="middle" class="lbl">1. Bleed it</text><text x="104.0" y="104" text-anchor="middle" class="sub">Encourage bleeding</text><path d="M186 97.0H206" class="arrow" marker-end="url(#sh-a)"/><rect x="208" y="62" width="160" height="70" rx="8" class="box"/><text x="288.0" y="86" text-anchor="middle" class="lbl">2. Wash it</text><text x="288.0" y="104" text-anchor="middle" class="sub">Soap and running water</text><path d="M370 97.0H390" class="arrow" marker-end="url(#sh-a)"/><rect x="392" y="62" width="160" height="70" rx="8" class="box"/><text x="472.0" y="86" text-anchor="middle" class="lbl">3. Cover it</text><text x="472.0" y="104" text-anchor="middle" class="sub">Waterproof dressing</text><path d="M554 97.0H574" class="arrow" marker-end="url(#sh-a)"/><rect x="576" y="62" width="160" height="70" rx="8" class="box acc"/><text x="656.0" y="86" text-anchor="middle" class="lbl">4. Report it</text><text x="656.0" y="104" text-anchor="middle" class="sub">Follow clinic protocol</text><text x="24" y="160" class="small lbl danger">Never suck the wound or scrub it. Report the same day.</text></svg><figcaption>Sharps injury first aid.</figcaption></figure>
 <h2>Safety</h2>
 <ul><li><b>Radiation</b>: IR(ME)R regulations; ALARP</li><li><b>Emergencies</b>: fainting (most common), angina, asthma, anaphylaxis, hypoglycaemia, seizures, cardiac arrest. Annual BLS training.</li></ul>
 

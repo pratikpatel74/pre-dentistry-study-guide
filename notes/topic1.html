@@ -8,10 +8,10 @@
 <style>
 :root{--bg:#09090f;--surface:#111118;--card:#16161e;--border:#2a2a38;--border-hi:#3d3d52;--text:#f0efff;--muted:#8b8aab;--dim:#55546e;--gold:#e8b84b;--gold-bg:rgba(232,184,75,0.10);--danger:#f87171;
 --d-enamel:#a5b4fc;--d-dentine:#fcd9b8;--d-pulp:#f9a8a8;--d-gum:#f0abfc;--d-bone:#2a2a38;--d-pdl:#fb7185;
---d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8}
+--d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8;--d-gum-sore:#f87171;--ok:#34d399}
 [data-theme="light"]{--bg:#f5f4f0;--surface:#eeede8;--card:#fff;--border:#dddbd4;--border-hi:#c8c5bc;--text:#1a1814;--muted:#706c60;--dim:#a09c90;--gold:#b8861a;--gold-bg:rgba(184,134,26,0.08);--danger:#dc2626;
 --d-enamel:#c7d2fe;--d-dentine:#fde7d2;--d-pulp:#fca5a5;--d-gum:#f5c2f9;--d-bone:#e7e5e0;--d-pdl:#e11d48;
---d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1}
+--d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1;--d-gum-sore:#fca5a5;--ok:#059669}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
 .topbar{position:sticky;top:0;z-index:50;background:rgba(9,9,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px}
@@ -59,7 +59,26 @@ tr:last-child td{border-bottom:none}
 .diagram .danger-zone{fill:var(--danger);fill-opacity:.08}
 .diagram .crit{stroke:var(--danger);stroke-width:1.25;stroke-dasharray:5 4}
 .diagram .curve{fill:none;stroke:var(--accent);stroke-width:2.5}
-.diagram .danger{fill:var(--danger)}
+.diagram .danger{fill:var(--danger)}.diagram .ok{fill:var(--ok)}
+.diagram .box{fill:var(--surface);stroke:var(--dim);stroke-width:1.25}
+.diagram .box.acc{fill:var(--accent-bg);stroke:var(--accent);stroke-width:2}
+.diagram .arrow{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .acc-stroke{stroke:var(--accent);stroke-width:2}
+.diagram .whitespot{fill:#fff;stroke:var(--dim);stroke-width:1}
+.diagram .lesion{fill:#8a5a2b;fill-opacity:.85}.diagram .hole{fill:var(--card)}
+.diagram .pulp.inflamed{fill:var(--danger);fill-opacity:.8}
+.diagram .gum.sore{fill:var(--d-gum-sore)}
+.diagram .calculus{fill:#b8a36a;stroke:var(--dim);stroke-width:.75}
+.diagram .probe{stroke:var(--text);stroke-width:2.5;stroke-linecap:round}
+.diagram .depth{stroke:var(--accent);stroke-width:2}
+.diagram .face{fill:none;stroke:var(--dim);stroke-width:1.5}
+.diagram .feature{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .feature-line{fill:none;stroke:var(--dim);stroke-width:1.25}
+.diagram .z1{fill:var(--d-inc);fill-opacity:.45}.diagram .z2{fill:var(--d-pm);fill-opacity:.45}.diagram .z3{fill:var(--d-can);fill-opacity:.45}.diagram .zc{fill:var(--dim);fill-opacity:.45}
+.diagram .safe-zone{fill:var(--ok);fill-opacity:.15}.diagram .frame{fill:none;stroke:var(--dim);stroke-width:1.25}
+.ref{font-size:0.7rem;color:var(--dim);margin-top:2px}
+.bridge td{font-size:0.86rem}.bridge .pd{font-size:0.8rem;white-space:nowrap}
+.bridge td a{font-weight:600;text-decoration:none}.bridge td a:hover{text-decoration:underline}
+.hub-links{font-weight:600;font-size:0.9rem}
+@media (max-width:540px){.bridge .pd{white-space:normal}}
 .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:10px;font-size:0.88rem;font-weight:700;text-decoration:none}
 .btn-quiz{background:var(--accent);color:#fff}
@@ -85,6 +104,7 @@ tr:last-child td{border-bottom:none}
   <h1>The UK Dental Landscape</h1>
   
 <p class="lead">UK dentistry is a regulated profession. Every dentist must be registered with the General Dental Council (GDC), and patients are treated through the NHS or privately.</p>
+<figure class="diagram"><svg viewBox="0 0 760 240" role="img" aria-label="Route from A-levels through a five-year BDS and foundation training to practice"><text x="10" y="28" class="title">Five years of BDS, then a year of foundation training</text><defs><marker id="pw-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="axis-fill"/></marker></defs><rect x="10" y="76" width="110" height="100" rx="8" class="box"/><text x="65.0" y="100" text-anchor="middle" class="lbl">Before BDS</text><text x="65.0" y="118" text-anchor="middle" class="sub">A-levels</text><text x="65.0" y="134" text-anchor="middle" class="sub">UCAT, interview</text><text x="65.0" y="150" text-anchor="middle" class="sub">Health checks</text><path d="M122 126.0H134" class="arrow" marker-end="url(#pw-a)"/><rect x="136" y="76" width="110" height="100" rx="8" class="box acc"/><text x="191.0" y="100" text-anchor="middle" class="lbl">Years 1–2</text><text x="191.0" y="118" text-anchor="middle" class="sub">Biomedical</text><text x="191.0" y="134" text-anchor="middle" class="sub">sciences</text><text x="191.0" y="150" text-anchor="middle" class="sub">Phantom head</text><path d="M248 126.0H260" class="arrow" marker-end="url(#pw-a)"/><rect x="262" y="76" width="110" height="100" rx="8" class="box"/><text x="317.0" y="100" text-anchor="middle" class="lbl">Years 3–4</text><text x="317.0" y="118" text-anchor="middle" class="sub">Treating</text><text x="317.0" y="134" text-anchor="middle" class="sub">patients under</text><text x="317.0" y="150" text-anchor="middle" class="sub">supervision</text><path d="M374 126.0H386" class="arrow" marker-end="url(#pw-a)"/><rect x="388" y="76" width="110" height="100" rx="8" class="box"/><text x="443.0" y="100" text-anchor="middle" class="lbl">Year 5</text><text x="443.0" y="118" text-anchor="middle" class="sub">Outreach</text><text x="443.0" y="134" text-anchor="middle" class="sub">clinics</text><text x="443.0" y="150" text-anchor="middle" class="sub">Finals</text><path d="M500 126.0H512" class="arrow" marker-end="url(#pw-a)"/><rect x="514" y="76" width="110" height="100" rx="8" class="box"/><text x="569.0" y="100" text-anchor="middle" class="lbl">DFT · 1 year</text><text x="569.0" y="118" text-anchor="middle" class="sub">Supervised</text><text x="569.0" y="134" text-anchor="middle" class="sub">NHS practice</text><path d="M626 126.0H638" class="arrow" marker-end="url(#pw-a)"/><rect x="640" y="76" width="110" height="100" rx="8" class="box"/><text x="695.0" y="100" text-anchor="middle" class="lbl">Practice</text><text x="695.0" y="118" text-anchor="middle" class="sub">NHS or private</text><text x="695.0" y="134" text-anchor="middle" class="sub">Specialise</text><text x="695.0" y="150" text-anchor="middle" class="sub">later if wanted</text><line x1="506.0" x2="506.0" y1="66" y2="186" class="crit"/><text x="506.0" y="60" text-anchor="middle" class="small lbl">Graduate + register with the GDC</text><path d="M136 192V200H498V192" class="leader thick"/><text x="317.0" y="218" text-anchor="middle" class="lbl">BDS degree · 5 years</text></svg><figcaption>Typical route into UK dentistry. Course structure varies by dental school.</figcaption></figure>
 <h2>The BDS course (typical shape)</h2>
 <ol>
 <li><b>Years 1–2:</b> biomedical sciences (anatomy, physiology, biochemistry, oral biology), phantom-head skills, early patient contact.</li>

@@ -8,10 +8,10 @@
 <style>
 :root{--bg:#09090f;--surface:#111118;--card:#16161e;--border:#2a2a38;--border-hi:#3d3d52;--text:#f0efff;--muted:#8b8aab;--dim:#55546e;--gold:#e8b84b;--gold-bg:rgba(232,184,75,0.10);--danger:#f87171;
 --d-enamel:#a5b4fc;--d-dentine:#fcd9b8;--d-pulp:#f9a8a8;--d-gum:#f0abfc;--d-bone:#2a2a38;--d-pdl:#fb7185;
---d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8}
+--d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8;--d-gum-sore:#f87171;--ok:#34d399}
 [data-theme="light"]{--bg:#f5f4f0;--surface:#eeede8;--card:#fff;--border:#dddbd4;--border-hi:#c8c5bc;--text:#1a1814;--muted:#706c60;--dim:#a09c90;--gold:#b8861a;--gold-bg:rgba(184,134,26,0.08);--danger:#dc2626;
 --d-enamel:#c7d2fe;--d-dentine:#fde7d2;--d-pulp:#fca5a5;--d-gum:#f5c2f9;--d-bone:#e7e5e0;--d-pdl:#e11d48;
---d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1}
+--d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1;--d-gum-sore:#fca5a5;--ok:#059669}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
 .topbar{position:sticky;top:0;z-index:50;background:rgba(9,9,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px}
@@ -59,7 +59,26 @@ tr:last-child td{border-bottom:none}
 .diagram .danger-zone{fill:var(--danger);fill-opacity:.08}
 .diagram .crit{stroke:var(--danger);stroke-width:1.25;stroke-dasharray:5 4}
 .diagram .curve{fill:none;stroke:var(--accent);stroke-width:2.5}
-.diagram .danger{fill:var(--danger)}
+.diagram .danger{fill:var(--danger)}.diagram .ok{fill:var(--ok)}
+.diagram .box{fill:var(--surface);stroke:var(--dim);stroke-width:1.25}
+.diagram .box.acc{fill:var(--accent-bg);stroke:var(--accent);stroke-width:2}
+.diagram .arrow{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .acc-stroke{stroke:var(--accent);stroke-width:2}
+.diagram .whitespot{fill:#fff;stroke:var(--dim);stroke-width:1}
+.diagram .lesion{fill:#8a5a2b;fill-opacity:.85}.diagram .hole{fill:var(--card)}
+.diagram .pulp.inflamed{fill:var(--danger);fill-opacity:.8}
+.diagram .gum.sore{fill:var(--d-gum-sore)}
+.diagram .calculus{fill:#b8a36a;stroke:var(--dim);stroke-width:.75}
+.diagram .probe{stroke:var(--text);stroke-width:2.5;stroke-linecap:round}
+.diagram .depth{stroke:var(--accent);stroke-width:2}
+.diagram .face{fill:none;stroke:var(--dim);stroke-width:1.5}
+.diagram .feature{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .feature-line{fill:none;stroke:var(--dim);stroke-width:1.25}
+.diagram .z1{fill:var(--d-inc);fill-opacity:.45}.diagram .z2{fill:var(--d-pm);fill-opacity:.45}.diagram .z3{fill:var(--d-can);fill-opacity:.45}.diagram .zc{fill:var(--dim);fill-opacity:.45}
+.diagram .safe-zone{fill:var(--ok);fill-opacity:.15}.diagram .frame{fill:none;stroke:var(--dim);stroke-width:1.25}
+.ref{font-size:0.7rem;color:var(--dim);margin-top:2px}
+.bridge td{font-size:0.86rem}.bridge .pd{font-size:0.8rem;white-space:nowrap}
+.bridge td a{font-weight:600;text-decoration:none}.bridge td a:hover{text-decoration:underline}
+.hub-links{font-weight:600;font-size:0.9rem}
+@media (max-width:540px){.bridge .pd{white-space:normal}}
 .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:10px;font-size:0.88rem;font-weight:700;text-decoration:none}
 .btn-quiz{background:var(--accent);color:#fff}
@@ -85,6 +104,7 @@ tr:last-child td{border-bottom:none}
   <h1>Head &amp; Neck Anatomy Essentials</h1>
   
 <p class="lead">The trigeminal nerve (CN V) is the most important structure for a dentist: it carries sensation from the teeth and is the nerve you numb with local anaesthetic.</p>
+<figure class="diagram"><svg viewBox="0 0 760 410" role="img" aria-label="Areas of the face supplied by the three trigeminal branches"><text x="24" y="30" class="title">Three trigeminal branches share the face, but not the angle of the jaw</text><text x="24" y="50" class="sub">Skin sensation, front view (schematic; real boundaries overlap)</text><defs><clipPath id="tg-face"><ellipse cx="190" cy="230" rx="118" ry="158"/></clipPath></defs><g clip-path="url(#tg-face)"><rect x="0" y="0" width="400" height="196" class="z1"/><rect x="0" y="196" width="400" height="100" class="z2"/><rect x="180" y="196" width="20" height="70" class="z1"/><rect x="0" y="296" width="400" height="200" class="z3"/><circle cx="95" cy="335" r="36" class="zc"/><circle cx="285" cy="335" r="36" class="zc"/></g><ellipse cx="190" cy="230" rx="118" ry="158" class="face"/><ellipse cx="146" cy="196" rx="18" ry="8" class="feature"/><ellipse cx="234" cy="196" rx="18" ry="8" class="feature"/><path d="M180 202 L174 262 Q190 272 206 262 L200 202" class="feature-line"/><path d="M158 296 Q190 310 222 296" class="feature-line"/><text x="190" y="128" text-anchor="middle" class="lbl">V1</text><text x="120" y="250" text-anchor="middle" class="lbl">V2</text><text x="190" y="350" text-anchor="middle" class="lbl">V3</text><text x="108" y="340" text-anchor="middle" class="small lbl">C2/3</text><rect x="352" y="82" width="18" height="18" rx="4" class="z1"/><text x="380" y="96" class="lbl">V1 · Ophthalmic</text><text x="380" y="114" class="small">Forehead, upper eyelid, bridge and tip of nose</text><rect x="352" y="158" width="18" height="18" rx="4" class="z2"/><text x="380" y="172" class="lbl">V2 · Maxillary</text><text x="380" y="190" class="small">Cheek, lower eyelid, side of nose, upper lip</text><text x="380" y="206" class="sub">Inside: upper teeth, palate, upper gums</text><rect x="352" y="234" width="18" height="18" rx="4" class="z3"/><text x="380" y="248" class="lbl">V3 · Mandibular</text><text x="380" y="266" class="small">Lower lip, chin, lower jaw, temple in front of ear</text><text x="380" y="282" class="sub">Inside: lower teeth, tongue (sensation); moves chewing muscles</text><rect x="352" y="310" width="18" height="18" rx="4" class="zc"/><text x="380" y="324" class="lbl">Angle of the jaw</text><text x="380" y="342" class="small">Not trigeminal: cervical nerves C2/C3</text><text x="380" y="358" class="sub">A classic exam trap</text></svg><figcaption>Sensory territories of the trigeminal nerve (CN V).</figcaption></figure>
 <h2>Trigeminal nerve: three branches</h2>
 <table><tr><th>Branch</th><th>Supplies</th><th>Dental relevance</th></tr>
 <tr><td>V1 Ophthalmic</td><td>Forehead, upper eyelid, nose</td><td>Rarely relevant</td></tr>

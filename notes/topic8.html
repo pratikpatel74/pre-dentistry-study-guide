@@ -8,10 +8,10 @@
 <style>
 :root{--bg:#09090f;--surface:#111118;--card:#16161e;--border:#2a2a38;--border-hi:#3d3d52;--text:#f0efff;--muted:#8b8aab;--dim:#55546e;--gold:#e8b84b;--gold-bg:rgba(232,184,75,0.10);--danger:#f87171;
 --d-enamel:#a5b4fc;--d-dentine:#fcd9b8;--d-pulp:#f9a8a8;--d-gum:#f0abfc;--d-bone:#2a2a38;--d-pdl:#fb7185;
---d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8}
+--d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8;--d-gum-sore:#f87171;--ok:#34d399}
 [data-theme="light"]{--bg:#f5f4f0;--surface:#eeede8;--card:#fff;--border:#dddbd4;--border-hi:#c8c5bc;--text:#1a1814;--muted:#706c60;--dim:#a09c90;--gold:#b8861a;--gold-bg:rgba(184,134,26,0.08);--danger:#dc2626;
 --d-enamel:#c7d2fe;--d-dentine:#fde7d2;--d-pulp:#fca5a5;--d-gum:#f5c2f9;--d-bone:#e7e5e0;--d-pdl:#e11d48;
---d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1}
+--d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1;--d-gum-sore:#fca5a5;--ok:#059669}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
 .topbar{position:sticky;top:0;z-index:50;background:rgba(9,9,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px}
@@ -59,7 +59,26 @@ tr:last-child td{border-bottom:none}
 .diagram .danger-zone{fill:var(--danger);fill-opacity:.08}
 .diagram .crit{stroke:var(--danger);stroke-width:1.25;stroke-dasharray:5 4}
 .diagram .curve{fill:none;stroke:var(--accent);stroke-width:2.5}
-.diagram .danger{fill:var(--danger)}
+.diagram .danger{fill:var(--danger)}.diagram .ok{fill:var(--ok)}
+.diagram .box{fill:var(--surface);stroke:var(--dim);stroke-width:1.25}
+.diagram .box.acc{fill:var(--accent-bg);stroke:var(--accent);stroke-width:2}
+.diagram .arrow{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .acc-stroke{stroke:var(--accent);stroke-width:2}
+.diagram .whitespot{fill:#fff;stroke:var(--dim);stroke-width:1}
+.diagram .lesion{fill:#8a5a2b;fill-opacity:.85}.diagram .hole{fill:var(--card)}
+.diagram .pulp.inflamed{fill:var(--danger);fill-opacity:.8}
+.diagram .gum.sore{fill:var(--d-gum-sore)}
+.diagram .calculus{fill:#b8a36a;stroke:var(--dim);stroke-width:.75}
+.diagram .probe{stroke:var(--text);stroke-width:2.5;stroke-linecap:round}
+.diagram .depth{stroke:var(--accent);stroke-width:2}
+.diagram .face{fill:none;stroke:var(--dim);stroke-width:1.5}
+.diagram .feature{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .feature-line{fill:none;stroke:var(--dim);stroke-width:1.25}
+.diagram .z1{fill:var(--d-inc);fill-opacity:.45}.diagram .z2{fill:var(--d-pm);fill-opacity:.45}.diagram .z3{fill:var(--d-can);fill-opacity:.45}.diagram .zc{fill:var(--dim);fill-opacity:.45}
+.diagram .safe-zone{fill:var(--ok);fill-opacity:.15}.diagram .frame{fill:none;stroke:var(--dim);stroke-width:1.25}
+.ref{font-size:0.7rem;color:var(--dim);margin-top:2px}
+.bridge td{font-size:0.86rem}.bridge .pd{font-size:0.8rem;white-space:nowrap}
+.bridge td a{font-weight:600;text-decoration:none}.bridge td a:hover{text-decoration:underline}
+.hub-links{font-weight:600;font-size:0.9rem}
+@media (max-width:540px){.bridge .pd{white-space:normal}}
 .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:10px;font-size:0.88rem;font-weight:700;text-decoration:none}
 .btn-quiz{background:var(--accent);color:#fff}
@@ -90,6 +109,7 @@ tr:last-child td{border-bottom:none}
 <p class="callout"><b>Watch for change:</b> in 2026 the GDC <a href="https://www.gdc-uk.org/about/what-we-do/consultations" target="_blank" rel="noopener">consulted</a> on replacing these with a Framework for Professionalism built on four principles. Revised <a href="https://www.gdc-uk.org/news-blogs/news/detail/2025/09/25/gdc-publishes-revised-standards-for-education" target="_blank" rel="noopener">Standards for Education</a> apply from 2026/27. Check the GDC site for the current version.</p>
 <h2>Valid consent</h2>
 <ul><li><b>Informed</b>: options (including none), risks, benefits, costs</li><li><b>Voluntary</b>: no pressure</li><li><b>Capacity</b>: understand, retain, weigh up, communicate (Mental Capacity Act 2005)</li><li><b>Ongoing</b>: can be withdrawn at any time</li><li><b>Children</b>: under-16s can consent if Gillick competent</li></ul>
+<figure class="diagram"><svg viewBox="0 0 760 384" role="img" aria-label="Mental capacity test: understand, retain, weigh up, communicate"><text x="24" y="30" class="title">Capacity test: the patient must manage all four, for this decision</text><defs><marker id="cp-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="axis-fill"/></marker></defs><rect x="255" y="58" width="250" height="46" rx="8" class="box"/><text x="380.0" y="82" text-anchor="middle" class="lbl">Start by assuming capacity</text><path d="M380 104V122" class="arrow"/><path d="M107.0 122H653.0" class="arrow"/><path d="M107.0 122V148" class="arrow" marker-end="url(#cp-a)"/><rect x="24" y="150" width="166" height="64" rx="8" class="box"/><text x="107.0" y="174" text-anchor="middle" class="lbl">Understand</text><text x="107.0" y="192" text-anchor="middle" class="sub">the information given</text><path d="M107.0 214V236" class="arrow"/><path d="M289.0 122V148" class="arrow" marker-end="url(#cp-a)"/><rect x="206" y="150" width="166" height="64" rx="8" class="box"/><text x="289.0" y="174" text-anchor="middle" class="lbl">Retain</text><text x="289.0" y="192" text-anchor="middle" class="sub">it long enough</text><path d="M289.0 214V236" class="arrow"/><path d="M471.0 122V148" class="arrow" marker-end="url(#cp-a)"/><rect x="388" y="150" width="166" height="64" rx="8" class="box"/><text x="471.0" y="174" text-anchor="middle" class="lbl">Weigh up</text><text x="471.0" y="192" text-anchor="middle" class="sub">the options and risks</text><path d="M471.0 214V236" class="arrow"/><path d="M653.0 122V148" class="arrow" marker-end="url(#cp-a)"/><rect x="570" y="150" width="166" height="64" rx="8" class="box"/><text x="653.0" y="174" text-anchor="middle" class="lbl">Communicate</text><text x="653.0" y="192" text-anchor="middle" class="sub">their decision</text><path d="M653.0 214V236" class="arrow"/><path d="M107.0 236H653.0" class="arrow"/><path d="M210 236V284" class="arrow" marker-end="url(#cp-a)"/><path d="M550 236V284" class="arrow" marker-end="url(#cp-a)"/><text x="218" y="266" class="small lbl ok">All four: yes</text><text x="558" y="266" class="small lbl danger">Any one: no</text><rect x="60" y="286" width="300" height="80" rx="8" class="box acc"/><text x="210.0" y="310" text-anchor="middle" class="lbl">Has capacity</text><text x="210.0" y="328" text-anchor="middle" class="sub">Can consent or refuse, even if</text><text x="210.0" y="344" text-anchor="middle" class="sub">you think the choice is unwise</text><rect x="400" y="286" width="300" height="80" rx="8" class="box"/><text x="550.0" y="310" text-anchor="middle" class="lbl">Lacks capacity for this decision</text><text x="550.0" y="328" text-anchor="middle" class="sub">Act in their best interests and</text><text x="550.0" y="344" text-anchor="middle" class="sub">involve others (MCA 2005)</text></svg><figcaption>Assessing capacity under the Mental Capacity Act 2005 (England and Wales).</figcaption></figure>
 <h2>Ethics basics</h2>
 <ul><li><b>Four principles</b>: autonomy, beneficence, non-maleficence, justice</li><li><b>Confidentiality</b>: share only with consent, by law, or to prevent serious harm (UK GDPR)</li><li><b>Duty of candour</b>: be open when things go wrong</li><li><b>Safeguarding</b>: know how to raise concerns</li><li><b>Social media</b>: can trigger fitness-to-practise proceedings</li></ul>
 
