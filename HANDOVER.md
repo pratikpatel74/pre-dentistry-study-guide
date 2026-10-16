@@ -160,12 +160,26 @@ The device needs folder access to `~/Documents/Projects`: request it with device
 | ee3c465 | Added `src/`, this handover doc, quiz theme-icon fix |
 | 5be1df0 | Rebalanced answer lengths; 8 new topics (10–13 science, 14–17 Getting in); 20 diagrams; homepage sections |
 | 941e14e | Handover: Claude Doc retired |
-| (after 941e14e) | UCAT practice: 4 drills, 4 timed sets, full mock (288 original questions) |
+| 3e805e4 | UCAT practice: 4 drills, 4 timed sets, full mock (288 original questions) |
+| (after 3e805e4) | Handover: review findings and recommendations |
+
+## Review, 16 Oct 2026 (after UCAT practice was added)
+
+Checks: 45 pages, no broken internal links, no JS errors, all quizzes and UCAT tests mark correctly. Findings, in recommended order:
+
+1. **UCAT answer keys are guessable.** SJT appropriateness keys: 38 'Very appropriate' vs only 6 'Appropriate, but not ideal' (of 77). VR True/False/Can't tell: False 26, True 18, Can't tell 10. Every DM Yes/No set has 2–3 'Yes'. Fix: rewrite or add nuanced SJT responses, more Can't tell VR statements, and vary DM Yes counts from 1 to 4.
+2. **UCAT practice runs out.** Once a set is done, it's the same next time. QR and computed DM items are generated, so add a "New set" button that builds a fresh QR/DM set from a random seed in the browser (port the generators to JS) or pre-build several seeded variants.
+3. **Facts go stale.** UCAT 2027 dates (published spring 2027), the UCAS 2028 deadline and NHS contract changes. Suggest a scheduled reminder for early April 2027 to re-check and update Topics 14–16.
+4. **Progress tracking.** Only the last score is kept. A progress page with score history per topic and UCAT set, plus weakest topics, would guide revision.
+5. **Study plan.** A week-by-week Year 12 plan (UCAT drills → timed sets → mocks → official tests by summer 2027).
+6. Low priority: meta descriptions are missing on 44 of 45 pages (only matters if the site should appear in search).
+
+On hold (Pratik, 16 Oct): linking the hub from the landing page; a mixed "test me on everything" quiz.
 
 ## Open items / ideas
 
 - **Each spring/summer:** refresh UCAT dates, the UCAS deadline and the NHS contract notes (Topics 14–16).
-- Item 4 from the Oct 2026 review, still to decide with Pratik: add the hub to the landing page; a mixed "test me on everything" quiz. (Claude Doc: retired.)
+- See the review section above for the current recommendations. (Claude Doc: retired.)
 
 - Add the Pre-Dentistry hub to the landing page (https://alevel-study-hubs.netlify.app/, repo `alevel-hub`). Not done yet; ask first.
 - Finance hub review findings, not yet fixed (offered to Pratik): the live site lags the repo (6 vs 9 topics; check that Netlify is linked to `main`); `Topic6_Summary.docx` has two known errors listed in `FINANCE_HUB_CONTEXT.md`.
