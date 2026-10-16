@@ -9,6 +9,9 @@ Same design and quiz engine as the A-level finance hub. Netlify serves the repo 
 - `index.html` – hub homepage (topic cards, last-score badges)
 - `quizzes/topicN.html` – quiz: 10 of 22 questions per session, options shuffled, 60s timer toggle, retry missed, keyboard 1–4 / Enter
 - `notes/topicN.html` – summary notes with diagrams; printable to PDF
+- `ucat/` – UCAT practice: drills, timed sets, full mock
+- `plan.html` – week-by-week Year 12 plan to UCAT 2027 and UCAS 2027 (ticks saved in the browser)
+- `progress.html` – score history per topic and UCAT set, weakest topics (from browser storage)
 - `src/` – content, diagrams and the build script (edit here, never the generated HTML)
 
 ## Topics

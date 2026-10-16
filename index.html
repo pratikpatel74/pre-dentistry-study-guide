@@ -348,6 +348,11 @@ body {
 .t1 .btn-quiz, .t2 .btn-quiz, .t3 .btn-quiz, .t4 .btn-quiz, .t5 .btn-quiz, .t6 .btn-quiz, .t7 .btn-quiz, .t8 .btn-quiz, .t9 .btn-quiz, .t10 .btn-quiz, .t11 .btn-quiz, .t12 .btn-quiz, .t13 .btn-quiz, .t14 .btn-quiz, .t15 .btn-quiz, .t16 .btn-quiz, .t17 .btn-quiz { color: #000; }
 :root[data-theme="light"] .t1 .btn-quiz, :root[data-theme="light"] .t2 .btn-quiz, :root[data-theme="light"] .t3 .btn-quiz, :root[data-theme="light"] .t4 .btn-quiz, :root[data-theme="light"] .t5 .btn-quiz, :root[data-theme="light"] .t6 .btn-quiz, :root[data-theme="light"] .t7 .btn-quiz, :root[data-theme="light"] .t8 .btn-quiz, :root[data-theme="light"] .t9 .btn-quiz, :root[data-theme="light"] .t10 .btn-quiz, :root[data-theme="light"] .t11 .btn-quiz, :root[data-theme="light"] .t12 .btn-quiz, :root[data-theme="light"] .t13 .btn-quiz, :root[data-theme="light"] .t14 .btn-quiz, :root[data-theme="light"] .t15 .btn-quiz, :root[data-theme="light"] .t16 .btn-quiz, :root[data-theme="light"] .t17 .btn-quiz { color: #fff; }
 .section-intro { color: var(--muted); font-size: 0.9rem; margin: -16px 0 24px; }
+.tools { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:28px auto 18px; max-width:820px; }
+.tool { flex:1 1 220px; display:flex; flex-direction:column; gap:2px; text-align:left; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; color:var(--text); text-decoration:none; transition:border-color .2s; }
+.tool:hover { border-color:var(--gold); }
+.tool b { font-size:0.95rem; }
+.tool span { font-size:0.8rem; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -364,6 +369,11 @@ body {
   <div class="hero-eyebrow">Year 12 to dental school · UK</div>
   <h1>Pre-Dentistry<br><em>Study Hub</em></h1>
   <p class="hero-sub">4 steps to getting in and 13 science topics · 10 questions per quiz from a pool of 22 · notes and diagrams throughout.</p>
+  <div class="tools">
+    <a class="tool" href="plan.html"><b>Study plan</b><span>Week by week to UCAT and UCAS</span></a>
+    <a class="tool" href="progress.html"><b>My progress</b><span>Scores, trends and weakest topics</span></a>
+    <a class="tool" href="ucat/index.html"><b>UCAT practice</b><span>Drills, timed sets and a full mock</span></a>
+  </div>
   <div class="stats-strip">
     <div class="stat-cell"><div class="stat-num">17</div><div class="stat-label">Topics</div></div>
     <div class="stat-cell"><div class="stat-num">374</div><div class="stat-label">Questions</div></div>

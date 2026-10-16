@@ -24,7 +24,7 @@ Audience: a **Year 12** student (AQA A-level Maths, Chemistry, Biology) applying
 
 ## Site contents
 
-17 topics, 22 questions each (374 total), 10 drawn per quiz session, 20 diagrams. The homepage has two sections: **Getting in** (topics 14–17, labelled Step 1–4, `section="apply"`) shown first, then **Dental science** (topics 1–13).
+17 topics, 22 questions each (374 total), 10 drawn per quiz session, 20 diagrams. The homepage hero has three tool links (Study plan, My progress, UCAT practice), then two sections: **Getting in** (topics 14–17, labelled Step 1–4, `section="apply"`) shown first, then **Dental science** (topics 1–13).
 
 | # | Topic | Diagrams (key in `DIAGRAMS`) |
 |---|---|---|
@@ -46,6 +46,12 @@ Audience: a **Year 12** student (AQA A-level Maths, Chemistry, Biology) applying
 | 12 | Oral Pathology & Oral Cancer | `referral` |
 | 13 | Dental Radiography | `radio` |
 
+## Study plan and progress pages (added 16 Oct 2026, `src/extras.py`)
+
+- **`plan.html`**: 52 weeks, Mon 19 Oct 2026 to the week of 11 Oct 2027 (UCAS deadline week). `PHASES` (Groundwork, Christmas, Build the skills, Easter, Timed practice, Exam season, UCAT intensive 5 Jul–8 Aug with the test suggested late Jul / early Aug, Application). `SPECIFIC[monday]` = (UCAT task or None for the phase default, other task); **every week must have an entry** (asserted). Default UCAT task rotates VR → DM → QR → SJT per week by phase (drill → drill ×2 → timed ×2 → maintenance). Ticks stored in `plan_done`; the current week is highlighted. **When UCAT 2027 dates are published, adjust the April booking week and the intensive phase.**
+- **`progress.html`**: summary strip, "Revise next" (topics whose last-3 average, ignoring retry-missed sessions, is below 80%), UCAT by subtest (last 5 sessions per subtest across all sets, weakest flagged), history tables with last-10 sparklines, export/import JSON backup, two-click reset (keeps theme and timer keys).
+- **History keys:** quizzes push `{score,total,pct,date,retry}` to `topicN_hist` (build.py patches the template's `_last` save; last 50 kept). UCAT pushes `{date,set,sections}` to `ucat_<id>_hist`. Both pages fall back to `_last` for scores saved before history existed.
+
 ## UCAT practice (`ucat/`)
 
 `ucat/index.html` links 9 tests (288 original questions), all built from `src/ucat_*.py` by `ucat_build.build_ucat()` (called from `build.py`):
@@ -53,11 +59,14 @@ Audience: a **Year 12** student (AQA A-level Maths, Chemistry, Biology) applying
 | Test | Questions | Time |
 |---|---|---|
 | Drills: `drill-vr`, `drill-dm`, `drill-qr`, `drill-sjt` | 10 each | untimed, feedback after each answer |
+
+**Question sets:** `drill-dm`, `drill-qr`, `timed-dm`, `timed-qr` each carry 10 generated sets, and the mock's DM and QR sections 3 (seed + 1000×v; v0 = the original seed). A section with several sets has `variants` instead of `items`; the engine picks set `ucat_<id>_set` (localStorage) and shows a **New set ↻** button on the start and results pages. VR and SJT are hand-written, so they have one set each.
+
 | Timed: `timed-vr` / `timed-dm` / `timed-qr` / `timed-sjt` | 16 / 12 / 12 / 24 | 8 / 13 / 9 / 9 min (real pace) |
 | `mock` | 44 VR, 35 DM, 36 QR, 69 SJT | 22 / 37 / 26 / 26 min (+25% or untimed option) |
 
 - **Never copy official UCAT or third-party questions.** UCAT doesn't publish past papers; its free practice tests are linked instead (https://www.ucat.ac.uk/prepare/practice-tests/).
-- `ucat_engine.html`: one page template (passage beside question, section timers that auto-advance, flag and question grid, on-screen calculator in QR, results, review of all or wrong answers). Scores are saved in localStorage as `ucat_<id>_last`. Marking: MC 1; DM Yes/No sets 2 (1 with one slip); SJT ratings 1 (½ if one step away).
+- `ucat_engine.html`: one page template (passage beside question, section timers that auto-advance, flag and question grid, on-screen calculator in QR, results, review of all or wrong answers). Scores are saved in localStorage as `ucat_<id>_last` and appended to `ucat_<id>_hist`. Marking: MC 1; DM Yes/No sets 2 (1 with one slip); SJT ratings 1 (½ if one step away).
 - `ucat_gen.py`: QR scenarios (9 types) and DM syllogisms (model-checked across all possible worlds), ordering puzzles (brute-force unique), Venn, probability (exact fractions) and table Yes/No items. **Answers are computed.** Seeds 101 (mock), 202 (timed), 303 (drill). Stress-tested over 400 seeds.
 - `ucat_vr.py` (18 passages, 72 Qs), `ucat_sjt.py` (27 scenarios), `ucat_dm.py` (9 strongest-argument items): hand-written. Banks are split so no question appears in two tests.
 - To check: play every set and confirm full marks when answered correctly (the Playwright pattern in the "How Claude commits" section's checks).
@@ -75,6 +84,7 @@ src/
   ucat_build.py     # assembles the 9 UCAT tests and ucat/index.html
   ucat_gen.py       # computed QR and DM items
   ucat_vr.py, ucat_sjt.py, ucat_dm.py   # hand-written VR passages, SJT scenarios, DM arguments
+  extras.py         # plan.html (week-by-week plan) and progress.html (score history)
   rebalance.py      # FIX[(topic, q index)] = replacement options; applied by build.py (see Content rules)
   bridge.py         # Topic 9 notes: ROWS of (hub id, A-level title, comes-back-as, [pre-dentistry topics])
   diagrams.py       # tooth, fdi, stephan
@@ -128,6 +138,7 @@ localStorage keys per topic: `topicN_last` (last score, drives the homepage badg
 - **NHS charges in England from 1 April 2026:** Band 1 £27.90, Band 2 £76.60, Band 3 £332.10, urgent £27.90 (source: NHSBSA KA-02003).
 - **GDC:** the 9-principle Standards for the Dental Team are current. In 2026 the GDC consulted on replacing them with a 4-principle Framework for Professionalism. Revised Standards for Education apply from 2026/27. Update Topic 8 when the outcome is published.
 - **Occupational health:** hepatitis B course (0, 1, 6 months) plus immunity test; BBV screening (hep B, hep C, HIV) for exposure-prone procedures; enhanced DBS. Schools differ on timing.
+- **Scheduled check:** a one-off scheduled task "Pre-Dentistry Hub: April 2027 fact check" (trig_01Jbw6MsVGTqprAcch5bRZ31) runs on 5 Apr 2027 ~08:52 UK. It re-checks UCAT 2027, the UCAS deadline, the personal statement format, NHS charges/contract and the plan dates; commits fixes locally in its own session and reports (it must not push).
 - **UCAT** (ucat.ac.uk): VR 44 q / 22 min, DM 35 / 37, QR 36 / 26, SJT 69 / 26; 117½ min total; VR/DM/QR 300–900 each (900–2700), SJT Band 1–4; Abstract Reasoning removed from 2025. 2026 window 13 Jul – 24 Sep. **2027 dates not yet published (expected spring 2027): update Topic 15 and the `route` diagram then.**
 - **UCAS:** dentistry deadline 15 Oct in 2025 and 2026; expect mid-Oct 2027 for 2028 entry. Up to 4 dentistry choices. New personal statement (2026 entry onwards): 3 questions, 4,000 characters total, minimum 350 each.
 - **Schools:** typical AAA incl. Chem + Bio (KCL, QMUL typically A*AA); about 8 MMI and 4 panel (leadingtuition summary, Oct 2026). Birmingham: usually at least 3 days' NHS or mixed practice shadowing; dentistry + medicine applications not considered.
@@ -161,9 +172,12 @@ The device needs folder access to `~/Documents/Projects`: request it with device
 | 5be1df0 | Rebalanced answer lengths; 8 new topics (10–13 science, 14–17 Getting in); 20 diagrams; homepage sections |
 | 941e14e | Handover: Claude Doc retired |
 | 3e805e4 | UCAT practice: 4 drills, 4 timed sets, full mock (288 original questions) |
-| (after 3e805e4) | Handover: review findings and recommendations |
+| a77cd7f | Handover: review findings and recommendations |
+| (next) | Review fixes 1–5: rebalanced UCAT keys, New set for QR/DM, April 2027 scheduled check, progress page, study plan |
 
 ## Review, 16 Oct 2026 (after UCAT practice was added)
+
+**Status: items 1–5 done 16 Oct 2026 (see below). Item 6 not done.**
 
 Checks: 45 pages, no broken internal links, no JS errors, all quizzes and UCAT tests mark correctly. Findings, in recommended order:
 
@@ -172,13 +186,14 @@ Checks: 45 pages, no broken internal links, no JS errors, all quizzes and UCAT t
 3. **Facts go stale.** UCAT 2027 dates (published spring 2027), the UCAS 2028 deadline and NHS contract changes. Suggest a scheduled reminder for early April 2027 to re-check and update Topics 14–16.
 4. **Progress tracking.** Only the last score is kept. A progress page with score history per topic and UCAT set, plus weakest topics, would guide revision.
 5. **Study plan.** A week-by-week Year 12 plan (UCAT drills → timed sets → mocks → official tests by summer 2027).
+   - *Done:* SJT appropriateness keys now 28 / 15 / 17 / 20 (very / not ideal / inappropriate-not-awful / very inappropriate), importance 9 / 6 / 4 / 5; VR True 18, False 20, Can't tell 16 (6 statements rewritten); DM Yes counts now 1–4 (syllogism weights [1,2,2,3,3,4], table [1,2,3,3,4]). Items 2–5 done as described in the sections above.
 6. Low priority: meta descriptions are missing on 44 of 45 pages (only matters if the site should appear in search).
 
 On hold (Pratik, 16 Oct): linking the hub from the landing page; a mixed "test me on everything" quiz.
 
 ## Open items / ideas
 
-- **Each spring/summer:** refresh UCAT dates, the UCAS deadline and the NHS contract notes (Topics 14–16).
+- **Each spring/summer:** refresh UCAT dates (April 2027 is covered by the scheduled check), the UCAS deadline and the NHS contract notes (Topics 14–16).
 - See the review section above for the current recommendations. (Claude Doc: retired.)
 
 - Add the Pre-Dentistry hub to the landing page (https://alevel-study-hubs.netlify.app/, repo `alevel-hub`). Not done yet; ask first.

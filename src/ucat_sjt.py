@@ -16,13 +16,13 @@ SJT = [
  ("app", "Ben messages Chloe privately, asking if she is OK and whether she can still do her part.", 0, "Checking in shows concern for her wellbeing and gives her a chance to respond."),
  ("app", "Ben and the others share Chloe's section between them so the work is finished on time.", 1, "This protects the deadline, but on its own doesn't address why Chloe is absent or make sure she is OK."),
  ("app", "Ben tells the tutor that Chloe is lazy and should fail.", 3, "Making judgements without knowing the facts is unprofessional and unfair."),
- ("app", "Ben lets the tutor know the group is having difficulty contacting one member.", 0, "A factual, non-judgemental update is sensible, especially close to a deadline."),
+ ("app", "Ben emails the tutor about Chloe before trying to contact her himself.", 1, "Involving the tutor near a deadline is reasonable, but Ben should first try to reach Chloe directly; she may have a good reason."),
 ]),
 ("""<p>Daniel, a final-year dental student, is treating a patient under supervision. He realises that he has started preparing the wrong tooth: the upper left first premolar instead of the upper left second premolar. He has removed only a small amount of enamel.</p>""", [
  ("app", "Daniel stops and tells his supervisor immediately.", 0, "Patient safety and honesty come first. The supervisor can advise on what to do next."),
  ("app", "Daniel continues on the correct tooth and says nothing, as the damage is minor.", 3, "Concealing a mistake breaches the duty of candour and puts trust at risk."),
  ("app", "Daniel explains to the patient what has happened, with his supervisor present.", 0, "Patients must be told openly when something goes wrong (duty of candour)."),
- ("app", "Daniel records the incident in the patient's notes.", 0, "Accurate records of what happened are essential."),
+ ("app", "Daniel records the incident in the notes but waits until the end of the session to tell his supervisor.", 2, "Recording it is right, but the supervisor needs to know now: the error affects what happens next for this patient."),
 ]),
 ("""<p>Ella, a dental student, is shadowing at a practice. Between patients she overhears the dentist making a rude joke about a patient's weight to the dental nurse. The patient has already left.</p>""", [
  ("imp", "That the patient did not hear the comment", 2, "It reduces immediate harm, but disrespectful comments about patients are unprofessional regardless."),
@@ -31,7 +31,7 @@ SJT = [
  ("imp", "Whether the dental nurse laughed at the joke", 3, "This doesn't change whether the comment was appropriate."),
 ]),
 ("""<p>Farah is a first-year dental student. During a busy exam period, a friend offers her a copy of last year's anatomy exam answers, saying lots of students have them. Farah isn't sure whether using them is allowed.</p>""", [
- ("app", "Farah checks the university's rules or asks the module lead before looking.", 0, "Finding out the rules first protects her integrity."),
+ ("app", "Farah doesn't open the file and plans to mention it to the module lead after the exam.", 1, "She avoids cheating, which is good, but a possible leak affects fairness for everyone and is better raised before the exam."),
  ("app", "Farah uses the answers, since others are using them too.", 3, "'Everyone is doing it' doesn't make it acceptable; it may be academic misconduct."),
  ("app", "Farah declines and revises using the official materials.", 0, "The safest and most honest choice."),
  ("app", "Farah takes the file but promises herself not to open it until after the exam.", 2, "Not cheating directly, but holding material that may be prohibited is unwise."),
@@ -54,21 +54,21 @@ SJT = [
 ]),
 ("""<p>Jack, a dental student, is taking a medical history. The patient says they don't want to tell a student about their medication and asks to see 'a proper dentist'.</p>""", [
  ("app", "Jack explains his role, that he is supervised, and why the information matters for safe care.", 0, "Clear explanation may reassure the patient and respects their choice."),
- ("app", "Jack tells his supervisor and offers for the supervisor to take the history.", 0, "Respects the patient's wishes while making sure the history is taken."),
+ ("app", "Jack asks his supervisor to take over without explaining to the patient why the question matters.", 1, "Getting help is sensible, but Jack misses the chance to explain, which might have reassured the patient."),
  ("app", "Jack records 'no medication' so the appointment can continue.", 3, "Falsifying records is dishonest and could put the patient at serious risk."),
  ("app", "Jack tells the patient they must answer or they cannot be treated.", 2, "Treatment may indeed depend on it, but presenting it as an ultimatum is coercive and unhelpful."),
 ]),
 ("""<p>Kemi is volunteering on a ward as part of a work-experience placement before applying to dentistry. A patient asks her for a glass of water, but she has been told some patients are 'nil by mouth' before surgery.</p>""", [
  ("app", "Kemi checks with a nurse before giving the patient anything.", 0, "She doesn't know whether the patient can drink, so checking keeps the patient safe."),
  ("app", "Kemi gives the patient a small amount, as water is harmless.", 3, "Water could be dangerous before an anaesthetic; she must not guess."),
- ("app", "Kemi tells the patient she'll find out and comes back with an answer.", 0, "Polite and safe, and she follows up."),
+ ("app", "Kemi tells the patient she can't help and suggests they press the call bell for a nurse.", 1, "This points the patient to the right person, but finding out for them herself would be more helpful."),
  ("app", "Kemi ignores the request because volunteers can't help with care.", 2, "She shouldn't give water herself, but ignoring the patient is unkind. She should pass the request on."),
 ]),
 ("""<p>Leo, a dental student, is behind with a reflective portfolio due tomorrow. A friend offers to send Leo her portfolio so he can 'get some ideas'.</p>""", [
  ("imp", "That reflective portfolios must reflect Leo's own experiences", 0, "Reflection must be personal and genuine; copying is misconduct."),
  ("imp", "That his friend has offered willingly", 3, "Her willingness doesn't make copying acceptable."),
  ("imp", "Whether he could ask for an extension because of genuine difficulties", 1, "A legitimate option worth considering if there are real reasons."),
- ("imp", "The risk that both students could face fitness-to-practise action", 0, "Academic dishonesty can lead to serious consequences for both."),
+ ("imp", "The risk that both students could face fitness-to-practise action", 1, "Important, but the main point is that copying is dishonest, whatever the consequences."),
 ]),
 ("""<p>Maya, a dental student, is helping on a school oral-health visit. A seven-year-old tells her quietly that she often has no breakfast and that her dad 'gets angry a lot'.</p>""", [
  ("app", "Maya listens calmly and tells the lead dentist or the school's safeguarding lead the same day.", 0, "Possible safeguarding concerns must be passed to the right person promptly."),
@@ -78,14 +78,14 @@ SJT = [
 ]),
 ("""<p>Noah, a dental student, has been feeling low for several weeks. He is struggling to concentrate on clinic and has stopped seeing friends.</p>""", [
  ("app", "Noah speaks to his personal tutor or the university wellbeing service.", 0, "Seeking support early is the right thing to do."),
- ("app", "Noah books an appointment with his GP.", 0, "Appropriate for possible mental health difficulties."),
+ ("app", "Noah decides to wait until the holidays and see his GP then if he still feels low.", 2, "Seeing a GP is right, but delaying while he's struggling on clinic risks his wellbeing and possibly patient care."),
  ("app", "Noah keeps going to clinic and hides how he feels so no one thinks less of him.", 2, "Understandable, but hiding problems can affect his health and possibly patient care."),
  ("app", "Noah stops attending clinic without telling anyone.", 3, "Unexplained absence lets down patients and colleagues and leaves him without support."),
 ]),
 ("""<p>Olivia is a dental student treating a patient who becomes angry because the appointment is running 20 minutes late. The patient raises their voice in the waiting room.</p>""", [
  ("app", "Olivia apologises for the wait and explains the reason calmly.", 0, "Acknowledging the frustration and explaining can defuse the situation."),
  ("app", "Olivia raises her own voice so the patient will listen.", 3, "Escalating makes things worse and is unprofessional."),
- ("app", "Olivia asks a supervisor or receptionist for help if the patient stays upset.", 0, "Sensible if she can't resolve it herself."),
+ ("app", "Olivia moves on to her next task and leaves the receptionist to deal with the upset patient.", 2, "The receptionist may help, but walking away without acknowledging the patient is likely to make things worse."),
  ("app", "Olivia tells the patient they can complain if they're not happy.", 1, "Patients do have a right to complain, but leading with this can sound dismissive; listening first is better."),
 ]),
 ("""<p>Priya, a dental student, sees a classmate copying answers from another student during an online class test that counts towards the final mark.</p>""", [
@@ -110,7 +110,7 @@ SJT = [
  ("app", "Sofia politely declines, explaining she keeps professional boundaries with patients.", 0, "Maintaining professional boundaries protects patients and clinicians."),
  ("app", "Sofia accepts the friend request but declines the coffee.", 2, "Less serious than meeting, but social media links still blur boundaries."),
  ("app", "Sofia meets the patient, since she's only a student.", 3, "Students are held to professional standards with patients."),
- ("app", "Sofia mentions the request to her supervisor if the patient persists.", 0, "Sensible if she feels uncomfortable or the patient keeps asking."),
+ ("app", "Sofia ignores the request without saying anything.", 1, "She keeps the boundary, which matters most, but a brief polite explanation would avoid confusion if she meets the patient again."),
 ]),
 ("""<p>Tariq, a Year 12 student on dental work experience, notices that the dentist doesn't wash their hands or change gloves between two patients.</p>""", [
  ("imp", "The risk of cross-infection to patients", 0, "Infection control protects patients; this is the key consideration."),
@@ -126,20 +126,20 @@ SJT = [
 ]),
 ("""<p>Victor, a dental student, is asked by a nervous patient whether a procedure will hurt. Victor knows there may be some discomfort.</p>""", [
  ("app", "Victor explains honestly what the patient might feel and how it will be managed.", 0, "Honesty supports informed consent and builds trust."),
- ("app", "Victor tells the patient it definitely won't hurt, to calm them.", 3, "False reassurance is dishonest and damages trust."),
- ("app", "Victor tells the patient they can raise a hand at any time to stop.", 0, "Giving control helps anxious patients and respects ongoing consent."),
+ ("app", "Victor tells the patient it definitely won't hurt, to calm them.", 2, "Well-meant, but not honest; if it does hurt, the patient's trust is damaged. Not as bad as dismissing their worry."),
+ ("app", "Victor reassures the patient that most people find it less uncomfortable than they expect.", 1, "Kind and broadly true, but it doesn't answer the patient's specific question or explain how discomfort will be managed."),
  ("app", "Victor says he doesn't know and moves on quickly.", 2, "He should give what information he can or ask his supervisor."),
 ]),
 ("""<p>Willow, a dental student, finds that a group project includes several paragraphs copied from a website without referencing. The group member who wrote that section says 'no one checks'.</p>""", [
  ("app", "Willow explains that it's plagiarism and suggests rewriting and referencing it properly.", 0, "Addresses the problem directly and constructively."),
  ("app", "Willow rewrites the section herself without telling the group.", 1, "Fixes the problem but misses the chance to resolve it openly with the group."),
  ("app", "Willow submits the project as it is to avoid conflict.", 3, "Submitting plagiarised work puts the whole group at risk of misconduct."),
- ("app", "Willow asks the module lead for guidance if the group can't agree.", 0, "Seeking guidance is sensible if the issue can't be resolved."),
+ ("app", "Willow tells the module lead about the copied section before raising it with the group.", 1, "Plagiarism must be dealt with, but speaking to the group first gives them the chance to fix it themselves."),
 ]),
 ("""<p>Xander, a dental student, is running late for clinic because of a train cancellation. His first patient is due in 15 minutes and he will be about 30 minutes late.</p>""", [
  ("app", "Xander phones the clinic straight away to let them know.", 0, "Early warning lets the clinic inform the patient and plan."),
  ("app", "Xander says nothing and hopes the patient is also late.", 3, "Leaving the patient and team uninformed is unprofessional."),
- ("app", "Xander apologises to the patient when he arrives.", 0, "Courteous and respectful."),
+ ("app", "Xander texts the patient from his personal phone to say he's running late.", 2, "Well-intentioned, but students shouldn't contact patients from personal phones; the clinic should pass on the message."),
  ("app", "Xander messages a classmate to pass on the message.", 1, "Better than nothing, but contacting the clinic directly is more reliable."),
 ]),
 ("""<p>Yasmin, a dental student, is shadowing a dentist who asks her to carry out a procedure she hasn't been trained to do yet, saying 'it's easy, I'll watch'.</p>""", [
@@ -158,7 +158,7 @@ SJT = [
  ("app", "Alex quietly reminds them that they could be overheard.", 0, "A tactful reminder stops the breach quickly."),
  ("app", "Alex joins in the conversation.", 3, "That would make the breach worse."),
  ("app", "Alex reports them to the dean without speaking to them first.", 2, "Raising concerns may be needed, but going straight to formal action for a first, minor lapse is disproportionate."),
- ("app", "Alex mentions it to a tutor if it happens again.", 0, "Proportionate escalation if the behaviour continues."),
+ ("app", "Alex changes the subject loudly so the others stop talking about the patient.", 1, "It stops the breach in the moment, but doesn't help them realise why it was a problem."),
 ]),
 ("""<p>Ben (a dental student) has been asked by a patient to give them a 'quick tooth whitening' outside clinic hours, for cash.</p>""", [
  ("app", "Ben refuses and explains he can only treat patients in clinic under supervision.", 0, "Students mustn't treat patients outside supervised clinical settings."),

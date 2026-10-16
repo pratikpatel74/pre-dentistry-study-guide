@@ -452,7 +452,7 @@ def dm_syllogism(rng):
         concl = []
         yes = [c for c in cands if all(_holds(c, w) for w in ws)]
         no = [c for c in cands if not all(_holds(c, w) for w in ws)]
-        ny = rng.choice([2, 2, 3])
+        ny = rng.choice([1, 2, 2, 3, 3, 4])
         if len(yes) < ny or len(no) < 5 - ny: continue
         concl = yes[:ny] + no[:5 - ny]
         rng.shuffle(concl)
@@ -638,9 +638,9 @@ def dm_interpret(rng):
     cands.append((f"The clinic saw more than {tv} patients over the three days.", sum(tot_day) > tv))
     rng.shuffle(cands)
     yes = [c for c in cands if c[1]]; no = [c for c in cands if not c[1]]
-    if len(yes) < 2 or len(no) < 2:
+    if len(yes) < 1 or len(no) < 1:
         return dm_interpret(rng)
-    ny = rng.choice([2, 3])
+    ny = rng.choice([1, 2, 3, 3, 4])
     ny = max(5 - len(no), min(ny, len(yes)))
     pick = yes[:ny] + no[:5 - ny]
     if len(pick) < 5:

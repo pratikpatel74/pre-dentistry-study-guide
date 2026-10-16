@@ -11,7 +11,7 @@ VR = [
 [
  ("Horace Wells tested nitrous oxide on himself before demonstrating it publicly.", TF, 0, "The passage says Wells had his own tooth removed under the gas before the Boston demonstration."),
  ("Wells's patient in Boston felt no pain at all.", TF, 1, "The patient 'later said he had felt little', not nothing, and he cried out during the procedure."),
- ("Morton's ether demonstration took place before Wells's Boston demonstration.", TF, 1, "Wells demonstrated 'the following year' after 1844, i.e. 1845; Morton's was October 1846."),
+ ("Morton was in the audience at Wells's Boston demonstration.", TF, 2, "The passage says Morton was a former associate of Wells, but not whether he attended the Boston demonstration."),
  ("Which statement is best supported by the passage?", ["Morton was trained as a dentist by Wells.", "Nitrous oxide was first used medically in a hospital.", "Several people disputed who should be credited with the discovery.", "Ether was abandoned soon after 1846."], 2, "The final paragraph describes bitter disputes over priority. The passage says Morton was a former associate, not that Wells trained him."),
 ]),
 
@@ -44,7 +44,7 @@ VR = [
 [
  ("Staff pay was reduced by a fifth during the trial.", TF, 1, "The trial ran 'with no reduction in pay'."),
  ("Sick days fell by about a third compared with the previous year.", TF, 0, "Stated directly in the first paragraph."),
- ("All teams moved permanently to a four-day week after the trial.", TF, 1, "The company kept it for 'most teams', not all."),
+ ("Customer-support staff took more sick days than other staff during the trial.", TF, 2, "Sick days fell overall, and support staff found the rota less predictable, but sick days are not broken down by team."),
  ("Which of the following does the chief executive accept?", ["The four-day week reduced output.", "Other factors may have influenced the results.", "Customer-support staff preferred the new rota.", "The trial proved that shorter weeks reduce stress."], 1, "He acknowledged that other changes, such as new software, may have affected the results."),
 ]),
 
@@ -53,7 +53,7 @@ VR = [
 <p>In England, William Addis is often credited with the first mass-produced toothbrush. According to a frequently repeated story, he came up with the idea while in prison around 1780, drilling holes in a piece of bone and threading bristles through them. Whether the prison story is true is uncertain, but the company he founded made toothbrushes for more than two centuries.</p>
 <p>Animal bristles had drawbacks: they dried slowly and could harbour bacteria. Nylon bristles, introduced in the late 1930s, solved these problems and were cheaper. Even so, regular toothbrushing did not become common in many countries until the mid-twentieth century.</p>""",
 [
- ("Chewing twigs to clean teeth is no longer practised anywhere.", TF, 1, "The passage says it 'continues in parts of Africa, the Middle East and South Asia today'."),
+ ("The company William Addis founded still makes toothbrushes today.", TF, 2, "It 'made toothbrushes for more than two centuries', which doesn't say whether it still does."),
  ("William Addis definitely invented the toothbrush while in prison.", TF, 1, "The prison story is described as uncertain, and brushes existed in China centuries earlier."),
  ("Nylon bristles dried faster than animal bristles.", TF, 0, "Nylon 'solved these problems', one of which was that animal bristles dried slowly."),
  ("According to the passage, when did regular toothbrushing become common in many countries?", ["In the fifteenth century", "Around 1780", "In the late 1930s", "In the mid-twentieth century"], 3, "The final sentence says it was not common until the mid-twentieth century."),
@@ -121,7 +121,7 @@ VR = [
 [
  ("New drugs are usually compared with a placebo rather than with no treatment.", TF, 0, "Stated in the first paragraph."),
  ("The whole of the placebo effect is caused by regression to the mean.", TF, 1, "Some of the effect is real, because expectations can change pain."),
- ("Open-label placebo studies have mostly involved large numbers of patients.", TF, 1, "They 'have mostly been small'."),
+ ("Open-label placebos work better for pain than for nausea.", TF, 2, "Pain and nausea are mentioned for placebos in trials generally; the passage doesn't compare conditions for open-label studies."),
  ("Which conclusion is best supported by the passage?", ["Placebos cure most illnesses.", "Some improvement seen with placebos would have happened anyway.", "Patients must never be told they are taking a placebo.", "Placebos work best for broken bones."], 1, "Natural improvement and regression to the mean explain part of the apparent effect."),
 ]),
 
@@ -187,7 +187,7 @@ VR = [
 [
  ("Printing with movable metal type was developed in Mainz.", TF, 0, "'Following its development in the German city of Mainz.'"),
  ("Most Europeans could read by 1500.", TF, 1, "'The majority of Europeans could not read.'"),
- ("Early printed books were cheaper than pamphlets.", TF, 1, "Pamphlets were described as cheap while early books 'were still costly'."),
+ ("More books were printed in Mainz than in any other city by 1500.", TF, 2, "Mainz is where the technique was developed; the passage gives no figures for output by city."),
  ("What advantage of printing for scholars does the passage describe?", ["They could print their own books at home.", "They could refer to identical copies of the same edition.", "Books no longer needed to be read aloud.", "Copying errors increased."], 1, "Identical copies let scholars in different cities refer to the same page."),
 ]),
 
@@ -198,7 +198,7 @@ VR = [
 [
  ("Studies have proven that social media causes depression in teenagers.", TF, 1, "The passage stresses that association is not causation."),
  ("Teenagers' estimates of their own screen time are often inaccurate.", TF, 0, "Stated in the second paragraph."),
- ("Age limits for social media have been introduced in every country.", TF, 1, "'Some governments have introduced or proposed' them."),
+ ("Age limits for social media have reduced teenage anxiety where they have been introduced.", TF, 2, "The passage gives arguments for and against age limits but no evidence of their effect."),
  ("Which alternative explanation for the association does the passage give?", ["Social media improves wellbeing.", "Unhappy young people may use social media more.", "Teenagers underestimate their happiness.", "Age limits cause anxiety."], 1, "'Young people who are already unhappy may use social media more.'"),
 ]),
 ]

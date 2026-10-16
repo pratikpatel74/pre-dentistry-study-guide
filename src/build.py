@@ -81,6 +81,13 @@ for t in TOPICS:
                   "sessionQ=pool.slice(0,Math.min(DRAW,pool.length)).map(q=>{const o=[0,1,2,3];"
                   "for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[o[i],o[j]]=[o[j],o[i]];}"
                   "return Object.assign({},q,{opts:o.map(k=>q.opts[k]),ans:o.indexOf(q.ans)});});")
+    # Keep a score history for the progress page (last 50 sessions per topic).
+    _old = "try{localStorage.setItem(TOPIC_ID+'_last',JSON.stringify({score,total:sessionQ.length,pct,date:new Date().toISOString()}));}catch(e){}"
+    assert _old in s
+    s = s.replace(_old, "try{const _r={score,total:sessionQ.length,pct,date:new Date().toISOString(),retry:retryMissed};"
+                  "localStorage.setItem(TOPIC_ID+'_last',JSON.stringify(_r));"
+                  "let _h=[];try{_h=JSON.parse(localStorage.getItem(TOPIC_ID+'_hist')||'[]');}catch(e){}"
+                  "_h.push(_r);localStorage.setItem(TOPIC_ID+'_hist',JSON.stringify(_h.slice(-50)));}catch(e){}")
     if light_accent(t['dark']):  # light accents need dark text in the dark theme
         s = s.replace("</style>", ".btn-next,.btn-quiz{color:#000}[data-theme=\"light\"] .btn-next{color:#fff}</style>", 1)
     s = s.replace("initSession();\n</script>", "try{if(document.documentElement.getAttribute('data-theme')==='light')document.querySelector('.theme-btn').textContent='🌙';}catch(e){}\ninitSession();\n</script>", 1)
@@ -290,6 +297,11 @@ index = f"""<!doctype html>
 {per_topic}
 {light_btn_text}
 .section-intro {{ color: var(--muted); font-size: 0.9rem; margin: -16px 0 24px; }}
+.tools {{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:28px auto 18px; max-width:820px; }}
+.tool {{ flex:1 1 220px; display:flex; flex-direction:column; gap:2px; text-align:left; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; color:var(--text); text-decoration:none; transition:border-color .2s; }}
+.tool:hover {{ border-color:var(--gold); }}
+.tool b {{ font-size:0.95rem; }}
+.tool span {{ font-size:0.8rem; color:var(--muted); }}
 </style>
 </head>
 <body>
@@ -306,6 +318,11 @@ index = f"""<!doctype html>
   <div class="hero-eyebrow">Year 12 to dental school · UK</div>
   <h1>Pre-Dentistry<br><em>Study Hub</em></h1>
   <p class="hero-sub">{len(APPLY)} steps to getting in and {len(SCIENCE)} science topics · 10 questions per quiz from a pool of 22 · notes and diagrams throughout.</p>
+  <div class="tools">
+    <a class="tool" href="plan.html"><b>Study plan</b><span>Week by week to UCAT and UCAS</span></a>
+    <a class="tool" href="progress.html"><b>My progress</b><span>Scores, trends and weakest topics</span></a>
+    <a class="tool" href="ucat/index.html"><b>UCAT practice</b><span>Drills, timed sets and a full mock</span></a>
+  </div>
   <div class="stats-strip">
     <div class="stat-cell"><div class="stat-num">{len(TOPICS)}</div><div class="stat-label">Topics</div></div>
     <div class="stat-cell"><div class="stat-num">{nq}</div><div class="stat-label">Questions</div></div>
@@ -351,6 +368,9 @@ loadScores();
 </body>
 </html>
 """
+import extras
+extras.build_progress(OUT, THEME_HEAD, FONT, NOTES_CSS, THEME_JS, TOPICS, ucat_build.META)
+extras.build_plan(OUT, THEME_HEAD, FONT, NOTES_CSS, THEME_JS)
 open(f"{OUT}/index.html", "w", encoding="utf-8").write(index)
 
 readme = f"""# Pre-Dentistry Study Hub
@@ -364,6 +384,9 @@ Same design and quiz engine as the A-level finance hub. Netlify serves the repo 
 - `index.html` – hub homepage (topic cards, last-score badges)
 - `quizzes/topicN.html` – quiz: 10 of 22 questions per session, options shuffled, 60s timer toggle, retry missed, keyboard 1–4 / Enter
 - `notes/topicN.html` – summary notes with diagrams; printable to PDF
+- `ucat/` – UCAT practice: drills, timed sets, full mock
+- `plan.html` – week-by-week Year 12 plan to UCAT 2027 and UCAS 2027 (ticks saved in the browser)
+- `progress.html` – score history per topic and UCAT set, weakest topics (from browser storage)
 - `src/` – content, diagrams and the build script (edit here, never the generated HTML)
 
 ## Topics

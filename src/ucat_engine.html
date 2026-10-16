@@ -95,6 +95,7 @@ table.info th{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;co
 .tag.ok{background:var(--ok-bg);color:var(--ok)}.tag.bad{background:var(--bad-bg);color:var(--bad)}.tag.part{background:var(--part-bg);color:var(--part)}
 .hidden{display:none!important}
 @media(max-width:600px){.nav .mid .hide-sm{display:none}.wrap{padding:20px 14px 130px}.brand{font-size:0.8rem}.brand b{display:none}.stem{max-height:42vh}}
+.setbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:14px 0 4px;padding:10px 12px;border:1px dashed var(--border);border-radius:10px;font-size:0.9rem}
 </style>
 </head>
 <body>
@@ -134,6 +135,10 @@ const SJT_APP = ['Very appropriate','Appropriate, but not ideal','Inappropriate,
 const SJT_IMP = ['Very important','Important','Of minor importance','Not important at all'];
 let state = {phase:'start', sec:0, idx:0, answers:[], flags:[], timeLeft:0, timer:null, factor:1, timed:TEST.mode==='test', checked:{}};
 const app = document.getElementById('app');
+const NSETS = TEST.sections.reduce((a,s)=>Math.max(a,(s.variants||[]).length),1);
+function loadSet(v){ TEST.setNo=((v%NSETS)+NSETS)%NSETS; TEST.sections.forEach(s=>{ if(s.variants) s.items=s.variants[TEST.setNo%s.variants.length]; }); try{localStorage.setItem('ucat_'+TEST.id+'_set',String(TEST.setNo));}catch(e){} }
+(function(){ let v=0; try{ v=parseInt(localStorage.getItem('ucat_'+TEST.id+'_set')||'0',10)||0; }catch(e){} loadSet(v); })();
+function newSet(){ clearInterval(state.timer); loadSet(TEST.setNo+1); state.checked={}; state.idx=0; state.phase='start'; render(); window.scrollTo(0,0); }
 
 function esc(s){return String(s);}
 function fmt(t){if(t<0)t=0;const m=Math.floor(t/60),s=Math.floor(t%60);return m+':'+String(s).padStart(2,'0');}
@@ -173,6 +178,7 @@ function renderStart(){
     <div class="card" style="margin-top:20px">
       <table class="info"><tr><th>Section</th><th>Questions</th><th>Time</th></tr>${rows}</table>
       ${timing}
+      ${NSETS>1?`<div class="setbar"><span>Question set <b>${TEST.setNo+1} of ${NSETS}</b></span><button class="btn btn-ghost" onclick="newSet()">New set ↻</button></div>`:''}
       <p style="font-size:0.82rem" class="muted">Original practice questions in UCAT style, not official UCAT content. Scores here are raw marks, not UCAT scaled scores.</p>
       <div style="margin-top:16px"><button class="btn btn-primary" onclick="begin()">Start →</button></div>
     </div></div>`;
@@ -278,7 +284,9 @@ function markItem(it,c){
 function results(){
   return TEST.sections.map((s,si)=>{let got=0,max=0;s.items.forEach((it,ii)=>{const m=markItem(itemOpts(it),state.answers[si][ii]);got+=m.got;max+=m.max;});return {name:s.name,key:s.key,got,max};});
 }
-function saveResult(){ try{ const r=results(); localStorage.setItem('ucat_'+TEST.id+'_last', JSON.stringify({date:new Date().toISOString(), sections:r})); }catch(e){} }
+function saveResult(){ try{ const r=results(); const rec={date:new Date().toISOString(), set:(TEST.setNo||0)+1, sections:r};
+  localStorage.setItem('ucat_'+TEST.id+'_last', JSON.stringify(rec));
+  let h=[]; try{ h=JSON.parse(localStorage.getItem('ucat_'+TEST.id+'_hist')||'[]'); }catch(e){} h.push(rec); localStorage.setItem('ucat_'+TEST.id+'_hist', JSON.stringify(h.slice(-50))); }catch(e){} }
 function renderResults(){
   const r=results();
   const rows=r.map(x=>{const pct=x.max?Math.round(100*x.got/x.max):0;return `<div class="score-row"><div style="flex:1"><b>${x.name}</b><div class="bar"><i style="width:${pct}%"></i></div></div><div style="margin-left:18px;text-align:right;min-width:90px"><b>${Math.round(x.got*10)/10} / ${x.max}</b><div class="muted" style="font-size:0.8rem">${pct}%</div></div></div>`;}).join('');
@@ -289,6 +297,7 @@ function renderResults(){
     <button class="btn btn-primary" onclick="state.phase='review';state.reviewWrongOnly=false;render()">Review answers</button>
     <button class="btn btn-ghost" onclick="state.phase='review';state.reviewWrongOnly=true;render()">Review mistakes</button>
     <button class="btn btn-ghost" onclick="location.reload()">Try again</button>
+    ${NSETS>1?'<button class="btn btn-ghost" onclick="newSet()">New set ↻</button>':''}
     <a class="btn btn-ghost" href="index.html">← UCAT practice</a></div></div></div>`;
 }
 function renderReview(){

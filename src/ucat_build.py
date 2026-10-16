@@ -76,31 +76,34 @@ def build_sets():
     arg_mock, arg_timed, arg_drill = DM_ARG[:6], DM_ARG[6:8], DM_ARG[8:9]
 
     S = {}
+    NV = 10   # question sets per drill/timed QR and DM page
+    def dmv(counts, args, seed, n=NV): return [dm_items(counts, args, seed + 1000 * v) for v in range(n)]
+    def qrv(k, seed, n=NV): return [gen.qr_set(k, seed + 1000 * v) for v in range(n)]
     S["drill-vr"] = [("vr", vr_items(vr_drill, [4, 3, 3]), 0)]
-    S["drill-dm"] = [("dm", dm_items({"syll": 2, "order": 2, "venn": 2, "prob": 2, "interp": 1}, arg_drill, 303), 0)]
-    S["drill-qr"] = [("qr", gen.qr_set(10, 303), 0)]
+    S["drill-dm"] = [("dm", dmv({"syll": 2, "order": 2, "venn": 2, "prob": 2, "interp": 1}, arg_drill, 303), 0)]
+    S["drill-qr"] = [("qr", qrv(10, 303), 0)]
     S["drill-sjt"] = [("sjt", sjt_items(sjt_drill, 10), 0)]
     S["timed-vr"] = [("vr", vr_items(vr_timed), 8)]
-    S["timed-dm"] = [("dm", dm_items({"syll": 2, "order": 2, "venn": 2, "prob": 2, "interp": 2}, arg_timed, 202), 13)]
-    S["timed-qr"] = [("qr", gen.qr_set(12, 202), 9)]
+    S["timed-dm"] = [("dm", dmv({"syll": 2, "order": 2, "venn": 2, "prob": 2, "interp": 2}, arg_timed, 202), 13)]
+    S["timed-qr"] = [("qr", qrv(12, 202), 9)]
     S["timed-sjt"] = [("sjt", sjt_items(sjt_timed, 24), 9)]
     S["mock"] = [("vr", vr_items(vr_mock), 22),
-                 ("dm", dm_items({"syll": 6, "order": 6, "venn": 6, "prob": 5, "interp": 6}, arg_mock, 101), 37),
-                 ("qr", gen.qr_set(36, 101), 26),
+                 ("dm", dmv({"syll": 6, "order": 6, "venn": 6, "prob": 5, "interp": 6}, arg_mock, 101, 3), 37),
+                 ("qr", qrv(36, 101, 3), 26),
                  ("sjt", sjt_items(sjt_mock, 69), 26)]
     return S
 
 
 META = {
     "drill-vr": ("Verbal Reasoning drill", "Untimed drill", "10 questions on 3 passages, with feedback after each answer."),
-    "drill-dm": ("Decision Making drill", "Untimed drill", "10 mixed questions with feedback after each answer."),
-    "drill-qr": ("Quantitative Reasoning drill", "Untimed drill", "10 data questions with worked answers."),
+    "drill-dm": ("Decision Making drill", "Untimed drill", "10 mixed questions with feedback after each answer. 10 different sets."),
+    "drill-qr": ("Quantitative Reasoning drill", "Untimed drill", "10 data questions with worked answers. 10 different sets."),
     "drill-sjt": ("Situational Judgement drill", "Untimed drill", "10 items with the reasoning behind each rating."),
     "timed-vr": ("Verbal Reasoning: timed set", "Timed set · real pace", "16 questions in 8 minutes."),
-    "timed-dm": ("Decision Making: timed set", "Timed set · real pace", "12 questions in 13 minutes."),
-    "timed-qr": ("Quantitative Reasoning: timed set", "Timed set · real pace", "12 questions in 9 minutes."),
+    "timed-dm": ("Decision Making: timed set", "Timed set · real pace", "12 questions in 13 minutes. 10 different sets."),
+    "timed-qr": ("Quantitative Reasoning: timed set", "Timed set · real pace", "12 questions in 9 minutes. 10 different sets."),
     "timed-sjt": ("Situational Judgement: timed set", "Timed set · real pace", "24 questions in 9 minutes."),
-    "mock": ("Full UCAT mock", "Full-length mock", "All four subtests in order with real timings: 184 questions in 111 minutes, then a full review."),
+    "mock": ("Full UCAT mock", "Full-length mock", "All four subtests in order with real timings: 184 questions in 111 minutes, then a full review. 3 versions of the Decision Making and Quantitative Reasoning sections."),
 }
 
 
@@ -113,16 +116,24 @@ def build_ucat(OUT, THEME_HEAD, FONT, notes_css):
         title, kind, blurb = META[sid]
         data = {"id": sid, "title": title, "kind": kind, "blurb": blurb,
                 "mode": "drill" if sid.startswith("drill") else "test",
-                "sections": [{"key": k, "name": NAMES[k], "minutes": m, "intro": INTRO[k], "items": items} for k, items, m in secs]}
+                "sections": []}
+        for k, items, m in secs:
+            sec = {"key": k, "name": NAMES[k], "minutes": m, "intro": INTRO[k]}
+            if isinstance(items[0], list):          # several generated question sets
+                assert len({len(v) for v in items}) == 1
+                sec["variants"] = items; sec["items"] = []
+            else:
+                sec["items"] = items
+            data["sections"].append(sec)
         for s in data["sections"]:
-            for it in s["items"]:
+            for it in [i for v in s.get("variants", [s["items"]]) for i in v]:
                 if it["type"] == "mc":
                     assert 0 <= it["ans"] < len(it["opts"]) and len(set(it["opts"])) == len(it["opts"]), (sid, it["q"][:80])
                 elif it["type"] == "yn":
                     assert len(it["statements"]) == 5 and len(it["answers"]) == 5
                 else:
                     assert it["type"] == "rate" and 0 <= it["ans"] <= 3
-        counts[sid] = [len(s["items"]) for s in data["sections"]]
+        counts[sid] = [len(s["variants"][0]) if "variants" in s else len(s["items"]) for s in data["sections"]]
         page = tpl.replace("__TITLE__", title).replace("__DATA__", json.dumps(data, ensure_ascii=False).replace("</", "<\\/"))
         open(f"{OUT}/ucat/{sid}.html", "w", encoding="utf-8").write(page)
     assert counts["mock"] == [44, 35, 36, 69], counts["mock"]

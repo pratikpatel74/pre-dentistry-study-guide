@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><script>try{var _t=localStorage.getItem("theme");if(_t)document.documentElement.setAttribute("data-theme",_t);}catch(e){}</script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My progress – Pre-Dentistry Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090f;--surface:#111118;--card:#16161e;--border:#2a2a38;--border-hi:#3d3d52;--text:#f0efff;--muted:#8b8aab;--dim:#55546e;--gold:#e8b84b;--gold-bg:rgba(232,184,75,0.10);--danger:#f87171;
+--d-enamel:#a5b4fc;--d-dentine:#fcd9b8;--d-pulp:#f9a8a8;--d-gum:#f0abfc;--d-bone:#2a2a38;--d-pdl:#fb7185;
+--d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8;--d-gum-sore:#f87171;--ok:#34d399}
+[data-theme="light"]{--bg:#f5f4f0;--surface:#eeede8;--card:#fff;--border:#dddbd4;--border-hi:#c8c5bc;--text:#1a1814;--muted:#706c60;--dim:#a09c90;--gold:#b8861a;--gold-bg:rgba(184,134,26,0.08);--danger:#dc2626;
+--d-enamel:#c7d2fe;--d-dentine:#fde7d2;--d-pulp:#fca5a5;--d-gum:#f5c2f9;--d-bone:#e7e5e0;--d-pdl:#e11d48;
+--d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1;--d-gum-sore:#fca5a5;--ok:#059669}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(9,9,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px}
+[data-theme="light"] .topbar{background:rgba(245,244,240,0.88)}
+.topbar-brand{font-size:0.9rem;font-weight:700;display:flex;align-items:center;gap:10px}
+.topbar-brand span{font-size:0.68rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold);border-radius:4px;padding:2px 8px}
+.back-link{font-size:0.78rem;font-weight:600;color:var(--muted);text-decoration:none}
+.back-link:hover{color:var(--text)}
+.theme-btn{background:var(--surface);border:1px solid var(--border);border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.container{max-width:760px;margin:0 auto;padding:48px 20px 80px}
+.eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h1{font-size:2rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:20px;line-height:1.15}
+h2{font-size:1.1rem;font-weight:700;margin:32px 0 12px;padding-top:8px;border-top:1px solid var(--border)}
+p,li{font-size:0.95rem;color:var(--text)}
+p{margin-bottom:12px}
+.lead{font-size:1.05rem;color:var(--muted);margin-bottom:24px}
+ul,ol{padding-left:22px;margin-bottom:12px}li{margin-bottom:6px}
+a{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:0.88rem;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);background:var(--surface)}
+tr:last-child td{border-bottom:none}
+.formula{font-family:ui-monospace,Menlo,monospace;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:0.9rem;overflow-x:auto}
+.callout{background:var(--accent-bg);border:1px solid var(--accent);border-radius:10px;padding:12px 16px}
+.diagram{margin:20px 0 24px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px}
+.diagram svg{width:100%;height:auto;display:block}
+.diagram figcaption{font-size:0.78rem;color:var(--dim);text-align:center;margin-top:6px}
+.diagram text{font-family:'Inter',system-ui,sans-serif;fill:var(--text);font-size:13px}
+.diagram .title{font-size:15px;font-weight:600}
+.diagram .lbl{font-weight:600}.diagram .big{font-size:14px}
+.diagram .sub{font-size:11.5px;fill:var(--muted)}.diagram .small{font-size:12px}
+.diagram .num{font-size:12.5px}.diagram .num.hl{font-weight:800}
+.diagram .ink-fill{fill:var(--text)}
+.diagram .leader{fill:none;stroke:var(--dim);stroke-width:1}.diagram .leader.thick{stroke-width:1.25}
+.diagram .axis{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .axis-fill{fill:var(--dim)}
+.diagram .bone{fill:var(--d-bone)}
+.diagram .pdl{fill:none;stroke:var(--d-pdl);stroke-width:6;opacity:.75}
+.diagram .dentine{fill:var(--d-dentine);stroke:var(--dim);stroke-width:1.25}
+.diagram .enamel{fill:var(--d-enamel);stroke:var(--dim);stroke-width:1}
+.diagram .pulp{fill:var(--d-pulp);stroke:var(--dim);stroke-width:1}
+.diagram .gum{fill:var(--d-gum);stroke:var(--dim);stroke-width:1}
+.diagram .tt{stroke:var(--dim);stroke-width:1;fill-opacity:.35}
+.diagram .tt.inc{fill:var(--d-inc)}.diagram .tt.can{fill:var(--d-can)}.diagram .tt.pm{fill:var(--d-pm)}.diagram .tt.mol{fill:var(--d-mol)}
+.diagram .tt.hl{stroke:var(--text);stroke-width:2.5}
+.diagram .danger-zone{fill:var(--danger);fill-opacity:.08}
+.diagram .crit{stroke:var(--danger);stroke-width:1.25;stroke-dasharray:5 4}
+.diagram .curve{fill:none;stroke:var(--accent);stroke-width:2.5}
+.diagram .danger{fill:var(--danger)}.diagram .ok{fill:var(--ok)}
+.diagram .box{fill:var(--surface);stroke:var(--dim);stroke-width:1.25}
+.diagram .box.acc{fill:var(--accent-bg);stroke:var(--accent);stroke-width:2}
+.diagram .arrow{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .acc-stroke{stroke:var(--accent);stroke-width:2}
+.diagram .whitespot{fill:#fff;stroke:var(--dim);stroke-width:1}
+.diagram .lesion{fill:#8a5a2b;fill-opacity:.85}.diagram .hole{fill:var(--card)}
+.diagram .pulp.inflamed{fill:var(--danger);fill-opacity:.8}
+.diagram .gum.sore{fill:var(--d-gum-sore)}
+.diagram .calculus{fill:#b8a36a;stroke:var(--dim);stroke-width:.75}
+.diagram .probe{stroke:var(--text);stroke-width:2.5;stroke-linecap:round}
+.diagram .depth{stroke:var(--accent);stroke-width:2}
+.diagram .face{fill:none;stroke:var(--dim);stroke-width:1.5}
+.diagram .feature{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .feature-line{fill:none;stroke:var(--dim);stroke-width:1.25}
+.diagram .z1{fill:var(--d-inc);fill-opacity:.45}.diagram .z2{fill:var(--d-pm);fill-opacity:.45}.diagram .z3{fill:var(--d-can);fill-opacity:.45}.diagram .zc{fill:var(--dim);fill-opacity:.45}
+.diagram .ok-text{fill:var(--ok)}.diagram .acc-text{fill:var(--accent);font-weight:600}
+.diagram .bar{fill:var(--dim);fill-opacity:.5}.diagram .bar.acc-fill{fill:var(--accent);fill-opacity:.85}
+.diagram .gridline{stroke:var(--border);stroke-width:1}.diagram .frame-stroke{stroke:var(--dim);stroke-width:1.25}
+.checks{list-style:none;padding-left:0}
+.diagram .safe-zone{fill:var(--ok);fill-opacity:.15}.diagram .frame{fill:none;stroke:var(--dim);stroke-width:1.25}
+.ref{font-size:0.7rem;color:var(--dim);margin-top:2px}
+.bridge td{font-size:0.86rem}.bridge .pd{font-size:0.8rem;white-space:nowrap}
+.bridge td a{font-weight:600;text-decoration:none}.bridge td a:hover{text-decoration:underline}
+.hub-links{font-weight:600;font-size:0.9rem}
+@media (max-width:540px){.bridge .pd{white-space:normal}}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:10px;font-size:0.88rem;font-weight:700;text-decoration:none}
+.btn-quiz{background:var(--accent);color:#fff}
+.btn-hub{background:var(--surface);color:var(--muted);border:1px solid var(--border)}
+.btn-print{background:var(--surface);color:var(--muted);border:1px solid var(--border);cursor:pointer;font-family:inherit}
+@media print{.topbar,.cta{display:none}body{background:#fff;color:#000}}
+@media (max-width:540px){.topbar{padding:0 16px}h1{font-size:1.6rem}table{display:block;overflow-x:auto}}
+
+:root{--accent:#e8b84b;--accent-bg:rgba(232,184,75,0.10)}
+[data-theme="light"]{--accent:#b8861a;--accent-bg:rgba(184,134,26,0.08)}
+
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0 8px}
+.cell{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.cell .n{font-size:1.6rem;font-weight:800;line-height:1.1}
+.cell .l{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin-top:4px}
+.muted{color:var(--muted)}
+.focus{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--border);border-left:4px solid var(--danger);border-radius:10px;padding:12px 14px;margin-bottom:8px}
+.focus .t{font-weight:700}
+.focus .s{font-size:0.82rem;color:var(--muted)}
+.focus .acts{display:flex;gap:6px;flex-shrink:0}
+.mini{display:inline-block;padding:6px 12px;border-radius:8px;font-size:0.78rem;font-weight:700;text-decoration:none;border:1px solid var(--border);background:var(--surface);color:var(--text)}
+.mini.pri{background:var(--accent);border-color:var(--accent);color:#000}
+[data-theme="light"] .mini.pri{color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.chip{font-size:0.78rem;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--muted);text-decoration:none}
+.sbar{display:flex;align-items:center;gap:12px;margin:8px 0}
+.sbar .nm{width:200px;font-size:0.88rem;font-weight:600}
+.sbar .tr{flex:1;height:10px;background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.sbar .tr i{display:block;height:100%;background:var(--accent)}
+.sbar .v{width:80px;text-align:right;font-size:0.85rem}
+.weak{color:var(--danger);font-weight:700;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;margin-left:6px}
+td.num,th.num{text-align:right;white-space:nowrap}
+.spark rect.hi{fill:var(--ok)}
+.spark rect.lo{fill:var(--danger)}
+.spark rect.mid{fill:var(--gold)}
+.tablewrap{overflow-x:auto}
+.toolsrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+button.mini{cursor:pointer;font-family:inherit}
+@media (max-width:540px){.sbar .nm{width:110px;font-size:0.8rem}.focus{flex-direction:column;align-items:flex-start}.hide-sm{display:none}}
+
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-brand"><span>Tracker</span>My progress</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <a class="back-link" href="index.html">← Hub</a>
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  </div>
+</div>
+<div class="container">
+  <div class="eyebrow">Pre-Dentistry Study Hub · Progress</div>
+  <h1>My progress</h1>
+  <p class="lead">Every quiz and UCAT practice session you finish on this device is recorded here, so you can see what's improving and what to revise next.</p>
+  <div class="strip" id="strip"></div>
+
+  <h2>Revise next</h2>
+  <p class="muted" style="font-size:0.88rem">Topics where your recent quiz average (last 3 sessions) is below 80%, weakest first.</p>
+  <div id="focus"></div>
+  <div id="unstarted"></div>
+
+  <h2>UCAT by subtest</h2>
+  <p class="muted" style="font-size:0.88rem">Average of your last 5 sessions in each subtest, across drills, timed sets and mocks. Raw marks, not scaled scores.</p>
+  <div id="subtests"></div>
+
+  <h2>Quiz history by topic</h2>
+  <div class="tablewrap"><table id="ttable"></table></div>
+
+  <h2>UCAT practice history</h2>
+  <div class="tablewrap"><table id="utable"></table></div>
+
+  <h2>Your data</h2>
+  <p class="muted" style="font-size:0.88rem">Scores are saved in this browser only. Export a backup to move them to another device or browser, then import it there.</p>
+  <div class="toolsrow">
+    <button class="mini" onclick="exportData()">Export backup</button>
+    <label class="mini" style="cursor:pointer">Import backup<input type="file" accept="application/json" style="display:none" onchange="importData(this)"></label>
+    <button class="mini" id="reset-btn" onclick="resetData(this)">Reset all scores</button>
+  </div>
+  <p class="muted" id="data-msg" style="font-size:0.85rem;margin-top:8px"></p>
+
+  <div class="cta"><a class="btn btn-quiz" href="plan.html">Study plan →</a><a class="btn btn-hub" href="ucat/index.html">UCAT practice</a><a class="btn btn-hub" href="index.html">← Hub</a></div>
+</div>
+<script>function toggleTheme(){const c=document.documentElement.getAttribute('data-theme')||'dark';const n=c==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);document.querySelector('.theme-btn').textContent=n==='dark'?'☀️':'🌙';try{localStorage.setItem('theme',n);}catch(e){}}
+try{if(document.documentElement.getAttribute('data-theme')==='light')document.querySelector('.theme-btn').textContent='🌙';}catch(e){}
+
+const TOPICS = [{"n": 1, "label": "Topic 1", "short": "UK Dentistry", "section": "science"}, {"n": 2, "label": "Topic 2", "short": "Tooth Anatomy", "section": "science"}, {"n": 3, "label": "Topic 3", "short": "Notation", "section": "science"}, {"n": 4, "label": "Topic 4", "short": "Caries", "section": "science"}, {"n": 5, "label": "Topic 5", "short": "Gum Disease", "section": "science"}, {"n": 6, "label": "Topic 6", "short": "Head & Neck", "section": "science"}, {"n": 7, "label": "Topic 7", "short": "Infection Control", "section": "science"}, {"n": 8, "label": "Topic 8", "short": "Professionalism", "section": "science"}, {"n": 9, "label": "Topic 9", "short": "A-level Bridge", "section": "science"}, {"n": 10, "label": "Topic 10", "short": "Materials", "section": "science"}, {"n": 11, "label": "Topic 11", "short": "Local Anaesthesia", "section": "science"}, {"n": 12, "label": "Topic 12", "short": "Oral Pathology", "section": "science"}, {"n": 13, "label": "Topic 13", "short": "Radiography", "section": "science"}, {"n": 14, "label": "Step 1", "short": "Route to 2028", "section": "apply"}, {"n": 15, "label": "Step 2", "short": "UCAT", "section": "apply"}, {"n": 16, "label": "Step 3", "short": "Interviews", "section": "apply"}, {"n": 17, "label": "Step 4", "short": "Experience & Statement", "section": "apply"}];
+const SETS = [{"id": "mock", "title": "Full UCAT mock", "kind": "Full-length mock"}, {"id": "timed-vr", "title": "Verbal Reasoning: timed set", "kind": "Timed set · real pace"}, {"id": "timed-dm", "title": "Decision Making: timed set", "kind": "Timed set · real pace"}, {"id": "timed-qr", "title": "Quantitative Reasoning: timed set", "kind": "Timed set · real pace"}, {"id": "timed-sjt", "title": "Situational Judgement: timed set", "kind": "Timed set · real pace"}, {"id": "drill-vr", "title": "Verbal Reasoning drill", "kind": "Untimed drill"}, {"id": "drill-dm", "title": "Decision Making drill", "kind": "Untimed drill"}, {"id": "drill-qr", "title": "Quantitative Reasoning drill", "kind": "Untimed drill"}, {"id": "drill-sjt", "title": "Situational Judgement drill", "kind": "Untimed drill"}];
+const SUB = {vr:'Verbal Reasoning',dm:'Decision Making',qr:'Quantitative Reasoning',sjt:'Situational Judgement'};
+function J(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
+function qhist(n){let h=J('topic'+n+'_hist',null);if(!h){const l=J('topic'+n+'_last',null);h=l?[l]:[];}return h;}
+function uhist(id){let h=J('ucat_'+id+'_hist',null);if(!h){const l=J('ucat_'+id+'_last',null);h=l?[l]:[];}return h;}
+function upct(r){let g=0,m=0;r.sections.forEach(s=>{g+=s.got;m+=s.max;});return m?Math.round(100*g/m):0;}
+function avg(a){return a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):null;}
+function d(s){try{return new Date(s).toLocaleDateString('en-GB',{day:'numeric',month:'short'});}catch(e){return '';}}
+function spark(vals){const v=vals.slice(-10);if(!v.length)return '';const w=8,g=3,H=24;
+  return '<svg class="spark" width="'+(v.length*(w+g))+'" height="'+H+'" viewBox="0 0 '+(v.length*(w+g))+' '+H+'" role="img" aria-label="last '+v.length+' scores">'+
+  v.map((p,i)=>{const h=Math.max(2,Math.round(H*p/100));return '<rect class="'+(p>=80?'hi':p>=60?'mid':'lo')+'" x="'+(i*(w+g))+'" y="'+(H-h)+'" width="'+w+'" height="'+h+'" rx="1.5"><title>'+p+'%</title></rect>';}).join('')+'</svg>';}
+function render(){
+  const T = TOPICS.map(t=>{const h=qhist(t.n);const main=h.filter(r=>!r.retry);const p=h.map(r=>r.pct);
+    const recent=avg((main.length?main:h).slice(-3).map(r=>r.pct));
+    return Object.assign({},t,{h,p,recent,latest:p.length?p[p.length-1]:null,best:p.length?Math.max(...p):null,missed:(J('topic'+t.n+'_missed',[])||[]).length});});
+  const U = SETS.map(s=>{const h=uhist(s.id);const p=h.map(upct);return Object.assign({},s,{h,p,latest:p.length?p[p.length-1]:null,best:p.length?Math.max(...p):null});});
+  const tried=T.filter(t=>t.h.length), quizzes=T.reduce((a,t)=>a+t.h.length,0), usess=U.reduce((a,s)=>a+s.h.length,0);
+  const avgLatest=avg(tried.map(t=>t.latest));
+  document.getElementById('strip').innerHTML=[
+    [tried.length+'<span class="muted" style="font-size:1rem">/'+T.length+'</span>','Topics tried'],
+    [avgLatest===null?'–':avgLatest+'%','Average latest quiz'],
+    [quizzes,'Quizzes taken'],[usess,'UCAT sessions']].map(c=>'<div class="cell"><div class="n">'+c[0]+'</div><div class="l">'+c[1]+'</div></div>').join('');
+  const weak=tried.filter(t=>t.recent<80).sort((a,b)=>a.recent-b.recent).slice(0,6);
+  document.getElementById('focus').innerHTML = !tried.length ? '<p class="muted">No quizzes yet. Take any topic quiz from the hub and your scores will appear here.</p>' :
+    !weak.length ? '<div class="callout">All the topics you have tried are averaging 80% or more. Try a topic you haven\'t started, or move on to timed UCAT sets.</div>' :
+    weak.map(t=>'<div class="focus"><div><div class="t">'+t.label+' · '+t.short+'</div><div class="s">Recent average '+t.recent+'% over '+Math.min(3,t.h.length)+' session'+(t.h.length>1?'s':'')+(t.missed?' · '+t.missed+' missed question'+(t.missed>1?'s':'')+' to retry':'')+'</div></div>'+
+      '<div class="acts"><a class="mini" href="notes/topic'+t.n+'.html">Notes</a>'+(t.missed?'<a class="mini" href="quizzes/topic'+t.n+'.html?retry=missed">Retry missed</a>':'')+'<a class="mini pri" href="quizzes/topic'+t.n+'.html">Quiz</a></div></div>').join('');
+  const un=T.filter(t=>!t.h.length);
+  document.getElementById('unstarted').innerHTML = un.length && tried.length ? '<p class="muted" style="font-size:0.85rem;margin-top:14px">Not started yet:</p><div class="chips">'+un.map(t=>'<a class="chip" href="quizzes/topic'+t.n+'.html">'+t.label+' · '+t.short+'</a>').join('')+'</div>' : '';
+  // subtests
+  const per={vr:[],dm:[],qr:[],sjt:[]};
+  U.forEach(s=>s.h.forEach(r=>r.sections.forEach(x=>{if(per[x.key]&&x.max)per[x.key].push({date:r.date,p:Math.round(100*x.got/x.max)});})));
+  const sv=Object.keys(per).map(k=>{const a=per[k].sort((x,y)=>x.date<y.date?-1:1).slice(-5).map(x=>x.p);return {k,v:avg(a),n:per[k].length};});
+  const have=sv.filter(x=>x.v!==null); const low=have.length>1?have.reduce((a,b)=>b.v<a.v?b:a):null;
+  document.getElementById('subtests').innerHTML = !have.length ? '<p class="muted">No UCAT practice yet. Start with the <a href="ucat/index.html">untimed drills</a>.</p>' :
+    sv.map(x=>'<div class="sbar"><div class="nm">'+SUB[x.k]+(low&&low.k===x.k?'<span class="weak">Weakest</span>':'')+'</div><div class="tr"><i style="width:'+(x.v||0)+'%"></i></div><div class="v">'+(x.v===null?'<span class="muted">–</span>':'<b>'+x.v+'%</b> <span class="muted" style="font-size:0.75rem">('+x.n+')</span>')+'</div></div>').join('');
+  // tables
+  document.getElementById('ttable').innerHTML='<tr><th>Topic</th><th class="num">Tries</th><th class="num">Latest</th><th class="num hide-sm">Best</th><th>Last 10</th><th class="hide-sm">Last</th></tr>'+
+    T.map(t=>'<tr><td><a href="quizzes/topic'+t.n+'.html">'+t.label+'</a> · '+t.short+'</td><td class="num">'+t.h.length+'</td><td class="num">'+(t.latest===null?'–':'<b>'+t.latest+'%</b>')+'</td><td class="num hide-sm">'+(t.best===null?'–':t.best+'%')+'</td><td>'+spark(t.p)+'</td><td class="hide-sm muted">'+(t.h.length?d(t.h[t.h.length-1].date):'')+'</td></tr>').join('');
+  document.getElementById('utable').innerHTML='<tr><th>Practice set</th><th class="num">Tries</th><th class="num">Latest</th><th class="num hide-sm">Best</th><th>Last 10</th><th class="hide-sm">Last</th></tr>'+
+    U.map(s=>'<tr><td><a href="ucat/'+s.id+'.html">'+s.title+'</a></td><td class="num">'+s.h.length+'</td><td class="num">'+(s.latest===null?'–':'<b>'+s.latest+'%</b>')+'</td><td class="num hide-sm">'+(s.best===null?'–':s.best+'%')+'</td><td>'+spark(s.p)+'</td><td class="hide-sm muted">'+(s.h.length?d(s.h[s.h.length-1].date):'')+'</td></tr>').join('');
+}
+function ourKeys(){const k=[];try{for(let i=0;i<localStorage.length;i++){const x=localStorage.key(i);if(/^(topic\d+_|ucat_|plan_)/.test(x))k.push(x);}}catch(e){}return k;}
+function msg(t){document.getElementById('data-msg').textContent=t;}
+function exportData(){const o={};ourKeys().forEach(k=>{o[k]=localStorage.getItem(k);});
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({hub:'pre-dentistry',saved:new Date().toISOString(),data:o},null,1)],{type:'application/json'}));
+  a.download='pre-dentistry-progress-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();a.remove();msg('Backup downloaded.');}
+function importData(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(o.hub!=='pre-dentistry')throw 0;
+  let n=0;Object.entries(o.data).forEach(([k,v])=>{if(/^(topic\d+_|ucat_|plan_)/.test(k)){localStorage.setItem(k,v);n++;}});msg('Imported '+n+' saved items.');render();}catch(e){msg('That file isn\'t a Pre-Dentistry Hub backup.');}};r.readAsText(f);}
+function resetData(b){if(!b.dataset.armed){b.dataset.armed='1';b.textContent='Click again to delete all scores';setTimeout(()=>{delete b.dataset.armed;b.textContent='Reset all scores';},4000);return;}
+  ourKeys().filter(k=>!/_timer$/.test(k)).forEach(k=>{try{localStorage.removeItem(k);}catch(e){}});delete b.dataset.armed;b.textContent='Reset all scores';msg('All scores cleared.');render();}
+render();
+
+</script>
+</body>
+</html>

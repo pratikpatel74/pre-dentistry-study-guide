@@ -173,7 +173,7 @@ function showResult(){
   document.querySelector('.key-hint').style.display='none';
   const pct=Math.round((score/sessionQ.length)*100);
   const msg=pct>=80?'Excellent work! 🎉':pct>=60?'Good effort — review the explanations above.':'Keep studying — you\'ve got this!';
-  try{localStorage.setItem(TOPIC_ID+'_last',JSON.stringify({score,total:sessionQ.length,pct,date:new Date().toISOString()}));}catch(e){}
+  try{const _r={score,total:sessionQ.length,pct,date:new Date().toISOString(),retry:retryMissed};localStorage.setItem(TOPIC_ID+'_last',JSON.stringify(_r));let _h=[];try{_h=JSON.parse(localStorage.getItem(TOPIC_ID+'_hist')||'[]');}catch(e){}_h.push(_r);localStorage.setItem(TOPIC_ID+'_hist',JSON.stringify(_h.slice(-50)));}catch(e){}
   let missedCount=0;try{missedCount=(JSON.parse(localStorage.getItem(TOPIC_ID+'_missed')||'[]')).length;}catch(e){}
   const base=location.href.split('?')[0];
   const r=document.getElementById('result');r.style.display='block';
