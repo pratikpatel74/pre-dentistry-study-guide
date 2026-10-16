@@ -17,7 +17,7 @@ Read this first if the conversation was compacted or a new session is picking up
 | Live site | https://pre-dentistry-hub.netlify.app/ |
 | GitHub repo | https://github.com/pratikpatel74/pre-dentistry-study-guide (branch `main`, Netlify auto-deploys on push, publish dir = repo root, no build command) |
 | Mac folder | `~/Documents/Projects/pre-dentistry-study-guide` |
-| Companion Claude Doc ("Pre-Dentistry Study Guide (UK)") | https://claude.ai/code/artifact/558bb0c7-887f-417f-92c7-a90b80fefbec (same content in doc form, 3 diagrams, 15 self-test questions) |
+| Old Claude Doc ("Pre-Dentistry Study Guide (UK)") | **Retired 16 Oct 2026**: https://claude.ai/code/artifact/558bb0c7-887f-417f-92c7-a90b80fefbec has a banner pointing to the site. Don't update it; the site is the only maintained version. |
 | Sister sites | AQA hubs: Biology https://aqa-alevel-biology.netlify.app/, Chemistry https://aqa-alevel-chemistry.netlify.app/, Maths https://aqa-alevel-maths.netlify.app/, landing page https://alevel-study-hubs.netlify.app/ (their own handover: `~/Documents/Projects/alevel-hub/HANDOVER.md`). Finance hub: `~/Documents/Projects/finance-hub` (context doc `FINANCE_HUB_CONTEXT.md`) |
 
 Audience: a **Year 12** student (AQA A-level Maths, Chemistry, Biology) applying for dentistry (BDS) in **2028 entry**: UCAT summer 2027, UCAS deadline mid-October 2027, interviews Dec 2027 – Mar 2028.
@@ -143,7 +143,7 @@ The device needs folder access to `~/Documents/Projects`: request it with device
 ## Open items / ideas
 
 - **Each spring/summer:** refresh UCAT dates, the UCAS deadline and the NHS contract notes (Topics 14–16).
-- Review item 4 from the Oct 2026 review with Pratik: add the hub to the landing page; mixed "test me on everything" quiz; refresh or retire the Claude Doc.
+- Item 4 from the Oct 2026 review, still to decide with Pratik: add the hub to the landing page; a mixed "test me on everything" quiz. (Claude Doc: retired.)
 
 - Add the Pre-Dentistry hub to the landing page (https://alevel-study-hubs.netlify.app/, repo `alevel-hub`). Not done yet; ask first.
 - Finance hub review findings, not yet fixed (offered to Pratik): the live site lags the repo (6 vs 9 topics; check that Netlify is linked to `main`); `Topic6_Summary.docx` has two known errors listed in `FINANCE_HUB_CONTEXT.md`.
