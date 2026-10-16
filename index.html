@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><script>try{var _t=localStorage.getItem("theme");if(_t)document.documentElement.setAttribute("data-theme",_t);}catch(e){}</script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Dentistry Study Hub</title>
+<meta name="description" content="Revision hub for students starting a UK dentistry (BDS) degree: notes, diagrams and quizzes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #09090f;
+  --surface:  #111118;
+  --card:     #16161e;
+  --card-hover: #1c1c26;
+  --border:   #2a2a38;
+  --border-hi: #3d3d52;
+  --text:     #f0efff;
+  --muted:    #8b8aab;
+  --dim:      #55546e;
+  --gold:     #e8b84b;
+  --gold-dim: #a8832a;
+  --gold-bg:  rgba(232,184,75,0.08);
+    --t1: #818cf8; --t1-bg: rgba(129,140,248,0.1); --t1-glow: rgba(129,140,248,0.2);
+  --t2: #38bdf8; --t2-bg: rgba(56,189,248,0.1); --t2-glow: rgba(56,189,248,0.2);
+  --t3: #a78bfa; --t3-bg: rgba(167,139,250,0.1); --t3-glow: rgba(167,139,250,0.2);
+  --t4: #34d399; --t4-bg: rgba(52,211,153,0.1); --t4-glow: rgba(52,211,153,0.2);
+  --t5: #fbbf24; --t5-bg: rgba(251,191,36,0.1); --t5-glow: rgba(251,191,36,0.2);
+  --t6: #f87171; --t6-bg: rgba(248,113,113,0.1); --t6-glow: rgba(248,113,113,0.2);
+  --t7: #2dd4bf; --t7-bg: rgba(45,212,191,0.1); --t7-glow: rgba(45,212,191,0.2);
+  --t8: #f472b6; --t8-bg: rgba(244,114,182,0.1); --t8-glow: rgba(244,114,182,0.2);
+  --t9: #22d3ee; --t9-bg: rgba(34,211,238,0.1); --t9-glow: rgba(34,211,238,0.2);
+}
+  --t1: #6366f1; --t1-bg: rgba(99,102,241,0.08); --t1-glow: rgba(99,102,241,0.15);
+  --t2: #0ea5e9; --t2-bg: rgba(14,165,233,0.08); --t2-glow: rgba(14,165,233,0.15);
+  --t3: #7c3aed; --t3-bg: rgba(124,58,237,0.08); --t3-glow: rgba(124,58,237,0.15);
+  --t4: #059669; --t4-bg: rgba(5,150,105,0.08); --t4-glow: rgba(5,150,105,0.15);
+  --t5: #d97706; --t5-bg: rgba(217,119,6,0.08); --t5-glow: rgba(217,119,6,0.15);
+  --t6: #dc2626; --t6-bg: rgba(220,38,38,0.08); --t6-glow: rgba(220,38,38,0.15);
+  --t7: #0d9488; --t7-bg: rgba(13,148,136,0.08); --t7-glow: rgba(13,148,136,0.15);
+  --t8: #db2777; --t8-bg: rgba(219,39,119,0.08); --t8-glow: rgba(219,39,119,0.15);
+  --t9: #0891b2; --t9-bg: rgba(8,145,178,0.08); --t9-glow: rgba(8,145,178,0.15);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; line-height: 1.5;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ── Top bar ── */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(9,9,15,0.85);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 52px;
+  transition: background 0.3s;
+}
+:root[data-theme="light"] .topbar { background: rgba(245,244,240,0.88); }
+.topbar-brand {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em;
+  color: var(--text); display: flex; align-items: center; gap: 10px;
+}
+.topbar-brand span {
+  font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  background: var(--gold-bg); color: var(--gold);
+  border: 1px solid var(--gold-dim); border-radius: 4px; padding: 2px 8px;
+}
+.topbar-right { display: flex; align-items: center; gap: 14px; }
+.home-link { display:inline-flex; align-items:center; height:34px; padding:0 12px; border-radius:8px; background:var(--surface); border:1px solid var(--border); color:var(--muted); font-size:0.74rem; font-weight:700; text-decoration:none; white-space:nowrap; }
+.home-link:hover { border-color:var(--border-hi); color:var(--text); }
+@media (max-width:540px) { .topbar-right { gap:8px; } }
+.theme-btn {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; width: 34px; height: 34px;
+  cursor: pointer; font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); transition: border-color 0.15s, color 0.15s;
+}
+.theme-btn:hover { border-color: var(--border-hi); color: var(--text); }
+
+/* ── Hero ── */
+.hero {
+  padding: 80px 24px 72px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232,184,75,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 24px;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; display: block; width: 28px; height: 1px; background: var(--gold-dim);
+}
+.hero h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  font-weight: 800; line-height: 1.05;
+  letter-spacing: -0.03em; margin-bottom: 16px;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  color: var(--muted); font-size: 1rem; max-width: 420px;
+  margin: 0 auto 40px; line-height: 1.7;
+}
+
+/* ── Stats strip ── */
+.stats-strip {
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  background: var(--surface);
+}
+.stat-cell {
+  padding: 14px 28px; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem; font-weight: 800; color: var(--gold); line-height: 1; letter-spacing: -0.02em;
+}
+.stat-label {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--dim); margin-top: 4px;
+}
+
+/* ── Main ── */
+.main { max-width: 860px; margin: 0 auto; padding: 56px 20px 80px; }
+
+.section-head {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 28px;
+}
+.section-head-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--dim); white-space: nowrap;
+}
+.section-head-line { flex: 1; height: 1px; background: var(--border); }
+
+/* ── Grid ── */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; }
+
+/* ── Cards ── */
+.topic-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: flex; flex-direction: column;
+  cursor: default;
+}
+.topic-card:hover {
+  border-color: var(--border-hi);
+  background: var(--card-hover);
+  transform: translateY(-2px);
+}
+
+/* Top border accent */
+.card-accent { height: 2px; }
+
+.card-body { padding: 22px 22px 20px; flex: 1; display: flex; flex-direction: column; }
+
+.card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+.topic-icon {
+  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border);
+}
+.topic-icon svg { width: 18px; height: 18px; stroke-width: 1.75; }
+
+.card-meta { min-width: 0; padding-top: 1px; }
+.card-num {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--dim); margin-bottom: 4px;
+}
+.card-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; color: var(--text);
+}
+
+.card-divider { height: 1px; background: var(--border); margin-bottom: 14px; }
+
+.card-desc {
+  color: var(--muted); font-size: 0.835rem; line-height: 1.65;
+  flex: 1; margin-bottom: 20px;
+}
+
+.card-actions { display: flex; gap: 8px; }
+.btn svg { width: 13px; height: 13px; stroke-width: 2; flex-shrink: 0; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 8px;
+  font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: opacity 0.15s, transform 0.12s;
+  letter-spacing: 0.01em;
+}
+.btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.btn-quiz { color: #fff; }
+
+.btn-doc {
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--muted);
+}
+.btn-doc:hover { border-color: var(--border-hi); color: var(--text); }
+.btn-disabled {
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--dim); opacity: 0.4; cursor: not-allowed; pointer-events: none;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center; padding: 28px 20px 48px;
+  border-top: 1px solid var(--border);
+  color: var(--dim); font-size: 0.78rem; letter-spacing: 0.03em;
+}
+.footer strong { color: var(--muted); }
+
+/* ── Responsive ── */
+@media (max-width: 540px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero { padding: 60px 20px 52px; }
+  .stats-strip { flex-direction: column; width: 100%; }
+  .stat-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat-cell:last-child { border-bottom: none; }
+  .topbar { padding: 0 16px; }
+}
+
+.score-badge{font-size:0.66rem;font-weight:700;padding:2px 8px;border-radius:5px;letter-spacing:0.04em;display:none;margin-left:auto;align-self:flex-start;margin-top:3px}
+.score-badge.pass{background:rgba(52,211,153,0.15);color:#34d399}
+.score-badge.fail{background:rgba(248,113,113,0.15);color:#f87171}
+[data-theme="light"] .score-badge.pass{background:rgba(5,150,105,0.12);color:#059669}
+[data-theme="light"] .score-badge.fail{background:rgba(220,38,38,0.12);color:#dc2626}
+
+.t1:hover { box-shadow: 0 8px 32px var(--t1-glow); }
+.t1 .card-accent { background: var(--t1); }
+.t1 .topic-icon { background: var(--t1-bg); color: var(--t1); }
+.t1 .btn-quiz { background: var(--t1); }
+.t2:hover { box-shadow: 0 8px 32px var(--t2-glow); }
+.t2 .card-accent { background: var(--t2); }
+.t2 .topic-icon { background: var(--t2-bg); color: var(--t2); }
+.t2 .btn-quiz { background: var(--t2); }
+.t3:hover { box-shadow: 0 8px 32px var(--t3-glow); }
+.t3 .card-accent { background: var(--t3); }
+.t3 .topic-icon { background: var(--t3-bg); color: var(--t3); }
+.t3 .btn-quiz { background: var(--t3); }
+.t4:hover { box-shadow: 0 8px 32px var(--t4-glow); }
+.t4 .card-accent { background: var(--t4); }
+.t4 .topic-icon { background: var(--t4-bg); color: var(--t4); }
+.t4 .btn-quiz { background: var(--t4); }
+.t5:hover { box-shadow: 0 8px 32px var(--t5-glow); }
+.t5 .card-accent { background: var(--t5); }
+.t5 .topic-icon { background: var(--t5-bg); color: var(--t5); }
+.t5 .btn-quiz { background: var(--t5); }
+.t6:hover { box-shadow: 0 8px 32px var(--t6-glow); }
+.t6 .card-accent { background: var(--t6); }
+.t6 .topic-icon { background: var(--t6-bg); color: var(--t6); }
+.t6 .btn-quiz { background: var(--t6); }
+.t7:hover { box-shadow: 0 8px 32px var(--t7-glow); }
+.t7 .card-accent { background: var(--t7); }
+.t7 .topic-icon { background: var(--t7-bg); color: var(--t7); }
+.t7 .btn-quiz { background: var(--t7); }
+.t8:hover { box-shadow: 0 8px 32px var(--t8-glow); }
+.t8 .card-accent { background: var(--t8); }
+.t8 .topic-icon { background: var(--t8-bg); color: var(--t8); }
+.t8 .btn-quiz { background: var(--t8); }
+.t9:hover { box-shadow: 0 8px 32px var(--t9-glow); }
+.t9 .card-accent { background: var(--t9); }
+.t9 .topic-icon { background: var(--t9-bg); color: var(--t9); }
+.t9 .btn-quiz { background: var(--t9); }
+.t5 .btn-quiz, .t9 .btn-quiz { color: #000; }
+:root[data-theme="light"] .t5 .btn-quiz, :root[data-theme="light"] .t9 .btn-quiz { color: #fff; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-brand"><span>BDS · Year 0</span>Pre-Dentistry Study Hub</div>
+  <div class="topbar-right">
+    <a class="home-link" href="https://alevel-study-hubs.netlify.app/">← All subjects</a>
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">Before you start Dentistry · UK</div>
+  <h1>Pre-Dentistry<br><em>Study Hub</em></h1>
+  <p class="hero-sub">9 topics · 10 questions drawn from a pool of 22 · Notes and diagrams for every topic.</p>
+  <div class="stats-strip">
+    <div class="stat-cell"><div class="stat-num">9</div><div class="stat-label">Topics</div></div>
+    <div class="stat-cell"><div class="stat-num">198</div><div class="stat-label">Questions</div></div>
+    <div class="stat-cell"><div class="stat-num">3</div><div class="stat-label">Diagrams</div></div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="section-head"><div class="section-head-label">Suggested order</div><div class="section-head-line"></div></div>
+  <div class="grid">
+    <div class="topic-card t1">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 1</div>
+            <div class="card-title">The UK Dental Landscape</div>
+          </div>
+          <span class="score-badge" id="score-t1"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">BDS course structure, the GDC, the seven dental team roles, Dental Foundation Training and NHS charge bands.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic1.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic1.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t2">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3c-2 0-3 2-3 4 0 3 1 5 2 8l1 6h2l1-5h4l1 5h2l1-6c1-3 2-5 2-8 0-2-1-4-3-4-2 0-3 1-5 1S9 3 7 3z"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 2 · diagram</div>
+            <div class="card-title">Tooth Anatomy &amp; Tissues</div>
+          </div>
+          <span class="score-badge" id="score-t2"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Enamel, dentine, pulp and cementum; the periodontal ligament, alveolar bone and gingiva; naming tooth surfaces.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic2.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic2.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t3">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18M3 12h18"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 3 · diagram</div>
+            <div class="card-title">Tooth Types, Notation &amp; Eruption</div>
+          </div>
+          <span class="score-badge" id="score-t3"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Incisors to molars, FDI two-digit notation, Palmer notation, eruption ages and the mixed dentition.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic3.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic3.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t4">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-8 4 5 3-3 6 6"/><path d="M3 21h18"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 4 · diagram</div>
+            <div class="card-title">Dental Caries &amp; Fluoride</div>
+          </div>
+          <span class="score-badge" id="score-t4"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Plaque bacteria, the Stephan curve, critical pH, demineralisation and remineralisation, and how fluoride protects.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic4.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic4.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t5">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10c2-4 14-4 16 0"/><path d="M6 10v6a6 4 0 0 0 12 0v-6"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 5</div>
+            <div class="card-title">Periodontal (Gum) Disease</div>
+          </div>
+          <span class="score-badge" id="score-t5"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Gingivitis vs periodontitis, pockets, calculus, the BPE, risk factors and the links with diabetes and heart disease.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic5.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic5.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t6">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8 21v-3a4 4 0 0 1 8 0v3"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 6</div>
+            <div class="card-title">Head &amp; Neck Anatomy Essentials</div>
+          </div>
+          <span class="score-badge" id="score-t6"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">The trigeminal nerve and its branches, the facial nerve, muscles of mastication, the TMJ and the salivary glands.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic6.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic6.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t7">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 7</div>
+            <div class="card-title">Infection Control &amp; Occupational Health</div>
+          </div>
+          <span class="score-badge" id="score-t7"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">Hepatitis B vaccination, blood-borne virus screening, standard precautions, decontamination, sharps, radiation and emergencies.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic7.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic7.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t8">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0zM17 7l-3 7a3 3 0 0 0 6 0z"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 8</div>
+            <div class="card-title">Professionalism &amp; Ethics</div>
+          </div>
+          <span class="score-badge" id="score-t8"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">The GDC's nine principles (and the 2026 proposal to replace them), valid consent, capacity, confidentiality, candour and safeguarding.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic8.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic8.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card t9">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></svg></div>
+          <div class="card-meta">
+            <div class="card-num">Topic 9</div>
+            <div class="card-title">Bridging from A-level</div>
+          </div>
+          <span class="score-badge" id="score-t9"></span>
+        </div>
+        <div class="card-divider"></div>
+        <p class="card-desc">The A-level Biology, Chemistry and Maths that come straight back: nerve impulses, pH and buffers, apatite chemistry and dose calculations.</p>
+        <div class="card-actions">
+          <a class="btn btn-quiz" href="quizzes/topic9.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Quiz</a>
+          <a class="btn btn-doc" href="notes/topic9.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Notes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <strong>Pre-Dentistry Study Hub</strong> &nbsp;·&nbsp; For students starting a UK BDS &nbsp;·&nbsp; Facts checked October 2026; always follow your dental school's guidance
+</div>
+
+<script>
+function toggleTheme() {
+  const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  try { localStorage.setItem('theme', next); } catch (e) {}
+  document.querySelector('.theme-btn').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+try { if (document.documentElement.getAttribute('data-theme') === 'light') document.querySelector('.theme-btn').textContent = '🌙'; } catch (e) {}
+function loadScores(){
+  ['1','2','3','4','5','6','7','8','9'].forEach(function(t){
+    try{
+      var d=JSON.parse(localStorage.getItem('topic'+t+'_last')||'null');
+      var el=document.getElementById('score-t'+t);
+      if(d&&el){el.textContent=d.score+'/'+d.total;el.className='score-badge '+(d.pct>=60?'pass':'fail');el.style.display='inline-block';}
+    }catch(e){}
+  });
+}
+loadScores();
+</script>
+</body>
+</html>

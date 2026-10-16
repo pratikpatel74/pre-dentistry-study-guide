@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><script>try{var _t=localStorage.getItem("theme");if(_t)document.documentElement.setAttribute("data-theme",_t);}catch(e){}</script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 7 Notes – Infection Control &amp; Occupational Health</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090f;--surface:#111118;--card:#16161e;--border:#2a2a38;--border-hi:#3d3d52;--text:#f0efff;--muted:#8b8aab;--dim:#55546e;--gold:#e8b84b;--gold-bg:rgba(232,184,75,0.10);--danger:#f87171;
+--d-enamel:#a5b4fc;--d-dentine:#fcd9b8;--d-pulp:#f9a8a8;--d-gum:#f0abfc;--d-bone:#2a2a38;--d-pdl:#fb7185;
+--d-inc:#60a5fa;--d-can:#fb923c;--d-pm:#34d399;--d-mol:#94a3b8}
+[data-theme="light"]{--bg:#f5f4f0;--surface:#eeede8;--card:#fff;--border:#dddbd4;--border-hi:#c8c5bc;--text:#1a1814;--muted:#706c60;--dim:#a09c90;--gold:#b8861a;--gold-bg:rgba(184,134,26,0.08);--danger:#dc2626;
+--d-enamel:#c7d2fe;--d-dentine:#fde7d2;--d-pulp:#fca5a5;--d-gum:#f5c2f9;--d-bone:#e7e5e0;--d-pdl:#e11d48;
+--d-inc:#93c5fd;--d-can:#fdba74;--d-pm:#6ee7b7;--d-mol:#cbd5e1}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(9,9,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px}
+[data-theme="light"] .topbar{background:rgba(245,244,240,0.88)}
+.topbar-brand{font-size:0.9rem;font-weight:700;display:flex;align-items:center;gap:10px}
+.topbar-brand span{font-size:0.68rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold);border-radius:4px;padding:2px 8px}
+.back-link{font-size:0.78rem;font-weight:600;color:var(--muted);text-decoration:none}
+.back-link:hover{color:var(--text)}
+.theme-btn{background:var(--surface);border:1px solid var(--border);border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.container{max-width:760px;margin:0 auto;padding:48px 20px 80px}
+.eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h1{font-size:2rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:20px;line-height:1.15}
+h2{font-size:1.1rem;font-weight:700;margin:32px 0 12px;padding-top:8px;border-top:1px solid var(--border)}
+p,li{font-size:0.95rem;color:var(--text)}
+p{margin-bottom:12px}
+.lead{font-size:1.05rem;color:var(--muted);margin-bottom:24px}
+ul,ol{padding-left:22px;margin-bottom:12px}li{margin-bottom:6px}
+a{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:0.88rem;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);background:var(--surface)}
+tr:last-child td{border-bottom:none}
+.formula{font-family:ui-monospace,Menlo,monospace;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:0.9rem;overflow-x:auto}
+.callout{background:var(--accent-bg);border:1px solid var(--accent);border-radius:10px;padding:12px 16px}
+.diagram{margin:20px 0 24px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px}
+.diagram svg{width:100%;height:auto;display:block}
+.diagram figcaption{font-size:0.78rem;color:var(--dim);text-align:center;margin-top:6px}
+.diagram text{font-family:'Inter',system-ui,sans-serif;fill:var(--text);font-size:13px}
+.diagram .title{font-size:15px;font-weight:600}
+.diagram .lbl{font-weight:600}.diagram .big{font-size:14px}
+.diagram .sub{font-size:11.5px;fill:var(--muted)}.diagram .small{font-size:12px}
+.diagram .num{font-size:12.5px}.diagram .num.hl{font-weight:800}
+.diagram .ink-fill{fill:var(--text)}
+.diagram .leader{fill:none;stroke:var(--dim);stroke-width:1}.diagram .leader.thick{stroke-width:1.25}
+.diagram .axis{fill:none;stroke:var(--dim);stroke-width:1.25}.diagram .axis-fill{fill:var(--dim)}
+.diagram .bone{fill:var(--d-bone)}
+.diagram .pdl{fill:none;stroke:var(--d-pdl);stroke-width:6;opacity:.75}
+.diagram .dentine{fill:var(--d-dentine);stroke:var(--dim);stroke-width:1.25}
+.diagram .enamel{fill:var(--d-enamel);stroke:var(--dim);stroke-width:1}
+.diagram .pulp{fill:var(--d-pulp);stroke:var(--dim);stroke-width:1}
+.diagram .gum{fill:var(--d-gum);stroke:var(--dim);stroke-width:1}
+.diagram .tt{stroke:var(--dim);stroke-width:1;fill-opacity:.35}
+.diagram .tt.inc{fill:var(--d-inc)}.diagram .tt.can{fill:var(--d-can)}.diagram .tt.pm{fill:var(--d-pm)}.diagram .tt.mol{fill:var(--d-mol)}
+.diagram .tt.hl{stroke:var(--text);stroke-width:2.5}
+.diagram .danger-zone{fill:var(--danger);fill-opacity:.08}
+.diagram .crit{stroke:var(--danger);stroke-width:1.25;stroke-dasharray:5 4}
+.diagram .curve{fill:none;stroke:var(--accent);stroke-width:2.5}
+.diagram .danger{fill:var(--danger)}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:10px;font-size:0.88rem;font-weight:700;text-decoration:none}
+.btn-quiz{background:var(--accent);color:#fff}
+.btn-hub{background:var(--surface);color:var(--muted);border:1px solid var(--border)}
+.btn-print{background:var(--surface);color:var(--muted);border:1px solid var(--border);cursor:pointer;font-family:inherit}
+@media print{.topbar,.cta{display:none}body{background:#fff;color:#000}}
+@media (max-width:540px){.topbar{padding:0 16px}h1{font-size:1.6rem}table{display:block;overflow-x:auto}}
+
+:root{--accent:#2dd4bf;--accent-bg:rgba(45,212,191,0.1)}
+[data-theme="light"]{--accent:#0d9488;--accent-bg:rgba(13,148,136,0.08)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-brand"><span>Topic 7</span>Infection Control</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <a class="back-link" href="../index.html">← Hub</a>
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  </div>
+</div>
+<div class="container">
+  <div class="eyebrow">Pre-Dentistry · Topic 7 · Summary notes</div>
+  <h1>Infection Control &amp; Occupational Health</h1>
+  
+<p class="lead">Dental students carry out exposure-prone procedures, so every UK dental school requires blood-borne virus screening and hepatitis B vaccination before you can treat patients.</p>
+<h2>Before you start</h2>
+<ul><li><b>Hepatitis B vaccine</b>: usually 0, 1 and 6 months, then a blood test to confirm immunity. Some schools want you to start before arrival; others arrange it after. Check your school's instructions.</li>
+<li><b>Screening</b>: hepatitis B, hepatitis C and HIV.</li>
+<li><b>Other checks</b>: TB/BCG, MMR, chickenpox, occupational health questionnaire.</li>
+<li><b>Enhanced DBS</b> check.</li></ul>
+<h2>Core infection control</h2>
+<ol><li><b>Standard precautions</b>: every patient is potentially infectious</li><li><b>Hand hygiene</b>: the most effective measure</li><li><b>Decontamination</b>: clean → inspect → sterilise (autoclave) → store; England follows HTM 01-05</li><li><b>Sharps injury</b>: bleed it, wash it, cover it, report it</li><li><b>Waste</b>: colour-coded bags and sharps bins</li></ol>
+<h2>Safety</h2>
+<ul><li><b>Radiation</b>: IR(ME)R regulations; ALARP</li><li><b>Emergencies</b>: fainting (most common), angina, asthma, anaphylaxis, hypoglycaemia, seizures, cardiac arrest. Annual BLS training.</li></ul>
+
+  <div class="cta">
+    <a class="btn btn-quiz" href="../quizzes/topic7.html">Take the quiz →</a>
+    <button class="btn btn-print" onclick="window.print()">Print / save as PDF</button>
+    <a class="btn btn-hub" href="../index.html">← Hub</a>
+  </div>
+</div>
+<script>function toggleTheme(){const c=document.documentElement.getAttribute('data-theme')||'dark';const n=c==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);document.querySelector('.theme-btn').textContent=n==='dark'?'☀️':'🌙';try{localStorage.setItem('theme',n);}catch(e){}}
+try{if(document.documentElement.getAttribute('data-theme')==='light')document.querySelector('.theme-btn').textContent='🌙';}catch(e){}</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><script>try{var _t=localStorage.getItem("theme");if(_t)document.documentElement.setAttribute("data-theme",_t);}catch(e){}</script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 7 Quiz – Infection Control &amp; Occupational Health</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090f;--surface:#111118;--card:#16161e;--border:#2a2a38;--border-hi:#3d3d52;--text:#f0efff;--muted:#8b8aab;--dim:#55546e;--gold:#e8b84b;--gold-bg:rgba(232,184,75,0.10);--accent:#2dd4bf;--accent-bg:rgba(45,212,191,0.12);--correct:#34d399;--correct-bg:rgba(52,211,153,0.12);--wrong:#f87171;--wrong-bg:rgba(248,113,113,0.12);}
+[data-theme="light"]{--bg:#f5f4f0;--surface:#eeede8;--card:#fff;--border:#dddbd4;--border-hi:#c8c5bc;--text:#1a1814;--muted:#706c60;--dim:#a09c90;--gold:#b8861a;--gold-bg:rgba(184,134,26,0.08);--accent:#0d9488;--accent-bg:rgba(13,148,136,0.1);--correct:#059669;--correct-bg:rgba(5,150,105,0.10);--wrong:#dc2626;--wrong-bg:rgba(220,38,38,0.10);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(9,9,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px}
+[data-theme="light"] .topbar{background:rgba(245,244,240,0.88)}
+.topbar-brand{font-size:0.9rem;font-weight:700;letter-spacing:-0.01em;display:flex;align-items:center;gap:10px}
+.topbar-brand span{font-size:0.68rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold);border-radius:4px;padding:2px 8px}
+.back-link{font-size:0.78rem;font-weight:600;color:var(--muted);text-decoration:none}
+.back-link:hover{color:var(--text)}
+.theme-btn{background:var(--surface);border:1px solid var(--border);border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.timer-btn{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0 12px;height:34px;cursor:pointer;font-size:0.72rem;font-weight:700;color:var(--muted);white-space:nowrap}
+.timer-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent-bg)}
+.container{max-width:680px;margin:0 auto;padding:48px 20px 80px}
+.quiz-header{text-align:center;margin-bottom:40px}
+.quiz-eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.quiz-title{font-size:1.9rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:8px}
+.quiz-sub{color:var(--muted);font-size:0.88rem}
+.progress-bar-wrap{background:var(--surface);border-radius:99px;height:6px;margin-bottom:32px;overflow:hidden}
+.progress-bar{height:100%;background:var(--accent);border-radius:99px;transition:width 0.4s ease}
+.progress-label{display:flex;justify-content:space-between;font-size:0.72rem;color:var(--dim);margin-bottom:8px}
+.q-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 28px 24px;margin-bottom:20px}
+.q-num{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.q-timer{font-size:0.8rem;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.q-timer.warn{color:var(--wrong)}
+.q-text{font-size:1.05rem;font-weight:600;line-height:1.45;margin-bottom:22px}
+.options{display:flex;flex-direction:column;gap:10px}
+.option{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px 16px;font-size:0.9rem;font-weight:500;cursor:pointer;text-align:left;color:var(--text);transition:border-color 0.15s,background 0.15s;display:flex;align-items:center;gap:12px}
+.option:hover:not(:disabled){border-color:var(--border-hi);background:var(--card)}
+.option.correct{border-color:var(--correct);background:var(--correct-bg);color:var(--correct)}
+.option.wrong{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}
+.option:disabled{cursor:default}
+.opt-letter{width:24px;height:24px;border-radius:6px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;flex-shrink:0}
+.option.correct .opt-letter{background:var(--correct);border-color:var(--correct);color:#fff}
+.option.wrong .opt-letter{background:var(--wrong);border-color:var(--wrong);color:#fff}
+.feedback{margin-top:14px;padding:12px 16px;border-radius:8px;font-size:0.85rem;font-weight:500;display:none}
+.feedback.show{display:block}
+.feedback.correct{background:var(--correct-bg);color:var(--correct);border:1px solid var(--correct)}
+.feedback.wrong{background:var(--wrong-bg);color:var(--wrong);border:1px solid var(--wrong)}
+.key-hint{font-size:0.7rem;color:var(--dim);text-align:right;margin-top:8px}
+.actions{display:flex;justify-content:flex-end;margin-top:20px}
+.btn-next{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:11px 28px;font-size:0.88rem;font-weight:700;cursor:pointer;display:none}
+.result-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px 28px;text-align:center;display:none}
+.result-score{font-size:3.5rem;font-weight:800;letter-spacing:-0.04em;color:var(--accent);line-height:1}
+.result-out{font-size:1rem;color:var(--muted);margin:6px 0 4px}
+.result-msg{font-size:1.05rem;font-weight:600;margin-bottom:28px}
+.result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-retry{background:var(--accent-bg);color:var(--accent);border:1px solid var(--accent);border-radius:10px;padding:11px 24px;font-size:0.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.btn-missed{background:rgba(248,113,113,0.12);color:#f87171;border:1px solid #f87171;border-radius:10px;padding:11px 24px;font-size:0.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.btn-hub{background:var(--surface);color:var(--muted);border:1px solid var(--border);border-radius:10px;padding:11px 24px;font-size:0.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-hub:hover{border-color:var(--border-hi);color:var(--text)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-brand"><span>Topic 7</span>Infection Control</div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <button class="timer-btn" id="timer-toggle" onclick="toggleTimer()">⏱ Timer: Off</button>
+    <a class="back-link" href="../index.html">← Hub</a>
+    <button class="theme-btn" onclick="toggleTheme()">☀️</button>
+  </div>
+</div>
+<div class="container">
+  <div class="quiz-header">
+    <div class="quiz-eyebrow">Pre-Dentistry · Topic 7</div>
+    <h1 class="quiz-title">Infection Control &amp; Occupational Health</h1>
+    <p class="quiz-sub">10 questions drawn from a pool of 22 · Press 1–4 to answer, Enter for next</p>
+  </div>
+  <div class="progress-label"><span id="prog-text">Question 1 of 10</span><span id="prog-score">Score: 0</span></div>
+  <div class="progress-bar-wrap"><div class="progress-bar" id="prog-bar" style="width:10%"></div></div>
+  <div id="quiz-area"></div>
+  <div class="key-hint">Keyboard: 1–4 to answer · Enter or Space to advance</div>
+  <div class="actions"><button class="btn-next" id="btn-next" onclick="nextQ()">Next →</button></div>
+  <div class="result-card" id="result"></div>
+</div>
+<script>
+const TOPIC_ID='topic7';const DRAW=10;
+const POOL=[
+{"q": "Why must dental students be screened for blood-borne viruses?", "opts": ["They carry out exposure-prone procedures (EPPs)", "To check fitness for sport", "It is required for student finance", "Only to protect the student"], "ans": 0, "exp": "In EPPs a patient could be exposed to the operator's blood."},
+{"q": "Which vaccination course do dental students need before treating patients?", "opts": ["Hepatitis B", "Yellow fever", "Rabies", "Typhoid"], "ans": 0, "exp": "A full course, then a blood test to confirm immunity."},
+{"q": "What is the standard hepatitis B vaccine schedule?", "opts": ["0, 1 and 6 months", "One single dose", "0 and 12 months", "Every week for a month"], "ans": 0, "exp": "Accelerated schedules exist but may need a booster."},
+{"q": "Which blood-borne viruses are dental students screened for?", "opts": ["Hepatitis B, hepatitis C and HIV", "Measles, mumps and rubella", "Influenza and COVID-19", "Chickenpox only"], "ans": 0, "exp": "These are the viruses that can pass in exposure-prone procedures."},
+{"q": "What does 'standard precautions' mean?", "opts": ["Treating every patient as potentially infectious", "Only gloving for patients with known infections", "Wearing a uniform", "Asking patients to wash their hands"], "ans": 0, "exp": "Same precautions for everyone, every time."},
+{"q": "What is the single most effective infection control measure?", "opts": ["Hand hygiene", "Wearing a hat", "Opening windows", "Using mouthwash"], "ans": 0, "exp": "Learn the WHO hand-washing steps."},
+{"q": "What is the correct order of the decontamination cycle?", "opts": ["Clean, inspect, sterilise, store", "Sterilise, clean, store, inspect", "Store, sterilise, clean, inspect", "Inspect, store, clean, sterilise"], "ans": 0, "exp": "Instruments must be clean before they can be sterilised."},
+{"q": "Which machine sterilises dental instruments with pressurised steam?", "opts": ["Autoclave", "Ultrasonic bath", "Dishwasher", "UV light box"], "ans": 0, "exp": "An ultrasonic bath or washer-disinfector cleans; the autoclave sterilises."},
+{"q": "Which guidance covers decontamination in dental practices in England?", "opts": ["HTM 01-05", "IR(ME)R", "GDPR", "HTM 07-01 only"], "ans": 0, "exp": "HTM 01-05 is the decontamination guidance for primary care dental practices."},
+{"q": "What should you do straight after a sharps injury?", "opts": ["Encourage bleeding, wash, cover, then report", "Suck the wound", "Carry on and report at the end of the day", "Scrub hard with a brush"], "ans": 0, "exp": "'Bleed it, wash it, cover it, report it', then follow the post-exposure protocol."},
+{"q": "Should you suck a needlestick wound?", "opts": ["No, never", "Yes, to remove the virus", "Only if it is small", "Only if bleeding stops"], "ans": 0, "exp": "Sucking risks exposing your mouth to blood."},
+{"q": "Which regulations cover the medical use of dental X-rays?", "opts": ["IR(ME)R", "COSHH", "RIDDOR", "PUWER"], "ans": 0, "exp": "Ionising Radiation (Medical Exposure) Regulations."},
+{"q": "What does ALARP stand for in radiation protection?", "opts": ["As low as reasonably practicable", "Always limit all radiation procedures", "Annual limit at regular periods", "As little as radiography permits"], "ans": 0, "exp": "Keep doses as low as reasonably practicable."},
+{"q": "What is the most common medical emergency in dental practice?", "opts": ["Fainting (vasovagal syncope)", "Cardiac arrest", "Stroke", "Anaphylaxis"], "ans": 0, "exp": "Lie the patient flat and raise the legs."},
+{"q": "Which emergency skill do dental professionals retrain in every year?", "opts": ["Basic life support (BLS)", "Suturing", "Plastering a fracture", "Taking blood"], "ans": 0, "exp": "Annual medical emergency and BLS training is expected."},
+{"q": "Which check is needed because you'll work with children and vulnerable adults?", "opts": ["Enhanced DBS check", "Credit check", "Driving licence check", "Passport check only"], "ans": 0, "exp": "Disclosure and Barring Service."},
+{"q": "Where should used needles go?", "opts": ["A rigid sharps container", "A yellow clinical waste bag", "The general bin", "Back in their cap, then the drawer"], "ans": 0, "exp": "Never re-sheath by hand without a safe device."},
+{"q": "Which PPE protects your eyes from splashes and aerosols?", "opts": ["Safety glasses or a visor", "An apron", "Gloves", "Shoe covers"], "ans": 0, "exp": "Patients should wear eye protection too."},
+{"q": "Why do you have a blood test after the hepatitis B vaccine course?", "opts": ["To check you've made enough protective antibodies", "To check your blood group", "To test for diabetes", "To measure vitamin levels"], "ans": 0, "exp": "Some people are non-responders and need further doses."},
+{"q": "Which drug is first-line for anaphylaxis?", "opts": ["Intramuscular adrenaline", "Oral paracetamol", "Inhaled oxygen only", "Glucose gel"], "ans": 0, "exp": "Adrenaline is in every emergency drug kit."},
+{"q": "A conscious diabetic patient becomes shaky and confused. What do you give?", "opts": ["Oral glucose", "Insulin", "Adrenaline", "Aspirin"], "ans": 0, "exp": "This is hypoglycaemia; give fast-acting sugar."},
+{"q": "What should happen to a single-use item after use?", "opts": ["Dispose of it; never reprocess it", "Sterilise it and reuse it", "Rinse and reuse on the same day", "Reuse on the same patient next visit"], "ans": 0, "exp": "Single-use items are marked with a crossed-out '2' symbol."}
+];
+POOL.forEach((q,i)=>q._id=i);
+let sessionQ=[],cur=0,score=0,answered=false,finished=false;
+let timerOn=false,timerSecs=60,timerInterval=null;
+const retryMissed=location.search.includes('retry=missed');
+try{timerOn=localStorage.getItem(TOPIC_ID+'_timer')==='true';}catch(e){}
+function updateTimerBtn(){const b=document.getElementById('timer-toggle');if(!b)return;b.textContent='⏱ Timer: '+(timerOn?'On':'Off');b.className='timer-btn'+(timerOn?' active':'');}
+function initSession(){
+  let pool;
+  if(retryMissed){
+    try{const m=JSON.parse(localStorage.getItem(TOPIC_ID+'_missed')||'[]');pool=POOL.filter(q=>m.includes(q._id));}catch(e){pool=[];}
+    if(!pool.length)pool=[...POOL];
+  }else{
+    pool=[...POOL];
+    try{localStorage.removeItem(TOPIC_ID+'_missed');}catch(e){}
+  }
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+  sessionQ=pool.slice(0,Math.min(DRAW,pool.length)).map(q=>{const o=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[o[i],o[j]]=[o[j],o[i]];}return Object.assign({},q,{opts:o.map(k=>q.opts[k]),ans:o.indexOf(q.ans)});});
+  cur=0;score=0;answered=false;finished=false;
+  updateTimerBtn();render();
+}
+function render(){
+  const q=sessionQ[cur];const L=['A','B','C','D'];
+  document.getElementById('prog-text').textContent=`Question ${cur+1} of ${sessionQ.length}`;
+  document.getElementById('prog-score').textContent=`Score: ${score}`;
+  document.getElementById('prog-bar').style.width=`${((cur+1)/sessionQ.length)*100}%`;
+  document.getElementById('quiz-area').innerHTML=`<div class="q-card"><div class="q-num"><span>Question ${cur+1}</span>${timerOn?`<span class="q-timer" id="q-timer">${timerSecs}s</span>`:''}</div><div class="q-text">${q.q}</div><div class="options">${q.opts.map((o,i)=>`<button class="option" onclick="pick(${i})" id="opt${i}"><span class="opt-letter">${L[i]}</span>${o}</button>`).join('')}</div><div class="feedback" id="feedback"></div></div>`;
+  document.getElementById('btn-next').style.display='none';
+  answered=false;
+  if(timerOn)startTimer();
+}
+function startTimer(){
+  clearInterval(timerInterval);timerSecs=60;
+  timerInterval=setInterval(()=>{
+    timerSecs--;
+    const el=document.getElementById('q-timer');
+    if(el){el.textContent=timerSecs+'s';if(timerSecs<=10)el.classList.add('warn');}
+    if(timerSecs<=0){clearInterval(timerInterval);pick(-1);}
+  },1000);
+}
+function pick(i){
+  if(answered)return;answered=true;clearInterval(timerInterval);
+  const q=sessionQ[cur];const fb=document.getElementById('feedback');
+  document.querySelectorAll('.option').forEach(b=>b.disabled=true);
+  if(i===q.ans){
+    score++;
+    if(i>=0)document.getElementById(`opt${i}`).className='option correct';
+    fb.className='feedback show correct';fb.textContent='✓ Correct! '+q.exp;
+  }else{
+    if(i>=0)document.getElementById(`opt${i}`).className='option wrong';
+    document.getElementById(`opt${q.ans}`).className='option correct';
+    fb.className='feedback show wrong';fb.textContent=(i===-1?'⏱ Time\'s up! ':'✗ ')+q.exp;
+    try{const m=JSON.parse(localStorage.getItem(TOPIC_ID+'_missed')||'[]');if(!m.includes(q._id))m.push(q._id);localStorage.setItem(TOPIC_ID+'_missed',JSON.stringify(m));}catch(e){}
+  }
+  document.getElementById('prog-score').textContent=`Score: ${score}`;
+  const nb=document.getElementById('btn-next');nb.style.display='block';nb.textContent=cur<sessionQ.length-1?'Next →':'See Results';
+}
+function nextQ(){cur++;if(cur>=sessionQ.length){showResult();return;}render();}
+function showResult(){
+  finished=true;clearInterval(timerInterval);
+  document.getElementById('quiz-area').style.display='none';
+  document.getElementById('btn-next').style.display='none';
+  document.querySelector('.progress-label').style.display='none';
+  document.querySelector('.progress-bar-wrap').style.display='none';
+  document.querySelector('.key-hint').style.display='none';
+  const pct=Math.round((score/sessionQ.length)*100);
+  const msg=pct>=80?'Excellent work! 🎉':pct>=60?'Good effort — review the explanations above.':'Keep studying — you\'ve got this!';
+  try{localStorage.setItem(TOPIC_ID+'_last',JSON.stringify({score,total:sessionQ.length,pct,date:new Date().toISOString()}));}catch(e){}
+  let missedCount=0;try{missedCount=(JSON.parse(localStorage.getItem(TOPIC_ID+'_missed')||'[]')).length;}catch(e){}
+  const base=location.href.split('?')[0];
+  const r=document.getElementById('result');r.style.display='block';
+  r.innerHTML=`<div class="result-score">${score}/${sessionQ.length}</div><div class="result-out">${pct}% correct</div><div class="result-msg">${msg}</div><div class="result-actions"><a class="btn-retry" href="${base}">↺ New Quiz</a>${missedCount>0?`<a class="btn-missed" href="${base}?retry=missed">↯ Retry ${missedCount} missed</a>`:''}<a class="btn-hub" href="../index.html">← Hub</a></div>`;
+}
+function toggleTimer(){timerOn=!timerOn;try{localStorage.setItem(TOPIC_ID+'_timer',timerOn);}catch(e){}updateTimerBtn();}
+function toggleTheme(){const c=document.documentElement.getAttribute('data-theme')||'dark';const n=c==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);document.querySelector('.theme-btn').textContent=n==='dark'?'☀️':'🌙';try{localStorage.setItem('theme',n);}catch(e){}}
+document.addEventListener('keydown',e=>{
+  if(finished)return;
+  if(!answered){if(e.key==='1')pick(0);else if(e.key==='2')pick(1);else if(e.key==='3')pick(2);else if(e.key==='4')pick(3);}
+  else if((e.key==='Enter'||e.key===' ')&&document.getElementById('btn-next').style.display!=='none'){e.preventDefault();nextQ();}
+});
+initSession();
+</script>
+</body>
+</html>
