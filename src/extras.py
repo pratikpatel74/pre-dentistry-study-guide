@@ -174,12 +174,12 @@ render();
 
 
 # ======================================================================= study plan
-START = dt.date(2026, 10, 19)      # first Monday after the plan was written
+START = dt.date(2026, 11, 2)       # first Monday of November 2026 (Pratik's choice)
 END = dt.date(2027, 10, 11)        # week containing the UCAS deadline (15 Oct in recent years)
 
 # (first Monday, name, colour key, summary, weekly routine)
 PHASES = [
-    (dt.date(2026, 10, 19), "Groundwork", "p1",
+    (dt.date(2026, 11, 2), "Groundwork", "p1",
      "Year 12 grades come first: they drive your predicted grades. Learn what the UCAT is, line up work experience and start a regular volunteering role.",
      "A-levels as normal · UCAT: one 20–30 minute untimed drill a week · one application task a week"),
     (dt.date(2026, 12, 21), "Christmas break", "hol",
@@ -214,13 +214,11 @@ def _u(kind, sub):
 
 # Week-specific tasks, keyed by Monday. Each value: (ucat task or None for the phase default, other task)
 SPECIFIC = {
-    "2026-10-19": (None, 'Read <a href="notes/topic14.html">Step 1: Route to 2028</a> and take its quiz'),
-    "2026-10-26": (None, 'Read <a href="notes/topic15.html">Step 2: UCAT</a> notes; look at the official UCAT site'),
-    "2026-11-02": (None, 'Read <a href="notes/topic17.html">Step 4: Experience &amp; statement</a>; list 10 local dental practices'),
-    "2026-11-09": (None, "Email or write to practices asking for Easter or summer work experience"),
-    "2026-11-16": (None, "Find a weekly volunteering or caring role (care home, charity, St John Ambulance, school mentoring)"),
-    "2026-11-23": (None, "Start a reflective diary: one entry per placement or volunteering session"),
-    "2026-11-30": (None, "Follow up practices that haven't replied; try a hospital or community dental service"),
+    "2026-11-02": (None, 'Read <a href="notes/topic14.html">Step 1: Route to 2028</a> and take its quiz'),
+    "2026-11-09": (None, 'Read <a href="notes/topic15.html">Step 2: UCAT</a> notes; look at the official UCAT site'),
+    "2026-11-16": (None, 'Read <a href="notes/topic17.html">Step 4: Experience &amp; statement</a>; list 10 local practices and email them asking for Easter or summer work experience'),
+    "2026-11-23": (None, "Find a weekly volunteering or caring role (care home, charity, St John Ambulance, school mentoring)"),
+    "2026-11-30": (None, "Start a reflective diary; follow up practices that haven't replied, or try a hospital or community dental service"),
     "2026-12-07": (None, 'Read <a href="notes/topic1.html">Topic 1: UK dental landscape</a> and take its quiz'),
     "2026-12-14": (None, "Review your term: grades, any work experience booked, diary started?"),
     "2026-12-21": (_u("drill", "Situational Judgement"), 'Read <a href="notes/topic8.html">Topic 8: Professionalism &amp; ethics</a>'),
@@ -322,7 +320,7 @@ def build_plan(OUT, THEME_HEAD, FONT, NOTES_CSS, THEME_JS):
 <div class="container wide">
   <div class="eyebrow">Getting in · Year 12 to 2028 entry · Study plan</div>
   <h1>Year 12 study plan</h1>
-  <p class="lead">Week by week from October 2026 to the UCAS deadline in October 2027: untimed drills, then timed sets, then full mocks and the official UCAT practice tests, around A-level work and your application.</p>
+  <p class="lead">Week by week from November 2026 to the UCAS deadline in October 2027: untimed drills, then timed sets, then full mocks and the official UCAT practice tests, around A-level work and your application.</p>
   <div class="callout"><b>Keep it realistic.</b> A-level grades matter more than anything else this year, so UCAT stays small until the summer. Swap weeks around to fit your school's holidays and exams; the order matters more than the dates. Dates for UCAT 2027 and UCAS 2028 entry are published in spring 2027, so check them then.</div>
   <div class="now" id="now"></div>
 

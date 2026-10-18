@@ -48,7 +48,7 @@ Audience: a **Year 12** student (AQA A-level Maths, Chemistry, Biology) applying
 
 ## Study plan and progress pages (added 16 Oct 2026, `src/extras.py`)
 
-- **`plan.html`**: 52 weeks, Mon 19 Oct 2026 to the week of 11 Oct 2027 (UCAS deadline week). `PHASES` (Groundwork, Christmas, Build the skills, Easter, Timed practice, Exam season, UCAT intensive 5 Jul–8 Aug with the test suggested late Jul / early Aug, Application). `SPECIFIC[monday]` = (UCAT task or None for the phase default, other task); **every week must have an entry** (asserted). Default UCAT task rotates VR → DM → QR → SJT per week by phase (drill → drill ×2 → timed ×2 → maintenance). Ticks stored in `plan_done`; the current week is highlighted. **When UCAT 2027 dates are published, adjust the April booking week and the intensive phase.**
+- **`plan.html`**: 50 weeks, Mon 2 Nov 2026 (Pratik asked for the first Monday of November) to the week of 11 Oct 2027 (UCAS deadline week). `PHASES` (Groundwork, Christmas, Build the skills, Easter, Timed practice, Exam season, UCAT intensive 5 Jul–8 Aug with the test suggested late Jul / early Aug, Application). `SPECIFIC[monday]` = (UCAT task or None for the phase default, other task); **every week must have an entry** (asserted). Default UCAT task rotates VR → DM → QR → SJT per week by phase (drill → drill ×2 → timed ×2 → maintenance). Ticks stored in `plan_done`; the current week is highlighted. **When UCAT 2027 dates are published, adjust the April booking week and the intensive phase.**
 - **`progress.html`**: summary strip, "Revise next" (topics whose last-3 average, ignoring retry-missed sessions, is below 80%), UCAT by subtest (last 5 sessions per subtest across all sets, weakest flagged), history tables with last-10 sparklines, export/import JSON backup, two-click reset (keeps theme and timer keys).
 - **History keys:** quizzes push `{score,total,pct,date,retry}` to `topicN_hist` (build.py patches the template's `_last` save; last 50 kept). UCAT pushes `{date,set,sections}` to `ucat_<id>_hist`. Both pages fall back to `_last` for scores saved before history existed.
 
@@ -173,7 +173,8 @@ The device needs folder access to `~/Documents/Projects`: request it with device
 | 941e14e | Handover: Claude Doc retired |
 | 3e805e4 | UCAT practice: 4 drills, 4 timed sets, full mock (288 original questions) |
 | a77cd7f | Handover: review findings and recommendations |
-| (next) | Review fixes 1–5: rebalanced UCAT keys, New set for QR/DM, April 2027 scheduled check, progress page, study plan |
+| 9cea974 | Review fixes 1–5: rebalanced UCAT keys, New set for QR/DM, April 2027 scheduled check, progress page, study plan |
+| (next) | Study plan starts Mon 2 Nov 2026 |
 
 ## Review, 16 Oct 2026 (after UCAT practice was added)
 
